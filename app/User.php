@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\MonthlyExpense;
+use App\DailyExpense;
+
 
 class User extends Authenticatable
 {
@@ -28,16 +31,44 @@ class User extends Authenticatable
     ];
 
 
-    public function monthly()
+    public function publish(MonthlyExpense $monthlyExpense)
+
     {
 
-        return $this->hasMany(Monthly::class);
+        $this->monthlyExpense()->save($monthlyExpense);
+
     }
 
 
-    public function daily()
+    public function monthlyExpense()
     {
 
-        return $this->hasMany(Daily::class);
+        return $this->hasMany(MonthlyExpense::class);
     }
+
+
+
+
+    public function record(DailyExpense $dailyExpense)
+    {
+
+        return $this->dailyExpense()->save($dailyExpense);
+    }
+
+
+
+    public function dailyExpense()
+    {
+
+        return $this->hasMany(DailyExpense::class);
+
+    }
+
+    public function type()
+    {
+
+        return $this->hasMany(Type::class);
+    }
+
+
 }

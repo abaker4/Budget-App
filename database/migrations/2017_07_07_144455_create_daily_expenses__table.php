@@ -17,8 +17,8 @@ class CreateDailyExpensesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('category_id');
-            $table->integer('amount');
+            $table->string('daily_category');
+            $table->decimal('amount', 11, 2);
             $table->timestamps();
         });
     }

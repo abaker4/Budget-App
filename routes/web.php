@@ -12,43 +12,58 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-Route::get('/monthlyexpenses/create', 'MonthlyExpensesController@create');
-
-Route::get('/monthlyexpenses/{id}', 'MonthlyExpensesController@show');
-
-Route::get('/monthlyexpenses/{id}/edit', 'MonthlyExpensesController@edit');
-
-Route::post('/monthlyexpenses/store', 'MonthlyExpensesController@store');
-
-Route::post('/monthlyexpenses/update', 'MonthlyExpensesController@update');
-
-Route::delete('/monthlyexpenses/{id}', 'MonthlyExpensesController@destroy');
-
-
-
-
-
-Route::get('/dailyexpenses/create', 'DailyExpensesController@create');
-
-Route::get('/dailyexpenses/{id}', 'DailyExpensesController@show');
-
-Route::get('/dailyexpenses/{id}/edit', 'DailyExpensesController@edit');
-
-Route::post('/dailyexpenses/store', 'DailyExpensesController@store');
-
-Route::post('/dailyexpenses/update', 'DailyExpensesController@update');
-
-Route::delete('/dailyexpenses/{id}', 'DailyExpensesController@destroy');
-
-
 Auth::routes();
+
+
+Route::get('/home', 'MonthlyExpensesController@index');
+
+
+Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function () {
+
+    Route::get('/create_income', 'MonthlyExpensesController@createIncome');
+
+    Route::get('/create_expense', 'MonthlyExpensesController@createExpense');
+
+    Route::get('/create_saving', 'MonthlyExpensesController@createSaving');
+
+    Route::get('/{id}', 'MonthlyExpensesController@show');
+
+    Route::get('/{id}/edit', 'MonthlyExpensesController@edit');
+
+    Route::post('/store_income', 'MonthlyExpensesController@storeIncome');
+
+    Route::post('/store_expense', 'MonthlyExpensesController@storeExpense');
+
+    Route::post('/store_saving', 'MonthlyExpensesController@storeSaving');
+
+
+    Route::post('/update', 'MonthlyExpensesController@update');
+
+    Route::delete('/{id}', 'MonthlyExpensesController@destroy');
+
+});
+
+Route::group(['prefix' => 'dailyexpenses', 'middleware' => 'auth'], function () {
+
+
+    Route::get('/create', 'DailyExpensesController@create');
+
+    Route::get('/{id}', 'DailyExpensesController@show');
+
+    Route::get('/{id}/edit', 'DailyExpensesController@edit');
+
+    Route::post('/store_expense', 'DailyExpensesController@storeExpense');
+
+    Route::post('/store_income', 'DailyExpensesController@storeIncome');
+
+    Route::post('/store_saving', 'DailyExpensesController@storeSaving');
+
+    Route::post('/update', 'DailyExpensesController@update');
+
+    Route::delete('/{id}', 'DailyExpensesController@destroy');
+
+});
+

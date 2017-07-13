@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Daily;
+use App\DailyExpense;
 
 class DailyExpensesController extends Controller
 {
+    protected $guarded = [];
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,9 +23,10 @@ class DailyExpensesController extends Controller
      */
     public function index()
     {
-        $daily_expenses = Daily::all();
+        $daily_expenses = DailyExpense::all();
 
-        return view('daily.home', compact('daily_expenses'));
+
+        return view('daily.create', compact('daily_expenses'));
 
     }
 
@@ -36,34 +40,33 @@ class DailyExpensesController extends Controller
         return view('daily.create');
     }
 
+
+    public function dailyAmount()
+    {
+
+        // monthly_amount / days of the month = daily_amount
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-
+    public function storeExpense()
     {
 
-        $this->validate($request, [
+            auth()->user()->record(
 
-            'category_id' => 'required',
+            new DailyExpense(request([
+                'daily_category',
 
-            'amount' => 'required'
+                'amount'
 
-        ]);
+            ]))
+        );
 
 
-        $data = $request->all();
-
-        $daily_expenses = new Daily;
-
-        $daily_expenses->category_id = $data['category_id'];
-
-        $daily_expenses->amount = $data['amount'];
-
-        $daily_expenses->save();
+        return redirect('/home');
 
     }
 
@@ -86,7 +89,7 @@ class DailyExpensesController extends Controller
      */
     public function edit($id)
     {
-        $daily_expenses = Daily::find($id);
+        $daily_expenses = DailyExpense::find($id);
 
         return view('daily.edit', compact('daily_expenses'));
     }
@@ -103,7 +106,7 @@ class DailyExpensesController extends Controller
 
         $this->validate(request(), [
 
-            'category_id' => 'required',
+            'daily_category' => 'required',
 
             'amount' => 'required'
 
@@ -112,9 +115,9 @@ class DailyExpensesController extends Controller
 
         $data = $request->all();
 
-        $daily_expenses = Daily::find($data['id']);
+        $daily_expenses = DailyExpense::find($data['id']);
         $daily_expenses->amount = $data['amount'];
-        $daily_expenses->category_id = $data['category_id'];
+        $daily_expenses->daily_category = $data['daily_category'];
 
         $daily_expenses->save();
     }
@@ -128,7 +131,7 @@ class DailyExpensesController extends Controller
     public function destroy($id)
     {
 
-        $daily_expenses = Daily::find($id);
+        $daily_expenses = DailyExpense::find($id);
         $daily_expenses->delete();
 
         return "success";

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Monthly;
+use App\MonthlyExpense;
+use App\DailyExpense;
+use Illuminate\Support\Facades\DB;
+use App\User;
 
 class MonthlyExpensesController extends Controller
 {
@@ -20,10 +23,21 @@ class MonthlyExpensesController extends Controller
      */
     public function index()
     {
-        $monthly_events = Monthly::all();
+        $monthly_expenses = MonthlyExpense::all();
 
-            return view('monthly.home', compact('monthly_events'));
+        $daily_expenses = DailyExpense::all();
 
+        return view('home', compact('monthly_expenses', 'daily_expenses'));
+
+    }
+
+
+
+    public function createIncome()
+    {
+        $monthly_income = MonthlyExpense::all();
+
+        return view('monthly.income', compact('monthly_income'));
     }
 
     /**
@@ -31,10 +45,73 @@ class MonthlyExpensesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createExpense()
     {
-        return view('monthly.create');
+        $monthly_expenses = MonthlyExpense::all();
+
+        return view('monthly.expense', compact('monthly_expenses'));
+
     }
+
+
+    public function createSaving()
+    {
+        $monthly_saving = MonthlyExpense::all();
+
+        return view('monthly.saving', compact('monthly_saving'));
+    }
+
+
+
+    public function onBoard()
+    {
+
+        $monthly_expenses = new MonthlyExpense();
+        $user = auth()->user();
+
+        if($user && $monthly_expenses->type_id !== 1){
+
+            redirect('/monthlyexpenses//create_expense'); //step 1 of onboarding process
+
+        }else if ($user && !$monthly_expenses->type_id === 2) {
+            redirect('/monthlyexpenses/create_income'); // step 2 of onboarding process
+
+        }else if( $user && !$monthly_expenses->type_id === 3) {
+            redirect('/monthlyexpenses/create_savings'); // step 3 of onboarding process
+        }else{
+            redirect('/home');
+        };
+
+    }
+
+    public function storeIncome()
+    {
+
+        auth()->user()->publish(
+            new MonthlyExpense(request([
+                'type_id',
+
+                'amount',
+
+                'monthly_category',
+
+                'save_percent'
+
+            ]))
+        );
+
+
+
+//        if(isset($data['type_id'])=== 1){
+//            redirect('/monthlyexpenses/create_income');
+//
+//        } else if(isset( $data['type_id'])=== 2){
+//            redirect('/monthlyexpenses/create_savings');
+//        }
+
+        return redirect('/monthlyexpenses/create_expense');
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,31 +119,79 @@ class MonthlyExpensesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-
+    public function storeExpense()
     {
 
-        $this->validate($request, [
+        auth()->user()->publish(
+            new MonthlyExpense(request([
+                'type_id',
 
-            'type_id' => 'required',
+                'amount',
 
-            'amount' => 'required',
+                'monthly_category',
 
-            'title' => 'required'
+                'save_percent'
 
-        ]);
+            ]))
+        );
 
 
-        $data = $request->all();
+       return redirect('/monthlyexpenses/create_saving');
+    }
 
-        $monthly_expenses = new Monthly;
 
-        $monthly_expenses->amount = $data['amount'];
+    public function storeSaving()
+    {
 
-        $monthly_expenses->title = $data['title'];
+        auth()->user()->publish(
+            new MonthlyExpense(request([
+                'type_id',
 
-        $monthly_expenses->save();
+                'amount',
 
+                'monthly_category',
+
+                'save_percent'
+
+            ]))
+        );
+
+
+        return redirect('/home');
+    }
+
+
+    public function dailyTotal()
+    {
+            $monthly_income =
+                DB::table('monthly_expenses')
+                ->select('amount')
+                ->where('type_id', '=' , 1)
+                ->get();
+
+
+            $monthly_expenses =
+                DB::table('monthly_expenses')
+                    ->select('amount')
+                    ->where('type_id', '=' , 2)
+                    ->get();
+
+            $monthly_savings =
+                DB::table('monthly_expenses')
+                    ->select('save_percent')
+                    ->where('type_id', '=' , 3)
+                    ->get();
+
+        
+        $monthly_sum = $monthly_income - $monthly_expenses;
+
+        $savings_sum = $monthly_sum * $monthly_savings;
+
+        $monthly_total = $monthly_sum - $savings_sum;
+
+        $daily_total = $monthly_total / 30;
+
+                return $daily_total;
     }
 
     /**
@@ -77,7 +202,7 @@ class MonthlyExpensesController extends Controller
      */
     public function show($id)
     {
-        return view('daily.details');
+        return view('monthly.details');
     }
 
     /**
@@ -88,7 +213,7 @@ class MonthlyExpensesController extends Controller
      */
     public function edit($id)
     {
-        $monthly_expenses = Monthly::find($id);
+        $monthly_expenses = MonthlyExpense::find($id);
 
         return view('monthly.edit', compact('monthly_expenses'));
     }
@@ -115,7 +240,7 @@ class MonthlyExpensesController extends Controller
 
         $data = $request->all();
 
-        $monthly_expenses = Monthly::find($data['id']);
+        $monthly_expenses = MonthlyExpense::find($data['id']);
 
         $monthly_expenses->amount = $data['amount'];
         $monthly_expenses->title = $data['title'];
@@ -133,7 +258,7 @@ class MonthlyExpensesController extends Controller
     public function destroy($id)
     {
 
-        $monthly_expenses = Monthly::find($id);
+        $monthly_expenses = MonthlyExpense::find($id);
         $monthly_expenses->delete();
 
         return "success";
