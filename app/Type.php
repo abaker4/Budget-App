@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type extends Model
 {
+//    /**
+//     * The name of a specific type of expense, eg "Income, Expense, Savings"
+//     * @var str
+//     */
+//    public $title;
+//    private $id;
+//    private $created_at;
+//    private $updated_at;
+
     /**Many to Many Relationship
      *
      * Type belong to many Users

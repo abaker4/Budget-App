@@ -53,7 +53,7 @@
                             <div class="box">
                                 <label class="label{{ $errors->has('save_percent') ? ' has-error' : '' }}">Savings(%)</label>
                                 <p class="control">
-                                    <input class="input" name="save_percent" type="text">
+                                    <input class="input" name="save_percent" type="text" required>
                                 </p>
                                 @if ($errors->has('save_percent'))
                                     <span class="help-block">

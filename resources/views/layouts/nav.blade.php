@@ -30,28 +30,28 @@
                 Home
             </a>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link  is-active" href="/documentation/overview/start/">
+                <a class="navbar-link  is-active" href="">
                     Docs
                 </a>
                 <div class="navbar-dropdown ">
-                    <a class="navbar-item " href="/documentation/overview/start/">
+                    <a class="navbar-item " href="">
                         Overview
                     </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+                    <a class="navbar-item " href="">
                         Modifiers
                     </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/grid/columns/">
+                    <a class="navbar-item " href="">
                         Grid
                     </a>
-                    <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
+                    <a class="navbar-item " href="">
                         Elements
                     </a>
 
-                    <a class="navbar-item is-active" href="http://bulma.io/documentation/components/breadcrumb/">
+                    <a class="navbar-item is-active" href="">
                         Components
                     </a>
 
-                    <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
+                    <a class="navbar-item " href="">
                         Layout
                     </a>
                     <hr class="navbar-divider">
@@ -66,7 +66,7 @@
                 </a>
                 <div id="blogDropdown" class="navbar-dropdown " data-style="width: 18rem;">
 
-                    <a class="navbar-item" href="/2017/03/10/new-field-element/">
+                    <a class="navbar-item" href="">
                         <div class="navbar-content">
                             <p>
                                 <small class="has-text-info">10 Mar 2017</small>
@@ -75,7 +75,7 @@
                         </div>
                     </a>
 
-                    <a class="navbar-item" href="/2016/04/11/metro-ui-css-grid-with-bulma-tiles/">
+                    <a class="navbar-item" href="">
                         <div class="navbar-content">
                             <p>
                                 <small class="has-text-info">11 Apr 2016</small>
@@ -84,7 +84,7 @@
                         </div>
                     </a>
 
-                    <a class="navbar-item" href="/2016/02/09/blog-launched-new-responsive-columns-new-helpers/">
+                    <a class="navbar-item" href="">
                         <div class="navbar-content">
                             <p>
                                 <small class="has-text-info">09 Feb 2016</small>
@@ -93,7 +93,7 @@
                         </div>
                     </a>
 
-                    <a class="navbar-item" href="http://bulma.io/blog/">
+                    <a class="navbar-item" href="">
                         More posts
                     </a>
                     <hr class="navbar-divider">
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="level-right">
                                     <div class="level-item">
-                                        <a class="button is-rss is-small" href="http://bulma.io/atom.xml">
+                                        <a class="button is-rss is-small" href="">
                       <span class="icon is-small">
                         <i class="fa fa-rss"></i>
                       </span>
@@ -145,7 +145,7 @@
                     @else
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle button is-transparent" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <span>{{ Auth::user()->name }}</span> <span class="caret"></span>
+                                <span>{{Auth::user()->name}}</span> <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu" style="text-align: center;">
@@ -163,22 +163,6 @@
                             </ul>
                         </div>
                     @endif
-                    {{--<p class="control">--}}
-                                    {{--<a class="button is-transparent" href="/register">--}}
-                                      {{--<span class="icon">--}}
-                                         {{--<i class="fa fa-lock"></i>--}}
-                                      {{--</span>--}}
-                                        {{--<span>Sign Up</span>--}}
-                                    {{--</a>--}}
-                    {{--</p>--}}
-                    {{--<p class="control">--}}
-                                    {{--<a class="button is-transparent" href="login">--}}
-                                      {{--<span class="icon">--}}
-                                        {{--<i class="fa fa-lock"></i>--}}
-                                      {{--</span>--}}
-                                        {{--<span>Login</span>--}}
-                                    {{--</a>--}}
-                    {{--</p>--}}
                 </div>
             </div>
         </div>

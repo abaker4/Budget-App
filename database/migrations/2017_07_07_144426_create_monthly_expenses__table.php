@@ -16,11 +16,10 @@ class CreateMonthlyExpensesTable extends Migration
         Schema::create('monthly_expenses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('NO ACTION');
             $table->integer('type_id');
-            $table->string('monthly_category')->nullable();
+            $table->integer('monthly_category_id')->nullable();
             $table->decimal('amount', 11, 2)->nullable();
-            $table->decimal('save_percent', 11, 2)->nullable();
             $table->timestamps();
         });
     }

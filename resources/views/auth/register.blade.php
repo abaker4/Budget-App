@@ -86,7 +86,7 @@
                                                     <input class="input" type="text" name="name" placeholder="" required>
                                                     @if ($errors->has('name'))
                                                         <span class="help-block">
-                                                             <strong>{{ $errors->first('name') }}</strong>
+                                                             <strong style="color:red;">{{ $errors->first('name') }}</strong>
                                                         </span>
                                                     @endif
                                                 </p>
@@ -95,7 +95,7 @@
                                                     <input class="input" type="email" name="email" placeholder="" required>
                                                     @if ($errors->has('email'))
                                                         <span class="help-block">
-                                                             <strong>{{ $errors->first('email') }}</strong>
+                                                             <strong style="color:red;">{{ $errors->first('email') }}</strong>
                                                         </span>
                                                     @endif
                                                 </p>
@@ -106,7 +106,7 @@
 
                                                     @if ($errors->has('password'))
                                                         <span class="help-block">
-                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                            <strong style="color:red;">{{ $errors->first('password') }}</strong>
                                                          </span>
                                                     @endif
                                                 </p>

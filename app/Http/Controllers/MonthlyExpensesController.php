@@ -11,26 +11,12 @@ use App\User;
 class MonthlyExpensesController extends Controller
 {
 
+    protected $guarded = [];
+
     public function __construct()
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $monthly_expenses = MonthlyExpense::all();
-
-        $daily_expenses = DailyExpense::all();
-
-        return view('home', compact('monthly_expenses', 'daily_expenses'));
-
-    }
-
 
 
     public function createIncome()
@@ -62,27 +48,6 @@ class MonthlyExpensesController extends Controller
     }
 
 
-
-    public function onBoard()
-    {
-
-        $monthly_expenses = new MonthlyExpense();
-        $user = auth()->user();
-
-        if($user && $monthly_expenses->type_id !== 1){
-
-            redirect('/monthlyexpenses//create_expense'); //step 1 of onboarding process
-
-        }else if ($user && !$monthly_expenses->type_id === 2) {
-            redirect('/monthlyexpenses/create_income'); // step 2 of onboarding process
-
-        }else if( $user && !$monthly_expenses->type_id === 3) {
-            redirect('/monthlyexpenses/create_savings'); // step 3 of onboarding process
-        }else{
-            redirect('/home');
-        };
-
-    }
 
     public function storeIncome()
     {
@@ -122,77 +87,10 @@ class MonthlyExpensesController extends Controller
     public function storeExpense()
     {
 
-        auth()->user()->publish(
-            new MonthlyExpense(request([
-                'type_id',
 
-                'amount',
-
-                'monthly_category',
-
-                'save_percent'
-
-            ]))
-        );
-
-
-       return redirect('/monthlyexpenses/create_saving');
     }
 
 
-    public function storeSaving()
-    {
-
-        auth()->user()->publish(
-            new MonthlyExpense(request([
-                'type_id',
-
-                'amount',
-
-                'monthly_category',
-
-                'save_percent'
-
-            ]))
-        );
-
-
-        return redirect('/home');
-    }
-
-
-    public function dailyTotal()
-    {
-            $monthly_income =
-                DB::table('monthly_expenses')
-                ->select('amount')
-                ->where('type_id', '=' , 1)
-                ->get();
-
-
-            $monthly_expenses =
-                DB::table('monthly_expenses')
-                    ->select('amount')
-                    ->where('type_id', '=' , 2)
-                    ->get();
-
-            $monthly_savings =
-                DB::table('monthly_expenses')
-                    ->select('save_percent')
-                    ->where('type_id', '=' , 3)
-                    ->get();
-
-        
-        $monthly_sum = $monthly_income - $monthly_expenses;
-
-        $savings_sum = $monthly_sum * $monthly_savings;
-
-        $monthly_total = $monthly_sum - $savings_sum;
-
-        $daily_total = $monthly_total / 30;
-
-                return $daily_total;
-    }
 
     /**
      * Display the specified resource.

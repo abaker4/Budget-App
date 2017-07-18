@@ -74,11 +74,21 @@
                                                 <p class="control">
                                                     <input class="input" name="email" type="text">
                                                 </p>
+                                                @if ($errors->has('email'))
+                                                    <span class="help-block">
+                                                        <strong style="color:red;">{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
                                                 <hr>
                                                 <label class="label">Password</label>
                                                 <p class="control">
                                                     <input class="input" name="password" type="password">
                                                 </p>
+                                                @if ($errors->has('password'))
+                                                    <span class="help-block">
+                                                        <strong style="color:red;">{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
                                                 <hr>
                                                 <p class="control">
                                                     <button class="button is-primary" type="submit">Login</button>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDailyExpensesTable extends Migration
+class CreateMonthlyCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateDailyExpensesTable extends Migration
      */
     public function up()
     {
-        Schema::create('daily_expenses', function (Blueprint $table) {
+        Schema::create('monthly_category', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('NO ACTION');
-            $table->integer('daily_category_id');
-            $table->decimal('amount', 11, 2);
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateDailyExpensesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('daily_expenses');
+        Schema::dropIfExists('monthly_category');
     }
 }

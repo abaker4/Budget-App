@@ -62,6 +62,7 @@
 
                             {{ csrf_field() }}
 
+
                             <input type="hidden" name="type_id" value="2">
                             <h1 class="title has-text-centered">
                                 Monthly Expenses
@@ -72,20 +73,20 @@
                                         <div class="select is-fullwidth {{ $errors->has('monthly_category') ? ' has-error' : '' }}">
                                             <select name="monthly_category">
                                                 @foreach(App\Http\Utilities\categories::allMonthly() as $category)
-                                                <option value="{{$category}}">{{$category}}</option>
-                                                    @endforeach
+                                                <option value="{{$category}}">{{$category}}</option >
+                                                @endforeach
                                             </select>
                                             @if ($errors->has('monthly_category'))
                                                 <span class="help-block is-danger">
-                                        <strong>{{ $errors->first('monthly-category') }}</strong>
-                                    </span>
+                                                      <strong>{{ $errors->first('monthly-category') }}</strong>
+                                                </span>
                                             @endif
 
                                         </div>
                                     </div>
-                                    <label class="label{{ $errors->has('amount') ? ' has-error' : '' }}">Amount</label>
+                                    <label class="label{{ $errors->has('amount') ? ' has-error' : '' }}"></label>
                                     <p class="control">
-                                        <input class="input" name="amount" type="text">
+                                        <input class="input" name="amount" type="text" placeholder="Amount" required>
                                     </p>
                                     @if ($errors->has('amount'))
                                         <span class="help-block is-danger">
@@ -93,12 +94,13 @@
                                             </span>
                                     @endif
                                 </div>
+
                                 <a class="button is-link" href="/monthlyexpenses/create_income">
                                     <button type="submit" class="btn btn-primary">
                                         Submit
                                     </button>
                                 </a>
-
+                                @include('layouts.errors')
                             </div>
                         </form>
                     </div>
@@ -107,6 +109,9 @@
         </div>
 
     </section>
+<script>
 
+
+</script>
 
 @endsection

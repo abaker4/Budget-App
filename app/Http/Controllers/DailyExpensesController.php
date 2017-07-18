@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\DailyExpense;
+use App\User;
 
 class DailyExpensesController extends Controller
 {
@@ -26,7 +27,7 @@ class DailyExpensesController extends Controller
         $daily_expenses = DailyExpense::all();
 
 
-        return view('daily.create', compact('daily_expenses'));
+        return view('home', compact('daily_expenses'));
 
     }
 
@@ -40,35 +41,31 @@ class DailyExpensesController extends Controller
         return view('daily.create');
     }
 
-
-    public function dailyAmount()
-    {
-
-        // monthly_amount / days of the month = daily_amount
-    }
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function storeExpense()
+
+    public function dailyTotal()
     {
 
-            auth()->user()->record(
+
+        auth()->user()->record(
 
             new DailyExpense(request([
-                'daily_category',
+
+                'daily_category_id',
 
                 'amount'
 
             ]))
-        );
-
+       );
 
         return redirect('/home');
 
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -76,9 +73,9 @@ class DailyExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id )
     {
-        return view('daily.details');
+
     }
 
     /**
@@ -121,6 +118,8 @@ class DailyExpensesController extends Controller
 
         $daily_expenses->save();
     }
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -41,6 +41,30 @@
 <script src="https://unpkg.com/vue@2.3.4"></script>
 <script src="js/utils.js"></script>
 <script src="js/main.js"></script>
+<script>
 
+    $(function(){
+
+        $('#step1').addClass('animated fadeInRight');
+
+        $('#step2').addClass('animated fadeInRight');
+
+        $('#step3').addClass('animated fadeInRight');
+
+        $('#step4').addClass('animated fadeInRight');
+
+        $('#step5').addClass('animated fadeInRight');
+
+        $('#step6').addClass('animated fadeInRight');
+
+        $('#step7').addClass('animated fadeInRight');
+
+        $('#step8').addClass('animated fadeInRight');
+
+        $('#step9').addClass('animated fadeInRight');
+
+    });
+
+</script>
 </body>
 </html>

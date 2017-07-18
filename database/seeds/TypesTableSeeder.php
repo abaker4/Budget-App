@@ -21,10 +21,6 @@ class TypesTableSeeder extends Seeder
 
         ]);
 
-        DB::table('types')->insert([
-            'title' => 'save'
-
-        ]);
     }
 }
 

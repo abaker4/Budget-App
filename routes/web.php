@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/home', 'MonthlyExpensesController@index');
+Route::get('/home', 'DashboardController@index');
 
 
 Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function () {
@@ -33,7 +33,6 @@ Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function (
 
     Route::get('/{id}/edit', 'MonthlyExpensesController@edit');
 
-    Route::post('/store_income', 'MonthlyExpensesController@storeIncome');
 
     Route::post('/store_expense', 'MonthlyExpensesController@storeExpense');
 
@@ -48,6 +47,7 @@ Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function (
 
 Route::group(['prefix' => 'dailyexpenses', 'middleware' => 'auth'], function () {
 
+    Route::get('/home', 'DailyExpensesController@expenseList');
 
     Route::get('/create', 'DailyExpensesController@create');
 
@@ -55,15 +55,41 @@ Route::group(['prefix' => 'dailyexpenses', 'middleware' => 'auth'], function () 
 
     Route::get('/{id}/edit', 'DailyExpensesController@edit');
 
-    Route::post('/store_expense', 'DailyExpensesController@storeExpense');
-
-    Route::post('/store_income', 'DailyExpensesController@storeIncome');
-
-    Route::post('/store_saving', 'DailyExpensesController@storeSaving');
+    Route::post('/daily_total', 'DailyExpensesController@dailyTotal');
 
     Route::post('/update', 'DailyExpensesController@update');
 
     Route::delete('/{id}', 'DailyExpensesController@destroy');
 
 });
+
+Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
+
+    Route::get('/instructions', 'OnBoardingController@instructions');
+
+    Route::get('/income', 'OnBoardingController@income');
+
+    Route::get('/housing', 'OnBoardingController@housing');
+
+    Route::get('/utilities', 'OnBoardingController@utilities');
+
+    Route::get('/insurances', 'OnBoardingController@insurances');
+
+    Route::get('/memberships', 'OnBoardingController@memberships');
+
+    Route::get('/groceries', 'OnBoardingController@groceries');
+
+    Route::get('/gas', 'OnBoardingController@gas');
+
+    Route::get('/savings', 'OnBoardingController@savings');
+
+    Route::post('/store', 'OnBoardingController@store');
+
+    Route::post('/store_saving','OnBoardingController@storeSaving');
+
+
+});
+
+
+
 
