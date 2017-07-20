@@ -47,7 +47,7 @@ Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function (
 
 Route::group(['prefix' => 'dailyexpenses', 'middleware' => 'auth'], function () {
 
-    Route::get('/home', 'DailyExpensesController@expenseList');
+    Route::get('/home', 'DailyExpensesController@index');
 
     Route::get('/create', 'DailyExpensesController@create');
 

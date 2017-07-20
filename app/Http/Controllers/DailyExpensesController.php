@@ -24,10 +24,12 @@ class DailyExpensesController extends Controller
      */
     public function index()
     {
-        $daily_expenses = DailyExpense::all();
 
+        $daily = DailyExpense::all();
 
-        return view('home', compact('daily_expenses'));
+        return View::make('home')
+            ->with('categories', $daily->lists('daily_category_id'))
+            ->with('totals', $daily->lists('amount'));
 
     }
 

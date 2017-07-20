@@ -37,7 +37,6 @@ class DashboardController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->get();
 
-        $
         $income =
             DB::table('monthly_expenses')
                 ->where('user_id', '=', auth()->user()->id)
@@ -59,19 +58,20 @@ class DashboardController extends Controller
 
         $monthly_sum = $income - $expense;
 
-//        $savings_sum = $monthly_sum * $monthly_savings;
+        $monthly_savings = auth()->user()->save_percent;
 
-        $savings_sum = 0;
+        $savings_sum = $monthly_sum * $monthly_savings;
+
         $monthly_total = $monthly_sum - $savings_sum;
 
         $weekly_total = ($monthly_total * 12 )/52;
 
-        //@todo change this to use the reference date and multiply the daily total by number of days
+        //@todo change this to use the reference date and multiply the weekly total by number of days
         // since that date and then only subtract expenses since that date
-        $weekly_amount = $weekly_total - $daily_value;
+        $weekly_amount = round($weekly_total - $daily_value);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses', 'weekly_amount'));
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'weekly_amount', 'daily_value'));
 
     }
 }

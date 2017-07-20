@@ -4,41 +4,33 @@
     <div class="columns">
         <div class="column is-6">
             <section class="panel">
-                <p class="panel-heading">
+                <p class="panel-heading has-text-centered">
                     Weekly Activity
                 </p>
                 <canvas id="myChart" style="height: 280px;"></canvas>
-                {{--<div id="canvas-holder">--}}
-                    {{--<canvas id="chart-area" style="height: 280px;"></canvas>--}}
-                {{--</div>--}}
-                {{--<button id="randomizeData">Randomize Data</button>--}}
-                {{--<button id="addDataset">Add Dataset</button>--}}
-                {{--<button id="removeDataset">Remove Dataset</button>--}}
-                {{--<button id="addData">Add Data</button>--}}
-                {{--<button id="removeData">Remove Data</button>--}}
             </section>
         </div>
 
         <div class="column is-6">
             <section class="panel">
-                <p class="panel-heading">
-                    Recent Spending History
-                <p>
+                <p class="panel-heading has-text-centered">
+                    Daily Expense
+                </p>
+                         <h1 class="title is-1 has-text-centered" style="font-weight: bolder; margin-top: 7rem;">${{$weekly_amount}}</h1>
 
-
-                <h1 class="title is-1"></h1>
             </section>
+            @include('layouts.form')
         </div>
+
     </div>
 
 
     <div class="columns">
             <div class="column is-6">
                 <section class="panel">
-                    <p class="panel-heading">
+                    <p class="panel-heading has-text-centered">
                         Monthly Expense Summary
                     </p>
-                   {{--Need to filter to where the type_id = 2--}}
                     @foreach($monthly_expenses as $monthly)
                     <table class="table">
                         <thead>
@@ -47,32 +39,33 @@
                                 <th>Amount</th>
                             </tr>
                         </thead>
-                        @foreach($daily_category as $daily)
+
                         <tbody>
                             <tr>
-                                <td>{{$monthly->monthly_category_id}}| {{$daily->}}</td>
-
+                                <td>{{$monthly->monthly_category_id}}</td>
                                 <td>{{$monthly->amount}}</td>
                             </tr>
                         </tbody>
                     </table>
                         @endforeach
-                @endforeach
                 </section>
             </div>
-
             <div class="column is-6">
                 <section class="panel">
-                    <p class="panel-heading">
-                        Current Weekly Total
-                    </p>
+                    <p class="panel-heading has-text-centered">
+                        Recent Spending History
+                    <p>
 
-                    <h1 class="title is-1">{{$weekly_amount}}</h1>
 
-                   @include('layouts.form')
+                    <h1 class="title is-1"></h1>
                 </section>
             </div>
+
     </div>
 
     @endsection
+
+<script>
+
+</script>
 
