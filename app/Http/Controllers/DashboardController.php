@@ -51,10 +51,10 @@ class DashboardController extends Controller
 
         $daily_value =
             DB::table('daily_expenses')
-                ->where('user_id', '=', auth()->user()->id)
+                ->join('users', 'users.id', '=', 'daily_expenses.user_id')
+                ->where('daily_expenses.user_id', '=', auth()->user()->id)
+                ->whereRaw('daily_expenses.created_at >= users.reference_date')
                 ->sum('amount');
-
-
 
         $monthly_sum = $income - $expense;
 
@@ -66,8 +66,6 @@ class DashboardController extends Controller
 
         $weekly_total = ($monthly_total * 12 )/52;
 
-        //@todo change this to use the reference date and multiply the weekly total by number of days
-        // since that date and then only subtract expenses since that date
         $weekly_amount = round($weekly_total - $daily_value);
 
 
