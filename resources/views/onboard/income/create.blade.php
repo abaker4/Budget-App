@@ -19,7 +19,7 @@
                             <div class="box">
                                 <label class="label {{ $errors->has('amount') ? ' has-error' : '' }}">Amount</label>
                                 <p class="control">
-                                    <input class="input" name="amount" type="text" required>
+                                    <input class="input" name="amount" value="{{$monthly_expenses->amount}}" type="text" required>
                                 </p>
                                 @if ($errors->has('amount'))
                                     <span class="help-block is-danger">

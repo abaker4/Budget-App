@@ -67,21 +67,27 @@ Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
     Route::get('/instructions', 'OnBoardingController@instructions');
 
-    Route::get('/income', 'OnBoardingController@income');
+    Route::get('/1', 'OnBoardingController@income');
 
-    Route::get('/housing', 'OnBoardingController@housing');
+    Route::get('/2', 'OnBoardingController@housing');
 
-    Route::get('/utilities', 'OnBoardingController@utilities');
+    Route::get('/3', 'OnBoardingController@utilities');
 
-    Route::get('/insurances', 'OnBoardingController@insurances');
+    Route::get('/4', 'OnBoardingController@insurances');
 
-    Route::get('/memberships', 'OnBoardingController@memberships');
+    Route::get('/5', 'OnBoardingController@memberships');
 
-    Route::get('/groceries', 'OnBoardingController@groceries');
+    Route::get('/6', 'OnBoardingController@groceries');
 
-    Route::get('/gas', 'OnBoardingController@gas');
+    Route::get('/7', 'OnBoardingController@gas');
 
-    Route::get('/savings', 'OnBoardingController@savings');
+    Route::get('/{id}/edit', 'OnBoardingController@editGas');
+
+    Route::get('/{id}/edit', 'OnBoardingController@editIncome');
+
+    Route::get('/8', 'OnBoardingController@savings');
+
+    Route::post('/storeonboard', 'OnBoardingController@storeOnboard');
 
     Route::post('/store', 'OnBoardingController@store');
 

@@ -1,7 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div class="columns">
+        <div class="column is-6">
+            <section class="panel">
+                <p class="panel-heading has-text-centered">
+                    Daily Expense
+                </p>
+                <h1 class="title is-1 has-text-centered" style="font-weight: bolder; margin-top: 7rem;">${{$weekly_amount}}</h1>
+
+            </section>
+            @include('layouts.form')
+        </div>
+
         <div class="column is-6">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
@@ -11,16 +23,6 @@
             </section>
         </div>
 
-        <div class="column is-6">
-            <section class="panel">
-                <p class="panel-heading has-text-centered">
-                    Daily Expense
-                </p>
-                         <h1 class="title is-1 has-text-centered" style="font-weight: bolder; margin-top: 7rem;">${{$weekly_amount}}</h1>
-
-            </section>
-            @include('layouts.form')
-        </div>
 
     </div>
 
@@ -44,6 +46,9 @@
                             <tr>
                                 <td>{{$monthly->monthly_category_id}}</td>
                                 <td>{{$monthly->amount}}</td>
+                                <td><a class="btn btn-link" href="/onboard/{{$monthly->monthly_category_id}}">
+                                        <button type="button" class="btn btn-primary">Edit</button></a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

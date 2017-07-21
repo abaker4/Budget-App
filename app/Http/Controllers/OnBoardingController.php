@@ -27,11 +27,24 @@ class OnBoardingController extends Controller
     }
 
 
+
+
     public function income()
     {
 
-        return view('onboard.income');
+            $monthly_expenses = new MonthlyExpense();
+        return view('onboard.income.create', compact('monthly_expenses'));
     }
+
+
+    public function editIncome($id)
+    {
+
+        $monthly_expenses = MonthlyExpense::find($id);
+
+        return view('onboard.income.edit', compact('monthly_expenses'));
+    }
+
 
 
     public function housing()
@@ -70,9 +83,19 @@ class OnBoardingController extends Controller
     public function gas()
     {
 
-        return view('onboard.gas');
+        return view('onboard.gas.create');
 
     }
+
+    public function editGas($id)
+    {
+
+        $monthly_expenses = MonthlyExpense::find($id);
+
+        return view('onboard.gas.edit', compact('monthly_expenses'));
+    }
+
+
     public function savings()
     {
 
@@ -80,6 +103,28 @@ class OnBoardingController extends Controller
 
     }
 
+
+
+    public function storeOnboard(Request $request)
+    {
+        $data = $request->all();
+
+        $id = auth()->user()->id;
+
+        $monthly_expenses = MonthlyExpense::find($id);
+
+        $monthly_expenses->type_id = $data['type_id'];
+
+        $monthly_expenses->monthly_category_id = $data['monthly_category_id'];
+
+        $monthly_expenses->amount = $data['amount'];
+
+        $monthly_expenses->save();
+
+        return redirect('/home');
+
+
+    }
 
 
     public function store()
@@ -129,35 +174,35 @@ class OnBoardingController extends Controller
         switch($step) {
 
             case 1:
-                return redirect('/onboard/income');
+                return redirect('/onboard/1');
             break;
 
             case 2:
-                return redirect('/onboard/housing');
+                return redirect('/onboard/2');
             break;
 
             case 3:
-                return redirect('/onboard/utilities');
+                return redirect('/onboard/3');
             break;
 
             case 4:
-                return redirect('/onboard/insurances');
+                return redirect('/onboard/4');
             break;
 
             case 5:
-                return redirect('/onboard/memberships');
+                return redirect('/onboard/5');
             break;
 
             case 6:
-                return redirect('/onboard/groceries');
+                return redirect('/onboard/6');
             break;
 
             case 7:
-                return redirect('/onboard/gas');
+                return redirect('/onboard/7');
             break;
 
             case 8:
-                return redirect('/onboard/savings');
+                return redirect('/onboard/8');
              break;
 
             default:
