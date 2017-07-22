@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
             $table->decimal('save_percent', 11, 2)->nullable();
-            $table->date('reference_date')->nullable();
+            $table->dateTime('reference_date')->nullable();
             $table->timestamps();
         });
     }

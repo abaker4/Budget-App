@@ -28,6 +28,10 @@ class DailyExpense extends Model
 //    private $updated_at;
 
 
+
+
+
+
     /**
      * Nothing is restricted from being mass assigned
      *

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\MonthlyExpense;
@@ -31,113 +32,123 @@ class OnBoardingController extends Controller
 
     public function income()
     {
+        $income =
+            DB::table('monthly_expenses')
+                ->where('user_id', '=', auth()->user()->id)
+                ->where('monthly_category_id', '=', Category::INCOME)
+                ->first();
 
-            $monthly_expenses = new MonthlyExpense();
-        return view('onboard.income.create', compact('monthly_expenses'));
+        return view('onboard.income', compact('income'));
     }
-
-
-    public function editIncome($id)
-    {
-
-        $monthly_expenses = MonthlyExpense::find($id);
-
-        return view('onboard.income.edit', compact('monthly_expenses'));
-    }
-
 
 
     public function housing()
     {
+        $housing =
+            DB::table('monthly_expenses')
+                ->where('user_id', '=', auth()->user()->id)
+                ->where('monthly_category_id', '=', Category::HOUSING)
+                ->first();
 
-        return view('onboard.housing');
+        return view('onboard.housing', compact('housing'));
     }
 
 
     public function utilities()
     {
+        $utilities =
+            DB::table('monthly_expenses')
+            ->where('user_id', '=', auth()->user()->id)
+            ->where('monthly_category_id', '=', Category::UTILITIES)
+            ->first();
 
-        return view('onboard.utilities');
+        return view('onboard.utilities', compact('utilities'));
     }
 
 
     public function insurances()
     {
+        $insurances =
+        DB::table('monthly_expenses')
+            ->where('user_id', '=', auth()->user()->id)
+            ->where('monthly_category_id', '=', Category::INSURANCES)
+            ->first();
 
-        return view('onboard.insurances');
+        return view('onboard.insurances', compact('insurances'));
     }
 
 
     public function memberships()
     {
+        $memberships =
+        DB::table('monthly_expenses')
+            ->where('user_id', '=', auth()->user()->id)
+            ->where('monthly_category_id', '=', Category::MEMBERSHIPS)
+            ->first();
 
-        return view('onboard.memberships');
+        return view('onboard.memberships', compact('memberships'));
     }
 
     public function groceries()
     {
+        $groceries =
+        DB::table('monthly_expenses')
+            ->where('user_id', '=', auth()->user()->id)
+            ->where('monthly_category_id', '=', Category::GROCERIES)
+            ->first();
 
-        return view('onboard.groceries');
+        return view('onboard.groceries', compact('groceries'));
     }
 
-    public function gas()
+    public function fuel()
     {
 
-        return view('onboard.gas.create');
+        $fuel =
+        DB::table('monthly_expenses')
+            ->where('user_id', '=', auth()->user()->id)
+            ->where('monthly_category_id', '=', Category::FUEL)
+            ->first();
 
-    }
+        return view('onboard.fuel', compact('fuel'));
 
-    public function editGas($id)
-    {
-
-        $monthly_expenses = MonthlyExpense::find($id);
-
-        return view('onboard.gas.edit', compact('monthly_expenses'));
     }
 
 
     public function savings()
     {
+        $savings =
+            DB::table('users')
+            ->where('id', '=', auth()->user()->id)
+            ->first();
 
-        return view('onboard.savings');
+
+        return view('onboard.savings', compact('savings'));
 
     }
 
 
 
-    public function storeOnboard(Request $request)
+    public function store(Request $request)
     {
         $data = $request->all();
+        // if the monthly_expense_id exists in the form data run this query
+        // if it finds a record update it with new values
+        // if no record or there is no monthly_expense_id create a new monthly expense object and save a new record
+        if (!empty($data['id'])) {
+            $monthly_expense = MonthlyExpense::where('id', '=', $data['id'])
+                ->where('user_id', '=', auth()->user()->id)// make sure user owns this record
+                ->first();
 
-        $id = auth()->user()->id;
+            // @todo add in a check to make sure this exists, if not redirect out with a message
+        } else {
+            $monthly_expense = new MonthlyExpense();
+            $monthly_expense->user_id = auth()->user()->id;
+        }
 
-        $monthly_expenses = MonthlyExpense::find($id);
-
-        $monthly_expenses->type_id = $data['type_id'];
-
-        $monthly_expenses->monthly_category_id = $data['monthly_category_id'];
-
-        $monthly_expenses->amount = $data['amount'];
-
-        $monthly_expenses->save();
-
-        return redirect('/home');
-
-
-    }
-
-
-    public function store()
-    {
-        auth()->user()->publish(
-            new MonthlyExpense(request([
-                'type_id',
-
-                'amount',
-
-                'monthly_category_id'
-            ]))
-        );
+        $monthly_expense->type_id = $data['type_id'];
+        $monthly_expense->monthly_category_id = $data['monthly_category_id'];
+        $monthly_expense->amount = $data['amount'];
+        $monthly_expense->save();
 
 
         return redirect('/home');
@@ -147,15 +158,19 @@ class OnBoardingController extends Controller
     public function storeSaving(Request $request)
     {
         $data = $request->all();
+        // if the monthly_expense_id exists in the form data run this query
+        // if it finds a record update it with new values
+        // if no record or there is no monthly_expense_id create a new monthly expense object and save a new record
+        if (!empty($data['id'])) {
+            $user = User::where('id', '=', $data['id'])
+                ->first();
 
+            // @todo add in a check to make sure this exists, if not redirect out with a message
+        } else {
+            $user = new User();
+        }
 
-        $id = auth()->user()->id;
-
-        $user = User::find($id);
-
-//dd($user);
         $user->save_percent = $data['save_percent']/100;
-
         $user->save();
 
         return redirect('/home');
@@ -174,35 +189,35 @@ class OnBoardingController extends Controller
         switch($step) {
 
             case 1:
-                return redirect('/onboard/1');
+                return redirect('/onboard/income');
             break;
 
             case 2:
-                return redirect('/onboard/2');
+                return redirect('/onboard/housing');
             break;
 
             case 3:
-                return redirect('/onboard/3');
+                return redirect('/onboard/utilities');
             break;
 
             case 4:
-                return redirect('/onboard/4');
+                return redirect('/onboard/insurances');
             break;
 
             case 5:
-                return redirect('/onboard/5');
+                return redirect('/onboard/memberships');
             break;
 
             case 6:
-                return redirect('/onboard/6');
+                return redirect('/onboard/groceries');
             break;
 
             case 7:
-                return redirect('/onboard/7');
+                return redirect('/onboard/fuel');
             break;
 
             case 8:
-                return redirect('/onboard/8');
+                return redirect('/onboard/savings');
              break;
 
             default:
@@ -221,7 +236,7 @@ class OnBoardingController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->orderBy('monthly_category_id', 'asc')
             ->get();
-//dd($array_of_expenses);
+
         $step = false;
 
         for ($i = 1; $i <= 7; $i++) {

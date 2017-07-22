@@ -12,12 +12,12 @@ class TypesTableSeeder extends Seeder
     public function run()
     {
         DB::table('types')->insert([
-            'title' => 'income'
+            'title' => 'Income'
 
         ]);
 
         DB::table('types')->insert([
-            'title' => 'expense'
+            'title' => 'Expense'
 
         ]);
 

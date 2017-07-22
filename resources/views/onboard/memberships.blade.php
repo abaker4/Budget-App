@@ -20,7 +20,12 @@
                                 <div class="field">
                                     <label class="label{{ $errors->has('amount') ? ' has-error' : '' }}"></label>
                                     <p class="control">
-                                        <input class="input" name="amount" type="text" placeholder="Amount" required>
+                                        @if(!empty($memberships))
+                                            <input name="id" value="{{$memberships->id }}" type="hidden">
+                                            <input class="input" name="amount" value="{{$memberships->amount}}" type="text" required>
+                                        @else
+                                            <input class="input" name="amount" value="" type="text" required>
+                                        @endif
                                     </p>
                                     @if ($errors->has('amount'))
                                         <span class="help-block is-danger">
