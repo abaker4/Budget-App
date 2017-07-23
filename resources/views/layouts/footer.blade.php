@@ -67,7 +67,7 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels:['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                labels:['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
                 datasets: [{
                     label: 'Groceries',
                     data: [12, 19, 3, 5, 2, 3, 19],

@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('/home', 'DashboardController@index');
 
 
+
+
 Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function () {
 
     Route::get('/create_income', 'MonthlyExpensesController@createIncome');

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\DailyExpense;
 
 class DashboardController extends Controller
 {
-
 
 
     public function __construct()
@@ -25,35 +25,37 @@ class DashboardController extends Controller
     {
 
         $step = OnBoardingController::checkOnboardStep();
-        if($step) {
+        if ($step) {
             return OnBoardingController::onBoardTriager($step);
         }
 
         $monthly_expenses = DB::table('monthly_expenses')
+            ->join('monthly_category','monthly_category.id', 'monthly_expenses.monthly_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->get();
 
         $daily_expenses = DB::table('daily_expenses')
+            ->join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->get();
+
 
         $income =
             DB::table('monthly_expenses')
                 ->where('user_id', '=', auth()->user()->id)
-                ->where('type_id', '=' , 1)
+                ->where('type_id', '=', 1)
                 ->sum('amount');
 
         $expense =
             DB::table('monthly_expenses')
                 ->where('user_id', '=', auth()->user()->id)
-                ->where('type_id', '=' , 2)
+                ->where('type_id', '=', 2)
                 ->sum('amount');
 
         $daily_value =
             DB::table('daily_expenses')
                 ->where('user_id', '=', auth()->user()->id)
                 ->sum('amount');
-
 
 
         $monthly_sum = $income - $expense;
@@ -64,7 +66,7 @@ class DashboardController extends Controller
 
         $monthly_total = $monthly_sum - $savings_sum;
 
-        $weekly_total = ($monthly_total * 12 )/52;
+        $weekly_total = ($monthly_total * 12) / 52;
 
         //@todo change this to use the reference date and multiply the weekly total by number of days
         // since that date and then only subtract expenses since that date
@@ -74,4 +76,8 @@ class DashboardController extends Controller
         return view('home', compact('monthly_expenses', 'daily_expenses', 'weekly_amount', 'daily_value'));
 
     }
+
+
+
 }
+
