@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use App\DailyExpense;
+=======
+use App\MonthlyCategory;
+use App\DailyExpense;
+use App\Type;
+>>>>>>> Monthly-Expense-Summary-Edit-Feature
 
 class DashboardController extends Controller
 {
@@ -30,9 +36,14 @@ class DashboardController extends Controller
         }
 
         $monthly_expenses = DB::table('monthly_expenses')
+<<<<<<< HEAD
             ->join('monthly_category','monthly_category.id', 'monthly_expenses.monthly_category_id')
+=======
+            ->join('monthly_category', 'monthly_category.id','monthly_expenses.monthly_category_id')
+>>>>>>> Monthly-Expense-Summary-Edit-Feature
             ->where('user_id', '=', auth()->user()->id)
             ->get();
+
 
         $daily_expenses = DB::table('daily_expenses')
             ->join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
@@ -43,13 +54,21 @@ class DashboardController extends Controller
         $income =
             DB::table('monthly_expenses')
                 ->where('user_id', '=', auth()->user()->id)
+<<<<<<< HEAD
                 ->where('type_id', '=', 1)
+=======
+                ->where('type_id', '=' , Type::INCOME)
+>>>>>>> Monthly-Expense-Summary-Edit-Feature
                 ->sum('amount');
 
         $expense =
             DB::table('monthly_expenses')
                 ->where('user_id', '=', auth()->user()->id)
+<<<<<<< HEAD
                 ->where('type_id', '=', 2)
+=======
+                ->where('type_id', '=' , Type::EXPENSE)
+>>>>>>> Monthly-Expense-Summary-Edit-Feature
                 ->sum('amount');
 
         $daily_value =
@@ -73,10 +92,34 @@ class DashboardController extends Controller
         $weekly_amount = round($weekly_total - $daily_value);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses', 'weekly_amount', 'daily_value'));
+        return view('home', compact('monthly_expenses', 'daily_expenses','weekly_amount', 'daily_value', 'monthly_category'));
 
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function dailyTotal()
+    {
+
+
+        auth()->user()->record(
+
+            new DailyExpense(request([
+
+                'daily_category_id',
+
+                'amount'
+
+            ]))
+        );
+
+        return redirect('/home');
+
+    }
+>>>>>>> Monthly-Expense-Summary-Edit-Feature
 
 
 }

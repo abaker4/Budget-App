@@ -20,7 +20,9 @@ Auth::routes();
 
 Route::get('/home', 'DashboardController@index');
 
+Route::post('/daily_total', 'DashboardController@dailyTotal');
 
+<<<<<<< HEAD
 
 
 Route::group(['prefix' => 'monthlyexpenses', 'middleware' => 'auth'], function () {
@@ -64,6 +66,8 @@ Route::group(['prefix' => 'dailyexpenses', 'middleware' => 'auth'], function () 
     Route::delete('/{id}', 'DailyExpensesController@destroy');
 
 });
+=======
+>>>>>>> Monthly-Expense-Summary-Edit-Feature
 
 Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
@@ -81,7 +85,7 @@ Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
     Route::get('/groceries', 'OnBoardingController@groceries');
 
-    Route::get('/gas', 'OnBoardingController@gas');
+    Route::get('/fuel', 'OnBoardingController@fuel');
 
     Route::get('/savings', 'OnBoardingController@savings');
 
@@ -91,7 +95,6 @@ Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
 
 });
-
 
 
 
