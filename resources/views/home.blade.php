@@ -69,11 +69,12 @@
                                 <th>Amount</th>
                             </tr>
                             </thead>
-                        @foreach($daily_expenses as $daily)
+                        @foreach($daily_title as $daily)
                                 <tbody>
                                     <tr>
                                         <td>{{$daily->title}}</td>
                                         <td>${{$daily->amount}}</td>
+                                        <td>{{$daily->created_at->diffForHumans()}}</td>
                                         @endforeach
                                     </tr>
                                 </tbody>

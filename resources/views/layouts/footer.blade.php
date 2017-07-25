@@ -42,207 +42,66 @@
 <script src="js/utils.js"></script>
 <script src="js/main.js"></script>
 <script>
+    var theData ={!! $daily_title->toJson() !!};
+
+
 
     $(function(){
+        $.each(theData, function(key, data){
+            var ctx = document.getElementById("myChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels:[data.created_at],
 
-        $('#step1').addClass('animated fadeInRight');
+                        datasets: [{
+                            label: data.title,
+                            data: [data.amount],
 
-        $('#step2').addClass('animated fadeInRight');
+                            backgroundColor: [
+                                'cadetblue'
+                            ],
+                            borderColor: [
+                                'green'
+                            ],
+                            borderWidth: 1
 
-        $('#step3').addClass('animated fadeInRight');
-
-        $('#step4').addClass('animated fadeInRight');
-
-        $('#step5').addClass('animated fadeInRight');
-
-        $('#step6').addClass('animated fadeInRight');
-
-        $('#step7').addClass('animated fadeInRight');
-
-        $('#step8').addClass('animated fadeInRight');
-
-        $('#step9').addClass('animated fadeInRight');
-
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels:['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                datasets: [{
-                    label: 'Groceries',
-                    data: [12, 19, 3, 5, 2, 3, 19],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }, {
-                    label: 'Restaurants',
-                    data: [27, 19, 3, 59, 12, 23, 35],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'cadetblue'
-//                        'rgba(255,99,132,1)',
-//                        'rgba(54, 162, 235, 1)',
-//                        'rgba(255, 206, 86, 1)',
-//                        'rgba(75, 192, 192, 1)',
-//                        'rgba(153, 102, 255, 1)',
-//                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }, {
-
-                    label: 'Alcohol/Bars',
-                    data: [50, 19, 0, 0, 19, 30, 60],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'orange'
-//                        'rgba(255,99,132,1)',
-//                        'rgba(54, 162, 235, 1)',
-//                        'rgba(255, 206, 86, 1)',
-//                        'rgba(75, 192, 192, 1)',
-//                        'rgba(153, 102, 255, 1)',
-//                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }, {
-
-                    label: 'Coffee Shops',
-                    data: [8, 0, 0, 0, 15, 5, 10],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'Brown'
-//                        'rgba(255,99,132,1)',
-//                        'rgba(54, 162, 235, 1)',
-//                        'rgba(255, 206, 86, 1)',
-//                        'rgba(75, 192, 192, 1)',
-//                        'rgba(153, 102, 255, 1)',
-//                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }, {
-
-                    label: 'Gas/Fuel',
-                    data: [, 0, 0, 0, 15, 0, 25],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'Black'
-//                        'rgba(255,99,132,1)',
-//                        'rgba(54, 162, 235, 1)',
-//                        'rgba(255, 206, 86, 1)',
-//                        'rgba(75, 192, 192, 1)',
-//                        'rgba(153, 102, 255, 1)',
-//                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }, {
-
-                    label: 'Clothing',
-                    data: [9, 0, 0, 0, 15, 35, 27],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'Red'
-//                        'rgba(255,99,132,1)',
-//                        'rgba(54, 162, 235, 1)',
-//                        'rgba(255, 206, 86, 1)',
-//                        'rgba(75, 192, 192, 1)',
-//                        'rgba(153, 102, 255, 1)',
-//                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }, {
-
-                    label: 'Fast Food',
-                    data: [0, 6, 0, 0, 9, 5, 12],
-                    backgroundColor: [
-                        'transparent'
-//                        'rgba(255, 99, 132, 0.2)',
-//                        'rgba(54, 162, 235, 0.2)',
-//                        'rgba(255, 206, 86, 0.2)',
-//                        'rgba(75, 192, 192, 0.2)',
-//                        'rgba(153, 102, 255, 0.2)',
-//                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'Green'
-//                        'rgba(255,99,132,1)',
-//                        'rgba(54, 162, 235, 1)',
-//                        'rgba(255, 206, 86, 1)',
-//                        'rgba(75, 192, 192, 1)',
-//                        'rgba(153, 102, 255, 1)',
-//                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-
-                }]
-
-
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        title:{
+                            display:false,
+                            text:'Weekly Expense Line Chart'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Transaction'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '$ Amount'
+                                }
+                            }]
                         }
-                    }]
-                }
-            }
-        });
+                    }
+                });
 
-
+       });
 
 
     });
