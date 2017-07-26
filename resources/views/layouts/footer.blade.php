@@ -47,30 +47,28 @@
     var theData ={!! $daily_title->toJson() !!};
 
 
+
+
  $(function () {
          var chartData = {
-             type: 'line',
+             type: 'bar',
              data: {
                  labels: [],
                  datasets: [{
                      label: [],
-                     data: [],
-                     backgroundColor: [
+                      data: [],
+                      backgroundColor: [],
 
-                     ],
-                     borderColor: [
+                      borderColor: [],
 
-                     ],
-                     borderWidth: 1
+                      borderWidth: []
                  }]
              }
          };
 
          $.each(theData, function (index, data) {
-             console.log(data);
-
              var theData = {
-                 type:'line',
+                 type:'bar',
                  data: {
                      labels: [data.created_at],
                      datasets: [{
@@ -79,15 +77,11 @@
 
                          backgroundColor: [
 
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'transparent'
                          ],
 
                          borderColor: [
+
                              'rgba(255,99,132,1)',
                              'rgba(54, 162, 235, 1)',
                              'rgba(255, 206, 86, 1)',
@@ -102,16 +96,16 @@
                  }
              };
 
+
              chartData.data.labels.push(theData.data.labels);
-             chartData.data.datasets.push({
-                 label: theData.data.datasets.label,
-                 data: theData.data.datasets.data,
-                 backgroundColor: theData.data.datasets.backgroundColor,
-                 borderColor: theData.data.datasets.borderColor,
-                 borderWidth: theData.data.datasets.borderWidth
+             chartData.data.datasets.forEach(function(dataset){
+                 dataset.label.push(theData.data.datasets.label);
+                 dataset.data.push(theData.data.datasets.data);
+
              });
 
-          });
+
+         });
 
 
 
@@ -120,7 +114,7 @@
              responsive: true,
              title:
                  {
-                     display: false,
+                     display: true,
                      text: 'Weekly Expense Line Chart'
                  },
 
@@ -151,6 +145,8 @@
              }
          }
      };
+
+
 
      var ctx = document.getElementById("myChart").getContext("2d");
      var myChart = new Chart(ctx,chartData,chartOptions);
