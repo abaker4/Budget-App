@@ -37,7 +37,7 @@
                     </div>
                 </form>
             </section>
-            <div class="has-text-centered" style="margin-left: 14rem; margin-top: 3rem;">
+            <div class="has-text-centered" style="margin-left: 14rem; margin-bottom: 4rem;">
                  @include('layouts.form')
             </div>
         </div>
