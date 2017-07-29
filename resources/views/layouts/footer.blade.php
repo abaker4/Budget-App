@@ -44,36 +44,42 @@
 <script>
 
 
-    var theData ={!! $daily_title->toJson() !!};
 
 
 
 
+    {{--var theData = {!! $daily_title->toJson() !!};--}}
  $(function () {
+
          var chartData = {
-             type: 'bar',
+             type: 'line',
              data: {
                  labels: [],
                  datasets: [{
                      label: [],
-                      data: [],
+
                       backgroundColor: [],
 
                       borderColor: [],
 
-                      borderWidth: []
+                      borderWidth: [],
+
+                     data: []
                  }]
              }
          };
 
+
          $.each(theData, function (index, data) {
+
+
              var theData = {
-                 type:'bar',
+                 type:'line',
                  data: {
                      labels: [data.created_at],
                      datasets: [{
                          label: [data.title],
-                         data: [data.amount],
+
 
                          backgroundColor: [
 
@@ -81,27 +87,22 @@
                          ],
 
                          borderColor: [
-
-                             'rgba(255,99,132,1)',
-                             'rgba(54, 162, 235, 1)',
-                             'rgba(255, 206, 86, 1)',
-                             'rgba(75, 192, 192, 1)',
-                             'rgba(153, 102, 255, 1)',
-                             'rgba(255, 159, 64, 1)'
+                                'transparent'
                          ],
 
-                     borderWidth: 1
+                         borderWidth: 1,
+
+                         data: [data.amount]
 
                     }]
                  }
+
              };
 
-
-             chartData.data.labels.push(theData.data.labels);
-             chartData.data.datasets.forEach(function(dataset){
-                 dataset.label.push(theData.data.datasets.label);
-                 dataset.data.push(theData.data.datasets.data);
-
+             chartData.data.labels.push(theData.data.labels[0]);
+             chartData.data.datasets.forEach(function(dataset) {
+                 dataset.label.push(theData.data.datasets[0].label[0]);
+                 dataset.data.push(theData.data.datasets[0].data[0]);
              });
 
 
@@ -150,8 +151,8 @@
 
      var ctx = document.getElementById("myChart").getContext("2d");
      var myChart = new Chart(ctx,chartData,chartOptions);
-  });
 
+ });
 
 
 
