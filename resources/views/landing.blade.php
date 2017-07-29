@@ -6,19 +6,23 @@
     <section class="hero is-primary is-fullheight">
         <div class="hero-body" style="background-image: url('img/landing.png');">
             <div class="container">
-                <h1 class="title is-1">
-                    Analytics on demand.
-                </h1>
+                <div class="columns">
+                    <div class="column is-half-desktop is-full-mobile">
+                        <h1 class="title is-1">
+                            Analytics on demand.
+                        </h1>
 
-                <h2 class="subtitle is-4">
-                    Stop installing boring finance apps that track the exact </br> same things. Install one that does everything.
-                </h2>
+                        <h2 class="subtitle is-4">
+                            Stop installing boring finance apps that track the exact </br> same things. Install one that does everything.
+                        </h2>
 
-                <a class="button is-info is-hovered" href="/home">Try it now</a>
+                        <a class="button is-info is-hovered" href="/home" style="text-decoration:none;">Try it now</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-            <section class="hero is-fullheight is-default is-bold">
+            <section class="hero is-default is-bold" style="height: 80vh;">
                 <div class="hero-body">
                     <div class="container">
                         <div class="columns">
@@ -26,6 +30,7 @@
                                     <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
                                     <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
                                     <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about retention, growth, and engagement.</h1>
+                                    <button class="button is-primary" href="/home">Check it out!</button>
                             </div>
                             <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
                                 <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
@@ -34,32 +39,7 @@
                     </div>
                 </div>
             </section>
-    <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Tweets</p>
-                    <p class="title">3,456</p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Following</p>
-                    <p class="title">123</p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Followers</p>
-                    <p class="title">456K</p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Likes</p>
-                    <p class="title">789</p>
-                </div>
-            </div>
-    </nav>
+
     <section class="hero is-fullheight" style="background-color:#262F36;">
         <div class="hero-body">
             <div class="container">
@@ -79,7 +59,7 @@
                                 Why force yourself to remember what you spent. Put it in the app for easy reference later!
                             </p>
                          <div class="control">
-                             <a class="button is-info is-hovered" href="/home" style="margin-top: 1rem;">Check it out</a>
+                             <a class="button is-info is-hovered" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
                         </div>
                     </div>
                 </div>
