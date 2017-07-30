@@ -108,7 +108,6 @@ class OnBoardingController extends Controller
 
         $user = User::find($id);
 
-//dd($user);
         $user->save_percent = $data['save_percent']/100;
 
         $user->save();
@@ -176,7 +175,7 @@ class OnBoardingController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->orderBy('monthly_category_id', 'asc')
             ->get();
-//dd($array_of_expenses);
+
         $step = false;
 
         for ($i = 1; $i <= 7; $i++) {

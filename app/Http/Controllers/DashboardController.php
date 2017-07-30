@@ -56,6 +56,9 @@ class DashboardController extends Controller
                 ->whereRaw('daily_expenses.created_at >= users.reference_date')
                 ->sum('amount');
 
+
+
+
         $monthly_sum = $income - $expense;
 
         $monthly_savings = auth()->user()->save_percent;
@@ -66,7 +69,7 @@ class DashboardController extends Controller
 
         $weekly_total = ($monthly_total * 12 )/52;
 
-        $weekly_amount = round($weekly_total - $daily_value);
+        $weekly_amount = number_format($weekly_total - $daily_value, 2);
 
 
         return view('home', compact('monthly_expenses', 'daily_expenses', 'weekly_amount', 'daily_value'));

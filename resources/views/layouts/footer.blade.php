@@ -44,24 +44,24 @@
 <script>
 
     $(function(){
-
-        $('#step1').addClass('animated fadeInRight');
-
-        $('#step2').addClass('animated fadeInRight');
-
-        $('#step3').addClass('animated fadeInRight');
-
-        $('#step4').addClass('animated fadeInRight');
-
-        $('#step5').addClass('animated fadeInRight');
-
-        $('#step6').addClass('animated fadeInRight');
-
-        $('#step7').addClass('animated fadeInRight');
-
-        $('#step8').addClass('animated fadeInRight');
-
-        $('#step9').addClass('animated fadeInRight');
+//
+//        $('#step1').addClass('animated fadeInRight');
+//
+//        $('#step2').addClass('animated fadeInRight');
+//
+//        $('#step3').addClass('animated fadeInRight');
+//
+//        $('#step4').addClass('animated fadeInRight');
+//
+//        $('#step5').addClass('animated fadeInRight');
+//
+//        $('#step6').addClass('animated fadeInRight');
+//
+//        $('#step7').addClass('animated fadeInRight');
+//
+//        $('#step8').addClass('animated fadeInRight');
+//
+//        $('#step9').addClass('animated fadeInRight');
 
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
