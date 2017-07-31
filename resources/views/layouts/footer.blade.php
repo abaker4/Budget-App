@@ -77,6 +77,27 @@
 <script>
 
 
+    $(function(){
+//
+//        $('#step1').addClass('animated fadeInRight');
+//
+//        $('#step2').addClass('animated fadeInRight');
+//
+//        $('#step3').addClass('animated fadeInRight');
+//
+//        $('#step4').addClass('animated fadeInRight');
+//
+//        $('#step5').addClass('animated fadeInRight');
+//
+//        $('#step6').addClass('animated fadeInRight');
+//
+//        $('#step7').addClass('animated fadeInRight');
+//
+//        $('#step8').addClass('animated fadeInRight');
+//
+//        $('#step9').addClass('animated fadeInRight');
+
+
 
       
     //Activates Hamburger Menu on Navbar
@@ -106,21 +127,6 @@
 
     });
 
-    $(function() {
-
-        $('#step3').addClass('animated fadeInRight');
-
-        $('#step4').addClass('animated fadeInRight');
-
-        $('#step5').addClass('animated fadeInRight');
-
-        $('#step6').addClass('animated fadeInRight');
-
-        $('#step7').addClass('animated fadeInRight');
-
-        $('#step8').addClass('animated fadeInRight');
-
-        $('#step9').addClass('animated fadeInRight');
 
     
             $('#one_picker').on('click', function(){

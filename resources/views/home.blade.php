@@ -6,13 +6,17 @@
         <div class="column is-6">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
-                   Weekly Activity
+
+                    Daily Expense
                 </p>
 
+          
                 <h1 class="title is-1 has-text-centered" style="font-weight: bolder; margin-top: 7rem;">${{$weekly_amount}}</h1>
 
             </section>
-            @include('layouts.form')
+    
+        </div>
+
                
                 <form method="POST" action="/dailyexpenses/daily_total">
                     {{csrf_field()}}
@@ -45,14 +49,16 @@
                  @include('layouts.form')
             </div>
 
+
         </div>
         <div class="column is-6">
             <section class="panel">
+                
                 <p class="panel-heading has-text-centered">`
                    Daily Expense
                 </p>
                 <canvas id="myChart" style="height: 500px;"></canvas>
-
+                
             </section>
         </div>
 
@@ -288,6 +294,4 @@
 
     </script>
     @endsection
-
-
 
