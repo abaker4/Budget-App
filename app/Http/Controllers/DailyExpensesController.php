@@ -47,9 +47,14 @@ class DailyExpensesController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function dailyTotal()
+    public function dailyTotal(Request $request)
     {
+        $this->validate($request, [
 
+            'amount' => 'required|max:255',
+
+            'daily_category_id' => 'required',
+        ]);
 
         auth()->user()->record(
 
