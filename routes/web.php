@@ -22,7 +22,6 @@ Route::get('/home', 'DashboardController@index');
 
 Route::post('/daily_total', 'DashboardController@dailyTotal');
 
-
 Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
     Route::get('/instructions', 'OnBoardingController@instructions');

@@ -1,5 +1,5 @@
 @if(count($errors))
-    <div class="form-group">
+    <div id="errors" class="form-group">
 
         <div class="alert alert-danger">
             <ul>
