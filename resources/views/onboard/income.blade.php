@@ -19,16 +19,21 @@
                             <div class="box">
                                 <label class="label {{ $errors->has('amount') ? ' has-error' : '' }}">Amount</label>
                                 <p class="control">
-                                    <input class="input" name="amount" type="text" required>
+                                    @if(!empty($income))
+                                        <input name="id" value="{{$income->id }}" type="hidden">
+                                        <input class="input" name="amount" value="{{$income->amount}}" type="text" required>
+                                    @else
+                                        <input class="input" name="amount" value="" type="text" required>
+                                    @endif
                                 </p>
                                 @if ($errors->has('amount'))
                                     <span class="help-block is-danger">
-                                                <strong>{{ $errors->first('amount') }}</strong>
-                                            </span>
+                                        <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
                                 @endif
                                 <hr>
                                 <p class="control">
-                                        <button class="button is-primary" type="submit">Submit</button>
+                                    <button class="button is-primary" type="submit">Submit</button>
                                 </p>
                             </div>
                         </form>

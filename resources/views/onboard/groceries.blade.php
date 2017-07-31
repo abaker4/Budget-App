@@ -20,12 +20,17 @@
                                 <div class="field">
                                     <label class="label{{ $errors->has('amount') ? ' has-error' : '' }}"></label>
                                     <p class="control">
-                                        <input class="input" name="amount" type="text" placeholder="Amount" required>
+                                        @if(!empty($groceries))
+                                            <input name="id" value="{{$groceries->id }}" type="hidden">
+                                            <input class="input" name="amount" value="{{$groceries->amount}}" type="text" required>
+                                        @else
+                                            <input class="input" name="amount" value="" type="text" required>
+                                        @endif
                                     </p>
                                     @if ($errors->has('amount'))
                                         <span class="help-block is-danger">
-                                                <strong>{{ $errors->first('amount') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('amount') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
