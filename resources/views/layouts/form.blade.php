@@ -1,7 +1,8 @@
 
+
+
 <form method="POST" action="/dailyexpenses/daily_total">
     <style>
-
     </style>
 
     {{csrf_field()}}
@@ -36,4 +37,14 @@
                                    <option value="6">Clothing</option>
                                    <option value="7">Fast Food</option>
 
+
+        <p class="control is-expanded">
+            <input class="input" name="amount" type="text" placeholder="$ Amount">
+        </p>
+        <p class="control">
+            <button class="button" type="submit">
+                Submit
+            </button>
+        </p>
+    </div>
 </form>

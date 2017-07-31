@@ -15,6 +15,8 @@
                                                 Register an Account
                                             </h1>
                                             <div class="box">
+
+                                              
                                                 <label class="label{{ $errors->has('name') ? ' has-error' : '' }}">*Name</label>
 
                                                     <input class="input" type="text" name="name" placeholder="Full Name" required>
@@ -27,8 +29,10 @@
                                                 </p>
                                                 <label class="label"{{ $errors->has('email') ? ' has-error' : '' }}>*Email</label>
                                                 <p class="control">
-                                       
+
+                                                                               
                                                     <input class="input" type="email" name="email" placeholder="example@example.com" required>
+
                                                     @if ($errors->has('email'))
                                                         <span class="help-block">
                                                              <strong style="color:red;">{{ $errors->first('email') }}</strong>

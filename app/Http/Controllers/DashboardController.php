@@ -12,6 +12,7 @@ use App\Type;
 use Carbon\Carbon;
 
 
+
 class DashboardController extends Controller
 {
 
@@ -36,11 +37,14 @@ class DashboardController extends Controller
         }
 
         $monthly_expenses = DB::table('monthly_expenses')
-            ->join('monthly_category', 'monthly_category.id', 'monthly_expenses.monthly_category_id')
+
+            ->join('monthly_category', 'monthly_category.id','monthly_expenses.monthly_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->get();
 
+
         $daily_expenses = DB::table('daily_expenses')
+            ->join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*')
             ->get();
@@ -50,6 +54,7 @@ class DashboardController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*', 'daily_category.title')
             ->get();
+
 
         $income =
             DB::table('monthly_expenses')
@@ -86,16 +91,12 @@ class DashboardController extends Controller
 
 
         return view('home', compact('monthly_expenses', 'daily_expenses','daily_title', 'weekly_amount', 'daily_value', 'monthly_category'));
-
-
-
-
-    }
-
+          
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+    
     public function dailyTotal()
     {
 
@@ -112,11 +113,5 @@ class DashboardController extends Controller
         );
 
         return redirect('/home');
-    }
 
-
-
-
-
-
-}
+  
