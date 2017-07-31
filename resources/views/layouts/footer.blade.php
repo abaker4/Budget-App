@@ -1,34 +1,67 @@
+
 <section class="hero is-light">
     <div class="hero-body">
         <div class="container">
-            <div class="column">
-                <div class="column is-one-third">
-                    <div class="field">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <p class="has-text-centered" style="margin-bottom: 1rem; color:#2767bf;">Sign Up for Email Alerts</p>
+                    <div class="field has-addons" style="margin-left: 7rem;">
                         <p class="control has-icons-left">
                             <input class="input" type="email" placeholder="Email">
                             <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                              </span>
                         </p>
+                        <a class="button is-info" style="color:white;">Subscribe</a>
                     </div>
                 </div>
+
            </div>
         </div>
     </div>
 </section>
-<footer class="footer">
+<footer class="footer" style="color:#262F36;">
     <div class="container">
-        <div class="content has-text-centered">
-            <p>
-                <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
-            </p>
-            <p>
-                <a class="icon" href="https://github.com/jgthms/bulma">
-                    <i class="fa fa-github"></i>
-                </a>
-            </p>
+        <div class="columns">
+                <div class="column is-5">
+                    <h1 class="title is-4"style="color:#2767bf;">About Us</h1>
+                    <p>Budget App is pretty much amazing! Tracking expenses and making informed decisions based on real time data hasn't been easier. </p>
+                </div>
+                <div class="column is-1"></div>
+                <div class="column is-2">
+                    <h1 class="title is-4" style="color:#2767bf;">Product</h1>
+                    <ul>
+                        <li>Features</li>
+                        <li>Examples</li>
+                        <li>Tour</li>
+                        <li>Gallery</li>
+                    </ul>
+               </div>
+                <div class="column is-2">
+                    <h1 class="title is-4" style="color:#2767bf;">Company</h1>
+                    <ul>
+                        <li>Home</li>
+                        <li>Testimonials</li>
+                        <li>FAQ</li>
+                        <li>Statistics</li>
+                    </ul>
+                </div>
+            <div class="column is-2">
+                <h1 class="title is-4" style="color:#2767bf;">Extras</h1>
+                <ul>
+                    <li>Terms</li>
+                    <li>Privacy</li>
+                    <li>License</li>
+                    <li>GitHub</li>
+                </ul>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <div class="content has-text-centered">
+                    <p style="color:#262F36; padding-top: 4rem;"><em>Budget-App&copy; 2017. All Rights Reserved</em></p>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
@@ -43,6 +76,35 @@
 <script src="js/main.js"></script>
 <script>
 
+
+
+      
+    //Activates Hamburger Menu on Navbar
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any nav burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(function ($el) {
+                $el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    var target = $el.dataset.target;
+                var $target = document.getElementById(target);
+
+                // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                $el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+            });
+        }
+
+    });
 
     $(function() {
 
@@ -134,6 +196,7 @@
                 return false;
             });
         });
+
 
 
 </script>

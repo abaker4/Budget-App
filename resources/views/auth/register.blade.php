@@ -116,14 +116,9 @@
                                                 </p>
                                                 <hr>
                                                 <p class="control">
-                                                    <button type="submit" class="button is-primary">Register</button>
+                                                    <button type="submit" class="button is-info">Register</button>
                                                 </p>
                                             </div>
-                                            <p class="has-text-centered">
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    Forgot Your Password?
-                                                </a>
-                                            </p>
                                         </form>
                                     </div>
                                 </div>
