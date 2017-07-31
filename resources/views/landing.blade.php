@@ -2,18 +2,26 @@
 
 
 @section('content')
+<style>
 
+
+    @media screen and (max-width:768px) {
+        .homepage, .second-page, .third-page, .footer {
+            text-align: center;
+        }
+    }
+</style>
     <section class="hero is-primary is-fullheight">
         <div class="hero-body" style="background-image: url('img/landing.png');">
             <div class="container">
                 <div class="columns">
-                    <div class="column is-half-desktop is-full-mobile">
+                    <div class="column is-half-desktop is-full-mobile homepage">
                         <h1 class="title is-1">
                             Analytics on demand.
                         </h1>
 
                         <h2 class="subtitle is-4">
-                            Stop installing boring finance apps that track the exact </br> same things. Install one that does everything.
+                            Stop installing boring expense tracking apps that all do </br>the exact  same things. Install one that does everything.
                         </h2>
 
                         <a class="button is-info is-hovered" href="/home" style="text-decoration:none;">Try it now</a>
@@ -22,15 +30,15 @@
             </div>
         </div>
     </section>
-            <section class="hero is-default is-bold" style="height: 80vh;">
+            <section class="hero is-default is-bold" style="height: 75.5vh;">
                 <div class="hero-body">
                     <div class="container">
                         <div class="columns">
-                            <div class="column left-side is-half-desktop is-full-mobile" style="margin-right: 3rem;">
+                            <div class="column left-side is-half-desktop is-full-mobile second-page" style="margin-right: 3rem;">
                                     <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
                                     <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
-                                    <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about retention, growth, and engagement.</h1>
-                                    <button class="button is-primary" href="/home">Check it out!</button>
+                                    <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
+                                    <button class="button is-info" href="/home">Check it out!</button>
                             </div>
                             <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
                                 <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
@@ -47,23 +55,22 @@
                     <div class="column is-half">
                         <img src="/img/chart.png" alt="chart">
                     </div>
-                    <div class="column is-half" style="margin-left:2rem;">
-                        <h1 class="title is-4" style="color: lightblue;">
-                        Easy to use
-                        </h1>
+                    <div class="column is-half third-page" style="margin-left:2rem;">
+                            <h1 class="title is-4" style="color: lightblue;">
+                            Easy to use
+                            </h1>
 
-                        <h2 class="title is-3" style="color: #fff;">
-                              Budget App charts your expenses with real time data.
-                        </h2>
-                            <p style="color: lightblue;">
-                                Why force yourself to remember what you spent. Put it in the app for easy reference later!
-                            </p>
-                         <div class="control">
-                             <a class="button is-info is-hovered" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
-                        </div>
+                            <h2 class="title is-3" style="color: #fff;">
+                                  Budget App charts your expenses with real time data.
+                            </h2>
+                                <p style="color: lightblue;">
+                                    Why force yourself to remember what you spent. Put it in the app for easy reference later!
+                                </p>
+                             <div class="control third-page">
+                                 <a class="button is-info is-hovered" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
+                            </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

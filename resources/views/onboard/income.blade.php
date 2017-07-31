@@ -28,7 +28,7 @@
                                 @endif
                                 <hr>
                                 <p class="control">
-                                        <button class="button is-primary" type="submit">Submit</button>
+                                        <button class="button is-info" type="submit">Submit</button>
                                 </p>
                             </div>
                         </form>

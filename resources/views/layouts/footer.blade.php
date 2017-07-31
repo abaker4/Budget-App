@@ -78,23 +78,23 @@
 
     $(function(){
 
-        $('#step1').addClass('animated fadeInRight');
-
-        $('#step2').addClass('animated fadeInRight');
-
-        $('#step3').addClass('animated fadeInRight');
-
-        $('#step4').addClass('animated fadeInRight');
-
-        $('#step5').addClass('animated fadeInRight');
-
-        $('#step6').addClass('animated fadeInRight');
-
-        $('#step7').addClass('animated fadeInRight');
-
-        $('#step8').addClass('animated fadeInRight');
-
-        $('#step9').addClass('animated fadeInRight');
+//        $('#step1').addClass('animated slideInDown');
+//
+//        $('#step2').addClass('animated ');
+//
+//        $('#step3').addClass('animated fadeIn');
+//
+//        $('#step4').addClass('animated fadeIn');
+//
+//        $('#step5').addClass('animated fadeIn');
+//
+//        $('#step6').addClass('animated fadeIn');
+//
+//        $('#step7').addClass('animated fadeIn');
+//
+//        $('#step8').addClass('animated fadeIn');
+//
+//        $('#step9').addClass('animated fadeIn');
 
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
@@ -274,6 +274,35 @@
                 }
             }
         })
+    });
+
+
+
+    //Activates Hamburger Menu on Navbar
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any nav burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(function ($el) {
+                $el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    var target = $el.dataset.target;
+                var $target = document.getElementById(target);
+
+                // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                $el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+            });
+        }
+
     });
 
 </script>
