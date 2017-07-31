@@ -5,6 +5,7 @@
 
 
 
+
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
 };
@@ -79,7 +80,7 @@ document.getElementById('addDataset').addEventListener('click', function() {
     for (var index = 0; index < config.data.labels.length; ++index) {
         newDataset.data.push(randomScalingFactor());
 
-        var colorName = colorNames[index % colorNames.length];;
+        var colorName = colorNames[index % colorNames.length];
         var newColor = window.chartColors[colorName];
         newDataset.backgroundColor.push(newColor);
     }
