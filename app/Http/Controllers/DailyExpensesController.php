@@ -45,7 +45,6 @@ dd($daily);
 
 
 
-
     /**
      * Display the specified resource.
      *

@@ -44,7 +44,98 @@
 <script>
 
 
+    $(function() {
+
+        $('#step3').addClass('animated fadeInRight');
+
+        $('#step4').addClass('animated fadeInRight');
+
+        $('#step5').addClass('animated fadeInRight');
+
+        $('#step6').addClass('animated fadeInRight');
+
+        $('#step7').addClass('animated fadeInRight');
+
+        $('#step8').addClass('animated fadeInRight');
+
+        $('#step9').addClass('animated fadeInRight');
+
+    
+            $('#one_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#two_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#three_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#four_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#five_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#six_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#seven_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#eight_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#nine_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#zero_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+            $('#period_picker').on('click', function(){
+                var self = this;
+                var currentValue = $('#numInput').val() + $(self).data('value');
+                $('#numInput').val(currentValue);
+            });
+
+        $('#delete').on('click', function(){
+                var currentValue = $('#numInput').val();
+                var shortenedString = currentValue.substr(0,(currentValue.length -1));
+                    $('#numInput').val(shortenedString);
+                return false;
+            });
+        });
 
 
+</script>
 </body>
 </html>
