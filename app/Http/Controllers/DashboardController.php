@@ -44,14 +44,12 @@ class DashboardController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*')
             ->get();
-//dd($daily_expenses);
+
 
         $daily_title = DailyExpense::join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*', 'daily_category.title')
             ->get();
-
-
 
         $income =
             DB::table('monthly_expenses')
