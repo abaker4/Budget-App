@@ -15,6 +15,13 @@ class Type extends Model
 //    private $created_at;
 //    private $updated_at;
 
+
+    /**
+     * Onboarding Types
+     */
+    const INCOME = 1;
+    const EXPENSE = 2;
+
     /**Many to Many Relationship
      *
      * Type belong to many Users

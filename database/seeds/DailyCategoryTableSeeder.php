@@ -11,9 +11,6 @@ class DailyCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('daily_category')->insert([
-        "title" => "Groceries",
-        ]);
 
         DB::table('daily_category')->insert([
             "title" => "Restaurants",
@@ -25,10 +22,6 @@ class DailyCategoryTableSeeder extends Seeder
 
         DB::table('daily_category')->insert([
             "title" => "Coffee Shops",
-        ]);
-
-        DB::table('daily_category')->insert([
-            "title" => "Gas/Fuel",
         ]);
 
         DB::table('daily_category')->insert([

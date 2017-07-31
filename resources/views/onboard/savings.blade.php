@@ -16,17 +16,23 @@
                             <div class="box">
                                 <div class="field">
                                     <label class="label{{ $errors->has('save_percent') ? ' has-error' : '' }}"></label>
-                                    <p class="control">
-                                        <input class="input" name="save_percent" type="number" placeholder="" required>
+
+                 
+                                        @if(!empty($savings))
+                                            <input name="id" value="{{$savings->id}}" type="hidden">
+                                            <input class="input" name="save_percent" value="{{$savings->save_percent}}" type="text" required>
+                                        @else
+                                            <input class="input" name="save_percent" value="" type="text" required>
+                                        @endif
                                     </p>
-                                    @if ($errors->has('save_percent'))
-                                        <span class="help-block is-danger">
+                                        @if ($errors->has('save_percent'))
+                                            <span class="help-block is-danger">
                                                 <strong style="color:red;">{{ $errors->first('save_percent') }}</strong>
                                             </span>
-                                    @endif
+                                        @endif
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                @include('layouts.errors')
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    @include('layouts.errors')
                             </div>
                         </form>
                     </div>

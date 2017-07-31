@@ -26,6 +26,14 @@ class DailyExpense extends Model
 //    private $user_id;
 //    private $created_at;
 //    private $updated_at;
+    protected $dates = [
+        'created_at',
+        'updated_at',
+
+    ];
+
+
+
 
 
     /**

@@ -16,8 +16,9 @@
                                             </h1>
                                             <div class="box">
                                                 <label class="label{{ $errors->has('name') ? ' has-error' : '' }}">*Name</label>
-                                                <p class="control">
+
                                                     <input class="input" type="text" name="name" placeholder="Full Name" required>
+
                                                     @if ($errors->has('name'))
                                                         <span class="help-block">
                                                              <strong style="color:red;">{{ $errors->first('name') }}</strong>
@@ -26,6 +27,7 @@
                                                 </p>
                                                 <label class="label"{{ $errors->has('email') ? ' has-error' : '' }}>*Email</label>
                                                 <p class="control">
+                                       
                                                     <input class="input" type="email" name="email" placeholder="example@example.com" required>
                                                     @if ($errors->has('email'))
                                                         <span class="help-block">
@@ -50,14 +52,9 @@
                                                 </p>
                                                 <hr>
                                                 <p class="control">
-                                                    <button type="submit" class="button is-primary">Register</button>
+                                                    <button type="submit" class="button is-info">Register</button>
                                                 </p>
                                             </div>
-                                            <p class="has-text-centered">
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    Forgot Your Password?
-                                                </a>
-                                            </p>
                                         </form>
                                     </div>
                                 </div>

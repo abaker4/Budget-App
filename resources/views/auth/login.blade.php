@@ -36,7 +36,7 @@
                                                 @endif
                                                 <hr>
                                                 <p class="control">
-                                                    <button class="button is-primary" type="submit">Login</button>
+                                                    <button class="button is-info" type="submit">Login</button>
                                                 </p>
                                             </div>
                                             <div class="field">

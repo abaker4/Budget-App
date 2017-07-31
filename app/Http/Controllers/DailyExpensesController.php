@@ -24,7 +24,7 @@ class DailyExpensesController extends Controller
      */
     public function index()
     {
-
+      
     }
 
     /**
@@ -34,31 +34,9 @@ class DailyExpensesController extends Controller
      */
     public function create()
     {
-        return view('daily.create');
+         //
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-
-    public function dailyTotal()
-    {
-
-
-        auth()->user()->record(
-
-            new DailyExpense(request([
-
-                'daily_category_id',
-
-                'amount'
-
-            ]))
-       );
-
-        return redirect('/home');
-
-    }
 
 
 
@@ -82,9 +60,7 @@ class DailyExpensesController extends Controller
      */
     public function edit($id)
     {
-        $daily_expenses = DailyExpense::find($id);
-
-        return view('daily.edit', compact('daily_expenses'));
+        //
     }
 
     /**
@@ -96,23 +72,7 @@ class DailyExpensesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $this->validate(request(), [
-
-            'daily_category' => 'required',
-
-            'amount' => 'required'
-
-        ]);
-
-
-        $data = $request->all();
-
-        $daily_expenses = DailyExpense::find($data['id']);
-        $daily_expenses->amount = $data['amount'];
-        $daily_expenses->daily_category = $data['daily_category'];
-
-        $daily_expenses->save();
+        //
     }
 
 
@@ -125,11 +85,7 @@ class DailyExpensesController extends Controller
      */
     public function destroy($id)
     {
-
-        $daily_expenses = DailyExpense::find($id);
-        $daily_expenses->delete();
-
-        return "success";
+        //
     }
 }
 
