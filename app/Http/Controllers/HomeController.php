@@ -17,6 +17,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        flash('Hello World');
         return view('/');
     }
 }
