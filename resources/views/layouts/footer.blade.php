@@ -20,7 +20,7 @@
         </div>
     </div>
 </section>
-<footer class="footer" style="color:#262F36;">
+<footer class="footer is-hidden-mobile" style="color:#262F36;">
     <div class="container">
         <div class="columns">
                 <div class="column is-5">
@@ -77,7 +77,7 @@
 <script>
 
 
-    $(function(){
+
 //
 //        $('#step1').addClass('animated fadeInRight');
 //
@@ -122,12 +122,13 @@
                 $target.classList.toggle('is-active');
 
             });
+
             });
         }
 
     });
 
-
+$(function(){
     
             $('#one_picker').on('click', function(){
                 var self = this;
@@ -195,7 +196,7 @@
                 $('#numInput').val(currentValue);
             });
 
-        $('#delete').on('click', function(){
+             $('#delete').on('click', function(){
                 var currentValue = $('#numInput').val();
                 var shortenedString = currentValue.substr(0,(currentValue.length -1));
                     $('#numInput').val(shortenedString);

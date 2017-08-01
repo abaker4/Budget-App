@@ -37,8 +37,7 @@ class DashboardController extends Controller
         }
 
         $monthly_expenses = DB::table('monthly_expenses')
-
-            ->join('monthly_category', 'monthly_category.id','monthly_expenses.monthly_category_id')
+            ->join('monthly_category', 'monthly_category.id', 'monthly_expenses.monthly_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->get();
 
@@ -76,7 +75,6 @@ class DashboardController extends Controller
                 ->sum('amount');
 
 
-
         $monthly_sum = $income - $expense;
 
         $monthly_savings = auth()->user()->save_percent;
@@ -90,13 +88,13 @@ class DashboardController extends Controller
         $weekly_amount = number_format($weekly_total - $daily_value, 2);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses','daily_title', 'weekly_amount', 'daily_value', 'monthly_category'));
-          
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'weekly_amount', 'daily_value', 'monthly_category'));
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    
+
     public function dailyTotal()
     {
 
@@ -113,5 +111,32 @@ class DashboardController extends Controller
         );
 
         return redirect('/home');
+
+    }
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
