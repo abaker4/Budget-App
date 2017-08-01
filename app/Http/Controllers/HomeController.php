@@ -21,6 +21,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+  
+       
         return view('landing');
     }
 
@@ -60,5 +63,9 @@ class HomeController extends Controller
 
 
         return redirect('/');
+
+
+     
+
     }
 }
