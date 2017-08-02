@@ -1,3 +1,9 @@
+a {
+    text-decoration: none;
+
+}
+
+
 #keyboard {
     margin: 0;
     padding: 0;
@@ -83,4 +89,11 @@
         opacity: 1;
     }
 
+}
+
+
+@media screen and (max-width:768px) {
+    .homepage, .second-page, .third-page, .footer {
+        text-align: center;
+    }
 }

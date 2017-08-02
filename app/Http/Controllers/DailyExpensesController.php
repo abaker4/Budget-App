@@ -24,11 +24,7 @@ class DailyExpensesController extends Controller
      */
     public function index()
     {
-
-        $daily = DailyExpense::all();
-dd($daily);
-
-
+      
     }
 
     /**
@@ -40,10 +36,6 @@ dd($daily);
     {
          //
     }
-
-
-
-
 
     /**
      * Display the specified resource.

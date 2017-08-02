@@ -1,7 +1,8 @@
 
-<form method="POST" action="/dailyexpenses/daily_total">
-    <style>
 
+
+<form method="POST" action="/daily_total">
+    <style>
     </style>
 
     {{csrf_field()}}
@@ -28,12 +29,16 @@
                         <p class="control clearl">
                              <span class="select">
                                <select name="daily_category_id">
-                                   <option value="1">Groceries</option>
-                                   <option value="2">Restaurants</option>
-                                   <option value="3">Alcohol/Bars</option>
-                                   <option value="4">Coffee Shops</option>
-                                   <option value="5">Gas/Fuel</option>
-                                   <option value="6">Clothing</option>
-                                   <option value="7">Fast Food</option>
-
+                                   <option value="1">Restaurants</option>
+                                   <option value="2">Alcohol/Bars</option>
+                                   <option value="3">Coffee Shops</option>
+                                   <option value="4">Clothing</option>
+                                   <option value="5">Fast Food</option>
+                                   <option value="6">Groceries</option>
+                                   <option value="7">Gas/Fuel</option>
+                               </select>
+                             </span>
+                        </div>
+                </div>
+            </div>
 </form>
