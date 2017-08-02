@@ -16,8 +16,6 @@
                             <div class="box">
                                 <div class="field">
                                     <label class="label{{ $errors->has('save_percent') ? ' has-error' : '' }}"></label>
-
-                 
                                         @if(!empty($savings))
                                             <input name="id" value="{{$savings->id}}" type="hidden">
                                             <input class="input" name="save_percent" value="{{$savings->save_percent}}" type="text" required>

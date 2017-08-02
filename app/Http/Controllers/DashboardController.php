@@ -12,6 +12,7 @@ use App\Type;
 use Carbon\Carbon;
 
 
+
 class DashboardController extends Controller
 {
 
@@ -40,7 +41,9 @@ class DashboardController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->get();
 
+
         $daily_expenses = DB::table('daily_expenses')
+            ->join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*')
             ->get();
@@ -50,6 +53,7 @@ class DashboardController extends Controller
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*', 'daily_category.title')
             ->get();
+
 
         $income =
             DB::table('monthly_expenses')
@@ -65,7 +69,9 @@ class DashboardController extends Controller
 
         $daily_value =
             DB::table('daily_expenses')
-                ->where('user_id', '=', auth()->user()->id)
+                ->join('users', 'users.id', '=', 'daily_expenses.user_id')
+                ->where('daily_expenses.user_id', '=', auth()->user()->id)
+                ->whereRaw('daily_expenses.created_at >= users.reference_date')
                 ->sum('amount');
 
 
@@ -79,22 +85,16 @@ class DashboardController extends Controller
 
         $weekly_total = ($monthly_total * 12) / 52;
 
-        //@todo change this to use the reference date and multiply the weekly total by number of days
-        // since that date and then only subtract expenses since that date
-        $weekly_amount = round($weekly_total - $daily_value);
+        $weekly_amount = number_format($weekly_total - $daily_value, 2);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses','daily_title', 'weekly_amount', 'daily_value', 'monthly_category'));
-
-
-
-
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'weekly_amount', 'daily_value', 'monthly_category'));
     }
-
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function dailyTotal()
     {
 
@@ -111,6 +111,7 @@ class DashboardController extends Controller
         );
 
         return redirect('/home');
+
     }
 
 
@@ -118,4 +119,24 @@ class DashboardController extends Controller
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
