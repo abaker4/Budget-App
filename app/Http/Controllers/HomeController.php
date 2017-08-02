@@ -22,8 +22,8 @@ class HomeController extends Controller
     public function index()
     {
 
-  
-       
+//        flash('hello world', 'This is the message.');
+
         return view('landing');
     }
 
@@ -47,17 +47,15 @@ class HomeController extends Controller
 
         if($contact_exists->isEmpty()){
 
-            $contact_newsletter= ContactNewsletter::firstorCreate(['email' => $data['email']]);
+            $contact_newsletter = ContactNewsletter::firstorCreate(['email' => $data['email']]);
 
-            $contact_newsletter->save();
-
-            session()->flash('message', 'Thanks for signing up, we know you are going to love it!');
+            flash('Great!', 'Thanks for signing up, we know you are going to love it!');
 
             Mail::to($contact_newsletter)->send(new Newsletter($contact_newsletter));
 
         } else {
 
-            session()->flash('message', 'You are already signed up');
+            session()->flash('Oops!', 'You are already signed up');
         }
 
 

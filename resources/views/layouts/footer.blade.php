@@ -1,11 +1,11 @@
 
-@if($flash = session('message'))
-    <article id="flash-message" class="message is-info">
-        <div class="message-body">
-            {{ $flash }}
-        </div>
-    </article>
-@endif
+{{--@if($flash = session('message'))--}}
+    {{--<article id="flash-message" class="message is-info">--}}
+        {{--<div class="message-body">--}}
+            {{--{{ $flash }}--}}
+        {{--</div>--}}
+    {{--</article>--}}
+{{--@endif--}}
 
 <section class="hero is-light">
     <div class="hero-body">
@@ -86,9 +86,9 @@
 <script src="/js/sweetalert-dev.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/main.js"></script>
+    @include('flash')
+
 <script>
-
-
 
 //
 //        $('#step1').addClass('animated fadeInRight');
@@ -217,7 +217,6 @@ $(function(){
                 return false;
             });
 
-            $('#flash-message').fadeOut(7000);
         });
 
 
