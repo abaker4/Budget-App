@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactNewsletterTable extends Migration
+class CreateContactNewslettersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -27,6 +27,6 @@ class CreateContactNewsletterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_newsletter');
+        Schema::dropIfExists('contact_newsletters');
     }
 }

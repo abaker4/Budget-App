@@ -2,7 +2,6 @@
 
 
 @section('content')
-    @include('flash')
     <section class="hero is-primary is-fullheight">
         <div class="hero-body" style="background-image: url('img/landing.png');">
             <div class="container">

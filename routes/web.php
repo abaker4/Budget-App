@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 
 Route::post('/newslettersignup', 'HomeController@newsletterSignup');
 
+
 Auth::routes();
 
 

@@ -11,16 +11,16 @@ class Newsletter extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $contact_newsletter;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
 
-    public function __construct(ContactNewsletter $contact_newsletter)
+    public function __construct()
     {
-            $this->contact_newsletter = $contact_newsletter;
+
     }
 
     /**
