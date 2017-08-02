@@ -8,9 +8,7 @@ class ContactNewsletter extends Model
 {
     public $email;
 
-    protected $fillable = [
-        'email',
-    ];
+    protected $guarded = [];
 
 
 }
