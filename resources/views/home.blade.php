@@ -18,13 +18,13 @@
                             <p class="control">
                                  <span class="select">
                                    <select name="daily_category_id">
-                                       <option value="1">Groceries</option>
-                                       <option value="2">Restaurants</option>
-                                       <option value="3">Alcohol/Bars</option>
-                                       <option value="4">Coffee Shops</option>
-                                       <option value="5">Gas/Fuel</option>
-                                       <option value="6">Clothing</option>
-                                       <option value="7">Fast Food</option>
+                                       <option value="1">Restaurants</option>
+                                       <option value="2">Alcohol/Bars</option>
+                                       <option value="3">Coffee Shops</option>
+                                       <option value="4">Clothing</option>
+                                       <option value="5">Fast Food</option>
+                                       <option value="6">Groceries</option>
+                                       <option value="7">Gas/Fuel</option>
                                   </select>
                                 </span>
                             </p>
@@ -39,9 +39,9 @@
                         </div>
                     </form>
 
-                <div class="has-text-centered" style="margin-left: 14rem; margin-bottom: 4rem;">
-                     @include('layouts.form')
-                </div>
+                    <div class="has-text-centered" style="margin-left: 14rem; margin-bottom: 4rem;">
+                         @include('layouts.form')
+                    </div>
 
              </section>
         </div>

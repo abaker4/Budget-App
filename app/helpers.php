@@ -1,9 +1,9 @@
 <?php
 
-function  flash($message)
+function  flash($title, $message)
 {
     $flash = app('App\Http\Flash');
 
-    return $flash->message($message);
+    return $flash->message($title, $message);
 
 }
