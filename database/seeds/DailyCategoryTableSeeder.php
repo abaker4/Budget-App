@@ -31,6 +31,12 @@ class DailyCategoryTableSeeder extends Seeder
         DB::table('daily_category')->insert([
             "title" => "Fast Food",
         ]);
+        DB::table('daily_category')->insert([
+            "title" => "Groceries",
+        ]);
+        DB::table('daily_category')->insert([
+            "title" => "Gas/Fuel",
+        ]);
 
 
     }

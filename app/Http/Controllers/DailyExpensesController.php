@@ -37,10 +37,6 @@ class DailyExpensesController extends Controller
          //
     }
 
-
-
-
-
     /**
      * Display the specified resource.
      *
