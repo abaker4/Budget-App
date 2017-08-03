@@ -41,14 +41,12 @@ class HomeController extends Controller
         $data = $request->all();
 
         $contact_exists = DB::table('contact_newsletters')
-            ->where(['email' => $data['email']])
+            ->where([ ['email' => $data['email'] ] ])
             ->get();
 
     if($contact_exists->isEmpty()){
 
         $contact_newsletter = ContactNewsletter::firstorCreate(['email' => $data['email']]);
-
-        $contact_newsletter->save();
 
 
         flash('Great!', 'Thanks for signing up, we know you are going to love it!');
