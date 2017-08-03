@@ -11,11 +11,25 @@ class Flash {
 
             'title' => $title,
 
-            'message' => $message
+            'message' => $message,
+
+            'level' => 'info'
         ]);
 
     }
 
+    public function success($title, $message)
+    {
+        session()->flash('flash_message', [
+
+            'title' => $title,
+
+            'message' => $message,
+
+            'level' => 'success'
+        ]);
+
+    }
 
 
 

@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@thebudgetapp.com'),
-        'name' => env('MAIL_FROM_NAME', 'The Budget App Team'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@theveilbrewing.com'),
+        'name' => env('MAIL_FROM_NAME', 'The Veil Brewing Co.'),
     ],
 
     /*
