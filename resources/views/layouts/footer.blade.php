@@ -1,12 +1,4 @@
 
-{{--@if($flash = session('message'))--}}
-    {{--<article id="flash-message" class="message is-info">--}}
-        {{--<div class="message-body">--}}
-            {{--{{ $flash }}--}}
-        {{--</div>--}}
-    {{--</article>--}}
-{{--@endif--}}
-
 <section class="hero is-light">
     <div class="hero-body">
         <div class="container">

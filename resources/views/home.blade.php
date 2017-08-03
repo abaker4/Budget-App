@@ -120,103 +120,99 @@
     <script>
     var theData = {!! $daily_title->toJson() !!};
 
+
+
     $(function () {
+         var chartData = {
+             type: 'line',
+             data: {
+                 labels: [],
+                 datasets: [{
+                     label: [],
+                     data: [],
 
-        var chartData = {
-            type: 'line',
+                     backgroundColor: [],
+
+                     borderColor: [],
+                     borderWidth: 1
+                 }]
+             }
+         };
+
+
+
+        $.each(theData, function (index, data) {
+            console.log(data.title);
+            var theData = {
+            type:'line',
             data: {
-                labels: [],
+                labels: [data.created_at],
                 datasets: [{
-                        label: [],
-                        data: [],
 
-                         backgroundColor: [
+                        label: data.title,
+
+                        backgroundColor: [
 
 
                          ],
 
                          borderColor: [
 
-                          ],
-                          borderWidth: 1
-                }]
-            }
-        };
+                         ],
 
+                         borderWidth: 1,
 
-    $.each(theData, function (index, data) {
+                         data: data.amount
 
-    var theData = {
-    type:'line',
-    data: {
-        labels: [data.created_at],
-        datasets: [{
-
-                label: [data.title],
-
-                backgroundColor: [
-
-
-                 ],
-
-                 borderColor: [
-
-                 ],
-
-                 borderWidth: 1,
-
-                 data: [data.amount]
-
-            }]
-        }
-
-    };
-
-    chartData.data.labels.push(theData.data.labels);
-    chartData.data.datasets.forEach(function(dataset){
-    dataset.label.push(theData.data.datasets[0].label[0]);
-    dataset.data.push(theData.data.datasets[0].data[0]);
-    });
-    });
-
-
-
-    var chartOptions = {
-        options: {
-            responsive: true,
-                title:
-                {
-                    display: true,
-                        text: 'Weekly Expense Line Chart'
-                            },
-
-                            tooltips: {
-                                mode: 'index',
-                                    intersect: false
-                                    },
-                                        hover: {
-                                            mode: 'nearest',
-                                                intersect: true
-                                                    },
-                                                    scales: {
-                                                        xAxes: [{
-                                                         display: true,
-                                                        scaleLabel: {
-                                                 display: true,
-                                             labelString: 'Transaction'
-                                        }
-                                    }],
-                                    yAxes:
-                                [{
-                                display: true,
-                            scaleLabel: {
-                        display: true,
-                    labelString: '$ Amount'
-                    }
                     }]
                 }
-            }
-        };
+
+            };
+
+            chartData.data.labels.push(theData.data.labels);
+            chartData.data.datasets.forEach(function(dataset) {
+                dataset.label.push(theData.data.datasets[0].label);
+                dataset.data.push(theData.data.datasets[0].data);
+
+            });
+        });
+
+
+
+        var chartOptions = {
+            options: {
+                responsive: true,
+                    title:
+                    {display: true,
+                        text: 'Weekly Expense Line Chart'
+                    },
+
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Transaction'
+                        }
+                    }],
+                    yAxes:
+                        [{display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: '$ Amount'
+                            }
+                        }]
+                    }
+                }
+            };
 
 
 

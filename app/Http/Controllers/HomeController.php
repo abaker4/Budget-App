@@ -41,7 +41,11 @@ class HomeController extends Controller
         $data = $request->all();
 
         $contact_exists = DB::table('contact_newsletters')
+
+
+
             ->where([ ['email', '=', $data['email']] ])
+
             ->get();
 
         if($contact_exists->isEmpty()) {
