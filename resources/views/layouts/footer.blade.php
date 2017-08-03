@@ -9,7 +9,7 @@
                         {{csrf_field()}}
                         <div class="field has-addons" style="margin-left: 7rem;">
                             <p class="control has-icons-left">
-                                <input class="input" type="email" name="email" placeholder="Email">
+                                <input class="input" type="email" name="email" placeholder="Email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                  </span>
@@ -78,32 +78,9 @@
 <script src="/js/sweetalert-dev.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/main.js"></script>
-    @include('flash')
 
+@include('flash')
 <script>
-
-//
-//        $('#step1').addClass('animated fadeInRight');
-//
-//        $('#step2').addClass('animated fadeInRight');
-//
-//        $('#step3').addClass('animated fadeInRight');
-//
-//        $('#step4').addClass('animated fadeInRight');
-//
-//        $('#step5').addClass('animated fadeInRight');
-//
-//        $('#step6').addClass('animated fadeInRight');
-//
-//        $('#step7').addClass('animated fadeInRight');
-//
-//        $('#step8').addClass('animated fadeInRight');
-//
-//        $('#step9').addClass('animated fadeInRight');
-
-
-
-      
     //Activates Hamburger Menu on Navbar
     document.addEventListener('DOMContentLoaded', function () {
 
@@ -211,6 +188,25 @@ $(function(){
 
         });
 
+
+//
+//        $('#step1').addClass('animated fadeInRight');
+//
+//        $('#step2').addClass('animated fadeInRight');
+//
+//        $('#step3').addClass('animated fadeInRight');
+//
+//        $('#step4').addClass('animated fadeInRight');
+//
+//        $('#step5').addClass('animated fadeInRight');
+//
+//        $('#step6').addClass('animated fadeInRight');
+//
+//        $('#step7').addClass('animated fadeInRight');
+//
+//        $('#step8').addClass('animated fadeInRight');
+//
+//        $('#step9').addClass('animated fadeInRight');
 
 
 </script>

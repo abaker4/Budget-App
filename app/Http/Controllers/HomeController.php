@@ -41,28 +41,30 @@ class HomeController extends Controller
         $data = $request->all();
 
         $contact_exists = DB::table('contact_newsletters')
-            ->where([ ['email' => $data['email'] ] ])
+
+
+
+            ->where([ ['email', '=', $data['email']] ])
+
             ->get();
 
-    if($contact_exists->isEmpty()){
+        if($contact_exists->isEmpty()) {
 
-        $contact_newsletter = ContactNewsletter::firstorCreate(['email' => $data['email']]);
+            $contact_newsletter = ContactNewsletter::firstorCreate(['email' => $data['email']]);
 
+            flash()->success('Great!', 'Thanks for signing up, we know you are going to love it!');
 
-        flash('Great!', 'Thanks for signing up, we know you are going to love it!');
+            Mail::to($contact_newsletter)->send(new Newsletter());
 
-        Mail::to($contact_newsletter)->send(new Newsletter);
+        } else {
 
-    } else {
-
-        flash('Oops!', 'You are already signed up');
-    }
-
+            flash()->message('Oops!', 'Looks like you are already signed up');
+        }
 
         return redirect('/');
 
-
-     
-
     }
+
+
 }
+

@@ -1,11 +1,10 @@
 @component('mail::message')
-Budget App is the bomb!
+# Introduction
 
-Hope you are excited about this product as we are!
-
+The body of your message.
 
 @component('mail::button', ['url' => ''])
-Check us out!
+Button Text
 @endcomponent
 
 Thanks,<br>
