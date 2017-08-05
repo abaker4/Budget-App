@@ -13,19 +13,19 @@
 
 
         <div class="nav-menu nav-right" id="toggleTarget">
-            <a class="navbar-item has-text-centered" href="/" style="text-decoration:none;">
+            <a class="navbar-item has-text-centered" href="/">
                 Home
             </a>
             @if (Auth::guest())
-            <a class="navbar-item has-text-centered" href="/login" style="text-decoration:none;">
+            <a class="navbar-item has-text-centered" href="/login">
                 Log In
             </a>
-            <a class="navbar-item has-text-centered" href="/register" style="text-decoration:none;">
+            <a class="navbar-item has-text-centered" href="/register">
                 Register
             </a>
             @else
                 <div class="dropdown" style="margin-bottom: 1rem;">
-                    <a href="#" class="dropdown-toggle button is-transparent" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle button is-primary" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span>{{Auth::user()->name}}</span> <span class="caret"></span>
                     </a>
 
