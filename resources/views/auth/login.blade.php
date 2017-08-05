@@ -15,7 +15,7 @@
                                                Login
                                             </h1>
                                             <div class="box">
-                                                <label class="label">Email</label>
+                                                <label class="label"{{ $errors->has('email') ? ' has-error' : '' }}>Email</label>
                                                 <p class="control">
                                                     <input class="input" name="email" type="text">
                                                 </p>
@@ -25,7 +25,7 @@
                                                     </span>
                                                 @endif
                                                 <hr>
-                                                <label class="label">Password</label>
+                                                <label class="label"{{ $errors->has('password') ? ' has-error' : '' }}>Password</label>
                                                 <p class="control">
                                                     <input class="input" name="password" type="password">
                                                 </p>

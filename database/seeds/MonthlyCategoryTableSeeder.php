@@ -36,16 +36,6 @@ class MonthlyCategoryTableSeeder extends Seeder
             "title" => "Memberships"
         ]);
 
-        DB::table('monthly_category')->insert([
-
-            "title" => "Groceries"
-        ]);
-
-        DB::table('monthly_category')->insert([
-
-            "title" => "Fuel"
-        ]);
-
 
     }
 }

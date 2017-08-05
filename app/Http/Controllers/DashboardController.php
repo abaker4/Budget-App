@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\Factory;
@@ -52,8 +53,32 @@ class DashboardController extends Controller
         $daily_title = DailyExpense::join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->select('daily_expenses.*', 'daily_category.title')
+            ->orderby('daily_expenses.created_at', 'desc')
             ->get();
 
+
+//        $sql = "SELECT DATE_FORMAT(D.created_at, '%m-%d-%Y') as theDay,
+//                  SUM(D.amount) as sum,
+//                  D.daily_category_id,
+//                  DC.title
+//                FROM daily_expenses D
+//                  JOIN daily_category DC ON D.daily_category_id = DC.id
+//                WHERE user_id = ?
+//                  AND D.daily_category_id = ?
+//                GROUP BY theDay";
+        $expense_chart_data = [];
+        foreach (Category::DAILY_CATEGORY_IDS as $key => $val) {
+            $category_expenses = DailyExpense::join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
+                ->where('user_id', '=', auth()->user()->id)
+                ->where('daily_expenses.daily_category_id', '=', $key)
+                ->where('daily_expenses.created_at', '>', DB::raw('CURDATE() - INTERVAL 6 DAY')) // get expenses for the last week
+                ->select(DB::raw('DATE_FORMAT(daily_expenses.created_at, "%m-%d-%Y") as theDay'), DB::raw('SUM(daily_expenses.amount) as sum'), 'daily_category.id', 'daily_category.title')
+                ->groupBy('theDay')
+                ->get();
+            $expense_chart_data[$val] = $category_expenses;
+        }
+
+        $expense_chart_data = json_encode($expense_chart_data); // json encode so we can use in js
 
         $income =
             DB::table('monthly_expenses')
@@ -74,6 +99,12 @@ class DashboardController extends Controller
                 ->whereRaw('daily_expenses.created_at >= users.reference_date')
                 ->sum('amount');
 
+        $last_sunday = date('Y-m-d',strtotime('last sunday'));
+
+        $next_sunday = date('Y-m-d',strtotime('next sunday'));
+        $datediff = strtotime($next_sunday) - strtotime(auth()->user()->reference_date);
+        $daysBetween = floor($datediff / (60 * 60 * 24));
+
 
         $monthly_sum = $income - $expense;
 
@@ -83,12 +114,13 @@ class DashboardController extends Controller
 
         $monthly_total = $monthly_sum - $savings_sum;
 
-        $weekly_total = ($monthly_total * 12) / 52;
-
-        $weekly_amount = number_format($weekly_total - $daily_value, 2);
+        $daily_total = ($monthly_total * 12) / 365;
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'weekly_amount', 'daily_value', 'monthly_category'));
+        $weekly_amount = number_format(($daysBetween * $daily_total) - $daily_value, 2);
+
+
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category'));
     }
 
     /**
@@ -98,6 +130,12 @@ class DashboardController extends Controller
     public function dailyTotal()
     {
 
+        $this->validate(request(),[
+            'amount' => 'required',
+
+            'daily_category_id' => 'required'
+
+        ]);
 
         auth()->user()->record(
 

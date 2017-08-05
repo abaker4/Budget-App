@@ -37,10 +37,6 @@ Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
     Route::get('/memberships', 'OnBoardingController@memberships');
 
-    Route::get('/groceries', 'OnBoardingController@groceries');
-
-    Route::get('/fuel', 'OnBoardingController@fuel');
-
     Route::get('/savings', 'OnBoardingController@savings');
 
     Route::post('/store', 'OnBoardingController@store');

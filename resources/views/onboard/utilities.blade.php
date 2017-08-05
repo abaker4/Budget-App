@@ -20,8 +20,12 @@
                                 <div class="field">
                                     <label class="label{{ $errors->has('amount') ? ' has-error' : '' }}"></label>
                                     <p class="control">
-                                        <input class="input" name="amount" type="text" value="" placeholder="Amount" required>
-                                    </p>
+                                        @if(!empty($utilities))
+                                            <input name="id" value="{{$utilities->id }}" type="hidden">
+                                            <input class="input" name="amount" value="{{$utilities->amount}}" type="text" required>
+                                        @else
+                                            <input class="input" name="amount" value="" type="text" required>
+                                        @endif
                                     @if ($errors->has('amount'))
                                         <span class="help-block is-danger">
                                             <strong>{{ $errors->first('amount') }}</strong>

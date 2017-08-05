@@ -53,14 +53,13 @@ class OnBoardingController extends Controller
         return view('onboard.housing', compact('housing'));
     }
 
-
     public function utilities()
     {
         $utilities =
             DB::table('monthly_expenses')
-            ->where('user_id', '=', auth()->user()->id)
-            ->where('monthly_category_id', '=', Category::UTILITIES)
-            ->first();
+                ->where('user_id', '=', auth()->user()->id)
+                ->where('monthly_category_id', '=', Category::UTILITIES)
+                ->first();
 
         return view('onboard.utilities', compact('utilities'));
     }
@@ -87,30 +86,6 @@ class OnBoardingController extends Controller
             ->first();
 
         return view('onboard.memberships', compact('memberships'));
-    }
-
-    public function groceries()
-    {
-        $groceries =
-        DB::table('monthly_expenses')
-            ->where('user_id', '=', auth()->user()->id)
-            ->where('monthly_category_id', '=', Category::GROCERIES)
-            ->first();
-
-        return view('onboard.groceries', compact('groceries'));
-    }
-
-    public function fuel()
-    {
-
-        $fuel =
-        DB::table('monthly_expenses')
-            ->where('user_id', '=', auth()->user()->id)
-            ->where('monthly_category_id', '=', Category::FUEL)
-            ->first();
-
-        return view('onboard.fuel', compact('fuel'));
-
     }
 
 
@@ -209,14 +184,6 @@ class OnBoardingController extends Controller
             break;
 
             case 6:
-                return redirect('/onboard/groceries');
-            break;
-
-            case 7:
-                return redirect('/onboard/fuel');
-            break;
-
-            case 8:
                 return redirect('/onboard/savings');
              break;
 
@@ -239,7 +206,7 @@ class OnBoardingController extends Controller
 
         $step = false;
 
-        for ($i = 1; $i <= 7; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             if (!isset($array_of_expenses[$i-1]) ||
                 $array_of_expenses[$i-1]->monthly_category_id !== $i) {
                 $step = $i;
@@ -248,7 +215,7 @@ class OnBoardingController extends Controller
         }
 
         if (!$step && !auth()->user()->save_percent) {
-            $step = 8;
+            $step = 6;
         }
 
         return $step;

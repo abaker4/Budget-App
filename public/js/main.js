@@ -58,15 +58,15 @@ window.onload = function() {
     window.myDoughnut = new Chart(ctx, config);
 };
 
-document.getElementById('randomizeData').addEventListener('click', function() {
-    config.data.datasets.forEach(function(dataset) {
-        dataset.data = dataset.data.map(function() {
-            return randomScalingFactor();
-        });
-    });
-
-    window.myDoughnut.update();
-});
+// document.getElementById('randomizeData').addEventListener('click', function() {
+//     config.data.datasets.forEach(function(dataset) {
+//         dataset.data = dataset.data.map(function() {
+//             return randomScalingFactor();
+//         });
+//     });
+//
+//     window.myDoughnut.update();
+// });
 
 var colorNames = Object.keys(window.chartColors);
 document.getElementById('addDataset').addEventListener('click', function() {

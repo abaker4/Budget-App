@@ -19,7 +19,7 @@
                                               
                                                 <label class="label{{ $errors->has('name') ? ' has-error' : '' }}">*Name</label>
 
-                                                    <input class="input" type="text" name="name" placeholder="Full Name" required>
+                                                    <input class="input" type="text" name="name" placeholder="Full Name">
 
                                                     @if ($errors->has('name'))
                                                         <span class="help-block">
@@ -31,7 +31,7 @@
                                                 <p class="control">
 
                                                                                
-                                                    <input class="input" type="email" name="email" placeholder="example@example.com" required>
+                                                    <input class="input" type="email" name="email" placeholder="example@example.com">
 
                                                     @if ($errors->has('email'))
                                                         <span class="help-block">
@@ -42,7 +42,7 @@
                                                 <hr>
                                                 <label class="label{{ $errors->has('password') ? ' has-error' : '' }}">*Password</label>
                                                 <p class="control">
-                                                    <input class="input" type="password" name="password" placeholder="" required>
+                                                    <input class="input" type="password" name="password" placeholder="">
 
                                                     @if ($errors->has('password'))
                                                         <span class="help-block">
@@ -52,7 +52,7 @@
                                                 </p>
                                                 <label class="label" for="password-confirm">*Confirm Password</label>
                                                 <p class="control">
-                                                    <input class="input" id="password-confirm" type="password" for="password-confirm" name="password_confirmation" placeholder="" required>
+                                                    <input class="input" id="password-confirm" type="password" for="password-confirm" name="password_confirmation" placeholder="">
                                                 </p>
                                                 <hr>
                                                 <p class="control">

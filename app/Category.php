@@ -15,8 +15,6 @@ class Category extends Model
     const UTILITIES = 3;
     const INSURANCES = 4;
     const MEMBERSHIPS = 5;
-    const GROCERIES = 6;
-    const FUEL = 7;
 
 
     /**
@@ -28,6 +26,12 @@ class Category extends Model
     const COFFEE_SHOPS = 3;
     const CLOTHING = 4;
     const FAST_FOOD = 5;
+    const GROCERIES = 6;
+    const FUEL = 7;
+    const DAILY_CATEGORY_IDS = [1 => 'Restaurants', 2 => 'Alcohol', 3 => 'Coffee',
+        4 => 'Clothing', 5 => 'Fast Food', 6 => 'Groceries', 7 => 'Fuel'];
+
+
 
 
 }

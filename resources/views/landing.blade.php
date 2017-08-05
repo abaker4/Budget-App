@@ -23,7 +23,7 @@
         </div>
     </section>
 
-    <section class="hero is-default is-bold" style="height: 75.5vh;">
+    <section class="hero is-default is-bold" style="height: 78.5vh;">
         <div class="hero-body">
             <div class="container">
                 <div class="columns">
