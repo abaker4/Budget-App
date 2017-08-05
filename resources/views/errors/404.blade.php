@@ -23,7 +23,7 @@
                     </div>
                     <div class="column is-6">
                         <h2 class="subtitle">
-                            <img src="/img/404.png" width="700" height="410">
+                            <img src="/img/404.png" width="700" height="400">
                         </h2>
 
                     </div>

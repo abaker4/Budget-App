@@ -47,7 +47,9 @@
 
             </section>
         </div>
-        <div class="column is-6">
+
+
+        <div class="column is-6 is-visible-desktop is-hidden-mobile">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
                     Daily Expense
@@ -56,8 +58,33 @@
             </section>
         </div>
 
+        <div class="column is-6 is-hidden-desktop is-visible-mobile">
+            <section class="panel">
+                <p class="panel-heading has-text-centered">
+                    Recent Spending History
+                <p>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    @foreach($daily_title as $daily)
+                        <tbody>
+                        <tr>
+                            <td>{{$daily->title}}</td>
+                            <td>${{$daily->amount}}</td>
+                            <td>{{$daily->created_at->diffForHumans()}}</td>
 
+                            @endforeach
+                        </tr>
+                        </tbody>
+                </table>
+            </section>
+        </div>
     </div>
+
 
 
     <div class="columns">
@@ -91,7 +118,7 @@
 
             </section>
         </div>
-        <div class="column is-6">
+        <div class="column is-6 is-visible-desktop is-hidden-mobile">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
                     Recent Spending History

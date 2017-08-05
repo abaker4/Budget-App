@@ -99,6 +99,20 @@ class DashboardController extends Controller
                 ->whereRaw('daily_expenses.created_at >= users.reference_date')
                 ->sum('amount');
 
+        $new_ref =
+            DB::table('users')
+                ->where('id', '=', auth()->user()->id)
+                ->select('reference_date')
+                ->get();
+
+
+        // changes the Reference Date to tomorrow
+        $date = date_create(strtotime($new_ref));
+        date_add($date, date_interval_create_from_date_string('CURDATE() + 1 days'));
+        $new_ref_date = date_format($date, 'Y-m-d');
+
+
+
         $last_sunday = date('Y-m-d',strtotime('last sunday'));
 
         $next_sunday = date('Y-m-d',strtotime('next sunday'));
