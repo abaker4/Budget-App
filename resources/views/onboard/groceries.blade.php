@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column is-4 is-offset-4">
-                        <form id="step7" method="POST" action="/onboard/store">
+                        <form method="POST" action="/onboard/store">
 
                             {{ csrf_field() }}
 

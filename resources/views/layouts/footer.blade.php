@@ -70,7 +70,10 @@
 </footer>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
-<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js></script>
@@ -113,7 +116,7 @@
 
 $(function(){
 
-
+// provides the functionality of the keypad on  monthly expenses on the dashboard
     
             $('#one_picker').on('click', function(){
                 var self = this;
@@ -189,26 +192,6 @@ $(function(){
             });
 
         });
-
-
-//
-//        $('#step1').addClass('animated fadeInRight');
-//
-//        $('#step2').addClass('animated fadeInRight');
-//
-//        $('#step3').addClass('animated fadeInRight');
-//
-//        $('#step4').addClass('animated fadeInRight');
-//
-//        $('#step5').addClass('animated fadeInRight');
-//
-//        $('#step6').addClass('animated fadeInRight');
-//
-//        $('#step7').addClass('animated fadeInRight');
-//
-//        $('#step8').addClass('animated fadeInRight');
-//
-//        $('#step9').addClass('animated fadeInRight');
 
 
 </script>

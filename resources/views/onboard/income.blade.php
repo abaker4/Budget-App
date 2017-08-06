@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column is-4 is-offset-4">
-                        <form id="step2" method="POST" action="/onboard/store">
+                        <form method="POST" action="/onboard/store">
 
                             {{ csrf_field() }}
 
@@ -17,26 +17,30 @@
                                 Monthly Income
                             </h1>
                             <div class="box">
-                                <label class="label {{ $errors->has('amount') ? ' has-error' : '' }}">Amount</label>
-                                <p class="control">
-                                    @if(!empty($income))
-                                        <input name="id" value="{{$income->id }}" type="hidden">
-                                        <input class="input" name="amount" value="{{$income->amount}}" type="text" required>
-                                    @else
-                                        <input class="input" name="amount" value="" type="text" required>
-                                    @endif
-                                </p>
-                                @if ($errors->has('amount'))
-                                    <span class="help-block is-danger">
-                                        <strong>{{ $errors->first('amount') }}</strong>
-                                    </span>
-                                @endif
-                                <hr>
-                                <p class="control">
+                                <div class="field">
+                                    <label class="label is-large" {{ $errors->has('amount') ? ' has-error' : '' }}>Amount</label>
+                                    <div class="control has-icons-left">
+                                        <p class="control">
+                                            @if(!empty($income))
+                                                <input name="id" value="{{$income->id }}" type="hidden">
+                                                <input class="input" name="amount" value="${{$income->amount}}" type="text" required>
+                                            @else
+                                                <input class="input" name="amount" value="" type="text" required>
+                                            @endif
+                                        </p>
+                                        <span class="icon is-small is-left">
+                                             <i class="fa fa-usd"></i>
+                                        </span>
+                                        @if ($errors->has('amount'))
+                                            <span class="help-block is-danger">
+                                                <strong>{{ $errors->first('amount') }}</strong>
+                                            </span>
+                                        @endif
 
-                                        <button class="button is-info" type="submit">Submit</button>
-
-                                </p>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                @include('layouts.errors')
                             </div>
                         </form>
                     </div>

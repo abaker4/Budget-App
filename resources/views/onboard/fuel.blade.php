@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column is-4 is-offset-4">
-                        <form id="step8" method="POST" action="/onboard/store">
+                        <form method="POST" action="/onboard/store">
 
                             {{ csrf_field() }}
 
@@ -22,9 +22,9 @@
                                     <p class="control">
                                         @if(!empty($fuel))
                                             <input name="id" value="{{$fuel->id}}" type="hidden">
-                                            <input class="input" name="amount" value="{{$fuel->amount}}" type="text" required>
+                                            <input class="input" name="amount" value="${{$fuel->amount}}" type="text" required>
                                         @else
-                                            <input class="input" name="amount" value="" type="text" required>
+                                            <input class="input" name="amount" value=$"" type="text" required>
                                         @endif
                                     </p>
                                     @if ($errors->has('amount'))

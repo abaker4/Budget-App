@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="columns">
+    <div class ="columns">
         <div class="column is-6">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
@@ -49,7 +49,7 @@
         </div>
 
 
-        <div class="column is-6 is-visible-desktop is-hidden-mobile">
+        <div class="column is-6">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
                     Daily Expense
@@ -94,7 +94,7 @@
                     Monthly Expense Summary
                 </p>
 
-                <table class="table">
+                <table class="table is-striped">
                     <thead>
                     <tr>
                         <th>Category</th>
@@ -103,7 +103,7 @@
                     </thead>
                     @foreach($monthly_expenses as $monthly)
                         <tbody>
-                        <tr>
+                        <tr class="has-text-centered">
                             <td>{{$monthly->title}}</td>
                             <td>{{$monthly->amount}}</td>
                             <td><a class="btn btn-link" href="/onboard/{{strtolower($monthly->title)}}">
@@ -111,9 +111,28 @@
                                 </a>
                             </td>
                             @endforeach
-
                         </tr>
                         </tbody>
+                </table>
+                <p class="panel-heading has-text-centered">
+                    Monthly Saving %
+                </p>
+                <table class="table is-bordered">
+                    <thead></thead>
+                    <tbody>
+                    @foreach($save_percent as $percent)
+                        <tr>
+                            <td class="has-text-centered">Savings Percentage</td>
+                            <td class="has-text-centered">{{($percent->save_percent)*100}}%</td>
+                            <td>
+                                <a class="btn btn-link" href="/onboard/savings">
+                                    <button type="button" class="btn btn-primary">Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+
+                        @endforeach
+                    </tbody>
                 </table>
 
             </section>
@@ -123,7 +142,7 @@
                 <p class="panel-heading has-text-centered">
                     Recent Spending History
                 <p>
-                <table class="table">
+                <table class="table is-striped">
                     <thead>
                     <tr>
                         <th>Category</th>

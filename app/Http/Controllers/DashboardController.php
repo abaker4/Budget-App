@@ -43,6 +43,7 @@ class DashboardController extends Controller
             ->get();
 
 
+
         $daily_expenses = DB::table('daily_expenses')
             ->join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
@@ -105,6 +106,11 @@ class DashboardController extends Controller
                 ->select('reference_date')
                 ->get();
 
+        $save_percent =
+            DB::table('users')
+                ->where('id', '=', auth()->user()->id)
+                ->select('save_percent')
+                ->get();
 
         // changes the Reference Date to tomorrow
         $date = date_create(strtotime($new_ref));
@@ -130,11 +136,10 @@ class DashboardController extends Controller
 
         $daily_total = ($monthly_total * 12) / 365;
 
-
         $weekly_amount = number_format(($daysBetween * $daily_total) - $daily_value, 2);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category'));
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category', 'save_percent'));
     }
 
     /**
