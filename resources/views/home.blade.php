@@ -6,11 +6,11 @@
         <div class="column is-6">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
-                    Weekly Activity
+                    Weekly Total
                 </p>
-                <h1 class="title is-1 has-text-centered" style="font-weight: bolder; margin-top: 7rem;">
-                    ${{$weekly_amount}}</h1>
-
+                <h1 class="title is-1 has-text-centered"  style="font-weight: bolder; margin-top: 7rem;">
+                  <span data-step="1" data-intro="This is your weekly budgeted amount based off your static monthly expenses.">${{$weekly_amount}}</span>
+                </h1>
             </section>
             <section>
                 <form method="POST" action="/daily_total">
@@ -44,43 +44,17 @@
                 <div class="has-text-centered" style="margin-left: 14rem; margin-bottom: 4rem;">
                     @include('layouts.form')
                 </div>
-
             </section>
+            <div style="clear:both;"></div>
         </div>
 
 
-        <div class="column is-6">
+        <div class="column is-6"  data-step="2" data-intro="The Detailed Chart View shows you just where exactly you're spending money each day along with a running daily total.">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
                     Daily Expense
                 </p>
                 <canvas id="myChart" style="height: 500px;"></canvas>
-            </section>
-        </div>
-
-        <div class="column is-6 is-hidden-desktop is-visible-mobile">
-            <section class="panel">
-                <p class="panel-heading has-text-centered">
-                    Recent Spending History
-                <p>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Amount</th>
-                    </tr>
-                    </thead>
-                    @foreach($daily_title as $daily)
-                        <tbody>
-                        <tr>
-                            <td>{{$daily->title}}</td>
-                            <td>${{$daily->amount}}</td>
-                            <td>{{$daily->created_at->diffForHumans()}}</td>
-
-                            @endforeach
-                        </tr>
-                        </tbody>
-                </table>
             </section>
         </div>
     </div>
@@ -94,12 +68,13 @@
                     Monthly Expense Summary
                 </p>
 
-                <table class="table is-striped">
+                <table class="table is-bordered" data-step="3" data-intro="Your Monthly Expense Summary easily allows you to edit any static expenses you may have.">
                     <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Amount</th>
-                    </tr>
+                        <tr>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     @foreach($monthly_expenses as $monthly)
                         <tbody>
@@ -117,7 +92,7 @@
                 <p class="panel-heading has-text-centered">
                     Monthly Saving %
                 </p>
-                <table class="table is-bordered">
+                <table class="table is-bordered" data-step="4" data-intro="Here you can manage how much you want to save each month, with increasing or decreasing amounts based off of your preference.">
                     <thead></thead>
                     <tbody>
                     @foreach($save_percent as $percent)
@@ -134,15 +109,29 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                <p class="panel-heading has-text-centered">
+                    Weekly Budget Start Date
+                </p>
+                <form method="POST" action="/reference_date">
+                    {{csrf_field()}}
+                    <div class="field has-addons" style="margin-top:1rem; margin-left: 12rem;">
+                        <p class="control">
+                            <input class="input is-info" value="" name="reference_date" type="text" id="datepicker" placeholder="Date:" data-step="5" data-intro="You made a big purchase at the beginning of the week? No problem! You can easily reset weekly budget start date here!">
+                        </p>
+                        <p class="control">
+                            <button class="button is-info" type="submit">Submit</button>
+                        </p>
+                    </div>
+                </form>
             </section>
         </div>
-        <div class="column is-6 is-visible-desktop is-hidden-mobile">
+
+        <div class="column is-6">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
                     Recent Spending History
                 <p>
-                <table class="table is-striped">
+                <table class="table is-striped" data-step="6" data-intro="Recent Spending History tracks all of your purchases in a detailed view and helps your track spending patterns">
                     <thead>
                     <tr>
                         <th>Category</th>
@@ -212,7 +201,7 @@
                     data: []
                 };
 
-                // Loop through each day and check for expenses ont hat day
+                // Loop through each day and check for expenses on that day
                 $.each(chartData.data.labels, function (index, day) {
                     var hasExpense = false;
                     $.each(category, function (index, dailyExpense) {
@@ -302,6 +291,35 @@
 
             return colors[currentColorKey];
         }
+
+//        introJs().oncomplete(function() {
+//            console.log("end of introduction");
+//        });
+    // add a flag when we're done
+//        window.addEventListener('onload', function(){
+//            introJs().oncomplete(function () {
+//                localStorage.setItem('doneTour', 'yeah!');
+//            });
+//        });
+
+
+
+    //     add a flag when we exit
+
+//
+//            introJs().onexit(function () {
+//                localStorage.setItem('doneTour', 'yeah!');
+//            });
+
+    //     and check for it when deciding whether to start.
+
+                window.addEventListener('load', function () {
+                    var doneTour = localStorage.getItem('doneTour') === 'yeah!';
+                    if (doneTour) return;
+                    introJs().start();
+                });
+
+
     </script>
 @endsection
 

@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+{{--first slide--}}
     <section class="hero is-primary is-fullheight">
         <div class="hero-body" style="background-image: url('img/landing.png');">
             <div class="container">
@@ -23,15 +23,35 @@
         </div>
     </section>
 
-    <section class="hero is-default is-bold" style="height: 75.5vh;">
+    {{--custom desktop view for second slide--}}
+    <section class="hero is-default is-bold is-hidden-mobile is-visible-desktop"  style="height:75.5vh;">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column left-side is-half-desktop is-full-mobile second-page" style="margin-right: 3rem;">
+                                <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
+                                <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
+                                <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
+                                <a class="button is-info" href="/home" style="text-decoration:none;">Check it out!</a>
+                        </div>
+                        <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
+                            <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    {{--custom mobile view for second slide--}}
+    <section class="hero is-default is-bold is-hidden-desktop is-visible mobile">
         <div class="hero-body">
             <div class="container">
                 <div class="columns">
                     <div class="column left-side is-half-desktop is-full-mobile second-page" style="margin-right: 3rem;">
-                            <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
-                            <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
-                            <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
-                            <a class="button is-info" href="/home" style="text-decoration:none;">Check it out!</a>
+                        <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
+                        <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
+                        <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
+                        <a class="button is-info" href="/home" style="text-decoration:none;">Check it out!</a>
                     </div>
                     <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
                         <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
@@ -41,6 +61,7 @@
         </div>
     </section>
 
+{{--third slide--}}
     <section class="hero is-fullheight" style="background-color:#262F36;">
         <div class="hero-body">
             <div class="container">
@@ -67,7 +88,7 @@
             </div>
         </div>
     </section>
-
+{{--fourth slide--}}
     <section class="hero is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -113,8 +134,7 @@
             </div>
         </div>
     </section>
-
-    @endsection
+@endsection
 
 
 

@@ -35,41 +35,8 @@
                                    <option value="7">Gas/Fuel</option>
                                </select>
                              </span>
-                        </div>
-
-                     </div>
-
+                        </p>
+                    </div>
                  </div>
-
-            </form>
-        {{--<div class="columns">--}}
-            {{--<div class="column">--}}
-                {{--<section class="panel">--}}
-                    {{--<p class="panel-heading has-text-centered">--}}
-                        {{--Monthly Expense Summary--}}
-                    {{--</p>--}}
-
-                    {{--<table class="table">--}}
-                        {{--<thead>--}}
-                        {{--<tr>--}}
-                            {{--<th>Category</th>--}}
-                            {{--<th>Amount</th>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
-                        {{--@foreach($monthly_expenses as $monthly)--}}
-                            {{--<tbody>--}}
-                            {{--<tr>--}}
-                                {{--<td>{{$monthly->title}}</td>--}}
-                                {{--<td>{{$monthly->amount}}</td>--}}
-                                {{--<td><a class="btn btn-link" href="/onboard/{{strtolower($monthly->title)}}">--}}
-                                        {{--<button type="button" class="btn btn-primary">Edit</button>--}}
-                                    {{--</a>--}}
-                                {{--</td>--}}
-
-                                {{--@endforeach--}}
-                            {{--</tr>--}}
-                            {{--</tbody>--}}
-                    {{--</table>--}}
-                {{--</section>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+             </div>
+        </form>

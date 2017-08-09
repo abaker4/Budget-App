@@ -22,8 +22,6 @@ class HomeController extends Controller
     public function index()
     {
 
-//        flash('hello world', 'This is the message.');
-
         return view('landing');
     }
 
@@ -41,8 +39,6 @@ class HomeController extends Controller
         $data = $request->all();
 
         $contact_exists = DB::table('contact_newsletters')
-
-
 
             ->where([ ['email', '=', $data['email']] ])
 

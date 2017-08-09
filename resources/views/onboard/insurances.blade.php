@@ -6,36 +6,36 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column is-4 is-offset-4">
-                        <form method="POST" action="/onboard/store">
+                        <form id="step5" method="POST" action="/onboard/store">
 
                             {{ csrf_field() }}
 
-                            <input type="hidden" name="type_id" value="1">
+
+                            <input type="hidden" name="type_id" value="2">
                             <input type="hidden" name="monthly_category_id" value="4">
-                            <h1 class="title has-text-centered">
+                            <h1 class="title has-text-centered animated fadeInDown">
                                 Insurances
                             </h1>
                             <div class="box">
                                 <div class="field">
-                                    <label class="label is-large" {{ $errors->has('amount') ? ' has-error' : '' }}>Amount</label>
+                                    <label class="label is-large{{ $errors->has('amount') ? ' has-error' : '' }}">Amount</label>
                                     <div class="control has-icons-left">
-                                        <p class="control">
+                                        <p class="control animated fadeInRight">
                                             @if(!empty($insurances))
                                                 <input name="id" value="{{$insurances->id }}" type="hidden">
-                                                <input class="input" name="amount" value="${{$insurances->amount}}" type="text" required>
+                                                <input class="input" name="amount" value="{{$insurances->amount}}" type="text" required>
                                             @else
                                                 <input class="input" name="amount" value="" type="text" required>
                                             @endif
                                         </p>
                                         <span class="icon is-small is-left">
-                                             <i class="fa fa-usd"></i>
+                                            <i class="fa fa-usd"></i>
                                         </span>
                                         @if ($errors->has('amount'))
                                             <span class="help-block is-danger">
-                                                <strong>{{ $errors->first('amount') }}</strong>
+                                                 <strong>{{ $errors->first('amount') }}</strong>
                                             </span>
                                         @endif
-
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>

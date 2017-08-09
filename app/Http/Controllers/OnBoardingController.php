@@ -21,10 +21,16 @@ class OnBoardingController extends Controller
 
 
 
-    public function instructions()
+    public function instructions1()
     {
 
-        return view('onboard.instructions');
+        return view('onboard.instructions1');
+    }
+
+    public function instructions2()
+    {
+
+        return view('onboard.instructions2');
     }
 
 

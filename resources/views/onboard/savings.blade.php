@@ -15,7 +15,7 @@
                             <h1 class="title has-text-centered">
                                 Monthly Savings
                             </h1>
-                            <div class="box">
+                            <div class="box animated slideInDown">
                                 <div class="field">
                                     <label class="label is-large" {{ $errors->has('save_percent') ? ' has-error' : '' }}>Amount</label>
                                     <div class="control has-icons-left">

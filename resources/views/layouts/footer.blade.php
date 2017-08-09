@@ -70,8 +70,9 @@
 </footer>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+<script
+        src="http://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -79,10 +80,11 @@
 <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-<script src="https://unpkg.com/vue@2.3.4"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<scripot src="js/intro.js"></scripot>
 <script src="/js/sweetalert-dev.js"></script>
 <script src="js/utils.js"></script>
-<script src="js/main.js"></script>
+<script src="js/intro.js"></script>
 
 @include('flash')
 <script>
@@ -191,7 +193,10 @@ $(function(){
                 return false;
             });
 
-        });
+    //calender date picker on dashboard
+        $( "#datepicker" ).datepicker();
+
+});
 
 
 </script>

@@ -11,6 +11,7 @@ use App\DailyExpense;
 use App\MonthlyCategory;
 use App\Type;
 use Carbon\Carbon;
+use App\User;
 
 
 
@@ -100,26 +101,19 @@ class DashboardController extends Controller
                 ->whereRaw('daily_expenses.created_at >= users.reference_date')
                 ->sum('amount');
 
-        $new_ref =
-            DB::table('users')
-                ->where('id', '=', auth()->user()->id)
-                ->select('reference_date')
-                ->get();
-
         $save_percent =
             DB::table('users')
-                ->where('id', '=', auth()->user()->id)
-                ->select('save_percent')
-                ->get();
-
-        // changes the Reference Date to tomorrow
-        $date = date_create(strtotime($new_ref));
-        date_add($date, date_interval_create_from_date_string('CURDATE() + 1 days'));
-        $new_ref_date = date_format($date, 'Y-m-d');
+            ->where('id', '=', auth()->user()->id)
+            ->select('save_percent')
+            ->get();
 
 
-
-        $last_sunday = date('Y-m-d',strtotime('last sunday'));
+//        $last_sunday = date('Y-m-d',strtotime('last sunday'));
+//
+//
+//        $date = date_create(strtotime($new_ref_date));
+//        date_add($date, date_interval_create_from_date_string('CURDATE() + 1 days'));
+//        $ref_date = date_format($date, 'Y-m-d';
 
         $next_sunday = date('Y-m-d',strtotime('next sunday'));
         $datediff = strtotime($next_sunday) - strtotime(auth()->user()->reference_date);
@@ -139,7 +133,7 @@ class DashboardController extends Controller
         $weekly_amount = number_format(($daysBetween * $daily_total) - $daily_value, 2);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category', 'save_percent'));
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category', 'save_percent', 'reference_date'));
     }
 
     /**
@@ -168,6 +162,28 @@ class DashboardController extends Controller
         );
 
         return redirect('/home');
+
+    }
+
+
+
+    public function newReferenceDate(Request $request)
+    {
+
+
+        $data = $request->all();
+        $user = User::where('id', '=', auth()->user()->id)
+            ->first();
+
+
+        $user->reference_date = date('Y-m-d',strtotime($data['reference_date']));
+        $user->save();
+
+
+        flash()->success('Great!', 'You updated your reference date');
+
+        return redirect('home');
+
 
     }
 
