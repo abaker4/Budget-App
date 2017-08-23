@@ -28,9 +28,10 @@ Route::post('/reference_date', 'DashboardController@newReferenceDate');
 
 Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
-    Route::get('/instructions1', 'OnBoardingController@instructions1');
+    Route::get('/start', 'OnBoardingController@start');
 
-    Route::get('/instructions2', 'OnBoardingController@instructions2');
+    Route::get('/finish', 'OnBoardingController@finish');
+
 
     Route::get('/income', 'OnBoardingController@income');
 
@@ -44,9 +45,14 @@ Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
     Route::get('/savings', 'OnBoardingController@savings');
 
+    Route::get('/savings_percentage', 'OnBoardingController@savingsPercentage');
+
     Route::post('/store', 'OnBoardingController@store');
 
     Route::post('/store_saving','OnBoardingController@storeSaving');
+
+    Route::post('/store_saving_percentage','OnBoardingController@storeSavingPercentage');
+
 
 
 });

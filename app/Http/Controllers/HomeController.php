@@ -54,7 +54,7 @@ class HomeController extends Controller
 
         } else {
 
-            flash()->message('Oops!', 'Looks like you are already signed up');
+            flash()->warning('Oops!', 'Looks like you are already signed up');
         }
 
         return redirect('/');

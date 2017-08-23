@@ -21,19 +21,14 @@ class OnBoardingController extends Controller
 
 
 
-    public function instructions1()
+    public function start()
     {
+        $user = DB::table('users')
+            ->where('id', '=', auth()->user()->id)
+            ->first();
 
-        return view('onboard.instructions1');
+        return view('onboard.start', compact('user'));
     }
-
-    public function instructions2()
-    {
-
-        return view('onboard.instructions2');
-    }
-
-
 
 
     public function income()
@@ -108,6 +103,25 @@ class OnBoardingController extends Controller
     }
 
 
+    public function savingsPercentage()
+    {
+        $savings =
+            DB::table('users')
+                ->where('id', '=', auth()->user()->id)
+                ->first();
+
+
+        return view('onboard.savings_percentage', compact('savings'));
+
+    }
+
+    public function finish()
+    {
+
+        return view('onboard.finish');
+    }
+
+
 
     public function store(Request $request)
     {
@@ -136,6 +150,26 @@ class OnBoardingController extends Controller
 
     }
 
+    public function storeSavingPercentage(Request $request)
+    {
+        $data = $request->all();
+        // if the monthly_expense_id exists in the form data run this query
+        // if it finds a record update it with new values
+        // if no record or there is no monthly_expense_id create a new monthly expense object and save a new record
+        if (!empty($data['id'])) {
+            $user = User::where('id', '=', $data['id'])
+                ->first();
+        } else {
+            $user = new User();
+        }
+
+        $user->save_percent = $data['save_percent']/100;
+        $user->save();
+
+        return redirect('/home');
+    }
+
+
     public function storeSaving(Request $request)
     {
         $data = $request->all();
@@ -146,7 +180,6 @@ class OnBoardingController extends Controller
             $user = User::where('id', '=', $data['id'])
                 ->first();
 
-            // @todo add in a check to make sure this exists, if not redirect out with a message
         } else {
             $user = new User();
         }
@@ -154,7 +187,7 @@ class OnBoardingController extends Controller
         $user->save_percent = $data['save_percent']/100;
         $user->save();
 
-        return redirect('/home');
+        return redirect('/onboard/finish');
     }
 
 
@@ -223,6 +256,7 @@ class OnBoardingController extends Controller
         if (!$step && !auth()->user()->save_percent) {
             $step = 6;
         }
+
 
         return $step;
 

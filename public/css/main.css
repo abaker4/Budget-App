@@ -1,8 +1,19 @@
-a {
-    text-decoration: none;
+.field{
+    height: 50px;
+}
+input:hover {
+    opacity: .9;
+}
+#button{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: white;
 
 }
 
+a, a:hover {
+    text-decoration: none;
+}
 
 #keyboard {
     margin: 0;
@@ -49,13 +60,50 @@ a {
 
 #errors{
     margin-top: 1.5rem;
-    margin-right: 220px;;
+    margin-left: 220px;
     text-align: center;
     animation: fadein 2s;
     -moz-animation: fadein 2s; /* Firefox */
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -o-animation: fadein 2s; /* Opera */
 }
+
+
+
+.common-Button {
+    white-space: nowrap;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    background: #fff;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+    text-decoration: none;
+    transition: all .15s ease;
+}
+
+.common-Button:hover{
+
+    transform:translateY(-1px);
+    box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+}
+
+.common-Button:active{
+
+    background-color:#f6f9fc;
+    transform:translateY(1px);
+    box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+}
+.common-ButtonGroup .common-Button{
+    -ms-flex-negative:0;
+    flex-shrink:0;margin:10px
+}
+
 @keyframes fadein {
     from {
         opacity:0;

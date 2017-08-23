@@ -22,39 +22,6 @@
     <style>
         .images-container{position:absolute;width:42%;bottom:0;right:0;height:80%;overflow:hidden}
         .images-house img{position:absolute;-webkit-box-shadow:2px 2px 9px 1px rgba(0,0,0,0.25);box-shadow:2px 2px 9px 1px rgba(0,0,0,0.25)}
-        .common-Button {
-            white-space: nowrap;
-            display: inline-block;
-            height: 40px;
-            line-height: 40px;
-            padding: 0 14px;
-            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
-            background: #fff;
-            border-radius: 4px;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: .025em;
-            text-decoration: none;
-            transition: all .15s ease;
-
-        }
-
-        .common-Button:hover{
-
-            transform:translateY(-1px);
-            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
-        }
-
-        .common-Button:active{
-
-            background-color:#f6f9fc;
-            transform:translateY(1px);
-            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
-        }
-        .common-ButtonGroup .common-Button{
-            -ms-flex-negative:0;
-            flex-shrink:0;margin:10px
     </style>
 </head>
 <body>
@@ -64,39 +31,37 @@
             <div class="columns">
                 <div class="column is-7">
                     <h1 class="title is-4 is-bold" style="color: #fff;">
-                        Step 2
+                        Step 6
                     </h1>
                     <h4 class="title is-2 is-white is-bold" style="color: #fff;">
-                        <span>How Much Do You Pay In Housing Per Month?</span>
+                        <span>What Percentage Of Your Monthy Income Would You Like To Save?</span>
                     </h4>
-                    <form method="POST" action="/onboard/store">
+                    <form method="POST" action="/onboard/store_saving_percentage">
 
-                       {{csrf_field()}}
-
-                        <input type="hidden" name="type_id" value="2">
-                        <input type="hidden" name="monthly_category_id" value="2">
+                        {{csrf_field()}}
+                        <input type="hidden" name="type_id" value="1">
                         <div class="field">
                             <div class="field has-addons">
-                                <label class="label is-large{{ $errors->has('amount') ? ' has-error' : '' }}"></label>
+                                <label class="label is-large{{ $errors->has('save_percent') ? ' has-error' : '' }}"></label>
                                 <div class="control has-icons-left">
                                     <p class="control animated fadeInRight">
-                                        @if(!empty($housing))
-                                            <input name="id" value="{{$housing->id }}" type="hidden">
-                                            <input class="input" name="amount" value="{{$housing->amount}}" type="text" required>
+                                        @if(!empty($savings))
+                                            <input name="id" value="{{$savings->id }}" type="hidden">
+                                            <input class="input" name="save_percent" value="{{($savings->save_percent)*100}}" type="text" required>
                                         @else
-                                            <input class="input" name="amount" value="" type="text" required>
+                                            <input class="input" name="save_percent" value="" type="text" required>
                                         @endif
                                     </p>
-                                        <span class="icon is-small is-left">
-                                            <i class="fa fa-usd"></i>
+                                    <span class="icon is-small is-left">
+                                            <i class="fa fa-percent"></i>
                                         </span>
-                                    @if ($errors->has('amount'))
+                                    @if ($errors->has('save_percent'))
                                         <span class="help-block is-danger">
-                                            <strong>{{ $errors->first('amount') }}</strong>
-                                        </span>
+                                                <strong>{{ $errors->first('save_percent') }}</strong>
+                                            </span>
                                     @endif
                                     <p class="control">
-                                        <button class="button is-success common-Button" type="submit" href="/home" style="border-radius: 10px; text-decoration: none; margin-top: 1rem;">Next</button>
+                                        <button class="button is-success" type="submit" style="border-radius: 10px; text-decoration: none; margin-top: 1rem;">Next</button>
                                     </p>
                                 </div>
                             </div>
@@ -108,7 +73,7 @@
     </div>
 
     <div class="images-container images-house is-hidden-mobile animated slideInRight">
-        <img src="/img/house.png" alt="house"/>
+        <img src="/img/savings.png" alt="savings" />
     </div>
 
     <div class="hero-foot">

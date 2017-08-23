@@ -31,6 +31,19 @@ class Flash {
 
     }
 
+    public function warning($title, $message)
+    {
+        session()->flash('flash_message', [
+
+            'title' => $title,
+
+            'message' => $message,
+
+            'level' => 'warning'
+        ]);
+
+    }
+
 
 
 }

@@ -1,7 +1,179 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+          integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="css/introjs.css">
+    <link rel="stylesheet" href="css/themes/introjs-modern.css">
+    <link rel="stylesheet" href="/css/sweetalert.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
+
+    <style>
+        .field{
+            height: 50px;
+        }
+        input:hover {
+            opacity: .9;
+        }
+        #button{
+            border-style: solid;
+            border-radius: 10px;
+            border-color: white;
+
+        }
+        a, a:hover{
+            text-decoration: none;
+        }
+
+        .common-Button {
+            white-space: nowrap;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 14px;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+            background: #fff;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .025em;
+            text-decoration: none;
+            transition: all .15s ease;
+        }
+
+        .common-Button:hover{
+
+            transform:translateY(-1px);
+            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+        }
+
+        .common-Button:active{
+
+            background-color:#f6f9fc;
+            transform:translateY(1px);
+            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+        }
+        .common-ButtonGroup .common-Button{
+            -ms-flex-negative:0;
+            flex-shrink:0;margin:10px
+        }
 
 
-@section('content')
+    </style>
+</head>
+<body>
+<nav class="navbar" style="margin-bottom: 1.5rem;">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="/img/image2.png"alt="logo" width="30" height="30" data-step="1" data-position='left' data-intro="Welcome to the Budget App where managing money couldn't be easier. Feel free to hit next and take a tour of the dashboard or hit skip to exit.">
+        </a>
+        <form action="/newslettersignup" method="POST">
+            {{csrf_field()}}
+            <div class="field has-addons">
+                <p class="control has-icons-left">
+                    <input class="input" type="email" name="email" placeholder="Subscribe" required>
+                </p>
+                <button class="button is-bold is-info" type="submit" style="color:white;"><i class="fa fa-envelope fa"></i></button>
+            </div>
+        </form>
+    </div>
+    <div class="navbar-burger burger" data-target="toggleTarget">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    </div>
+
+    <div class="nav-menu nav-right" id="toggleTarget">
+        <a class="navbar-item has-text-centered common-Button" href="/">
+            Home
+        </a>
+        @if (Auth::guest())
+            <a class="navbar-item has-text-centered common-Button" href="/login">
+                Log In
+            </a>
+            <a class="navbar-item has-text-centered common-Button" href="/register">
+                Register
+            </a>
+        @else
+            <div class="dropdown" style="margin-bottom: 1rem;">
+                <a href="#" class="dropdown-toggle button is-primary common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <span>{{Auth::user()->name}}</span> <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu" style="text-align: center;">
+                    <li>
+                        <a class="common-Button" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form"  action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        @endif
+    </div>
+
+    <div class="navbar-end">
+        <div class="navbar-item is-hidden-mobile">
+            <div class="field is-grouped">
+                <p class="control">
+                    @if (Auth::guest())
+                        <a class="button common-Button" href="{{ route('login') }}" style="background-color:#0275d8; color:white;">
+
+                            <span>Login</span>
+                        </a>
+                </p>
+                <p class="control">
+                    <a class="button common-Button" href="{{ route('register') }}">
+
+                        <span>Register</span>
+                    </a>
+                </p>
+                @else
+                    <div class="dropdown" style="margin-bottom: 2rem;">
+                        <a href="#" class="dropdown-toggle button is-transparent common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span>{{Auth::user()->name}}</span> <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu" style="text-align: center;">
+                            <li>
+                                <a class="common-Button" href="{{ route('logout') }}"
+
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</nav>
+
+
 {{--first slide--}}
     <section class="hero is-primary is-fullheight">
         <div class="hero-body" style="background-image: url('img/landing.png');">
@@ -16,7 +188,7 @@
                             Stop installing boring expense tracking apps that all do </br>the exact  same things. Install one that does everything.
                         </h2>
 
-                        <a class="button is-info is-hovered" href="/home" style="text-decoration:none;">Try it now</a>
+                        <a class="button is-info is-hovered common-Button" href="/home" style="text-decoration:none;">Try it now</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +204,7 @@
                                 <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
                                 <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
                                 <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
-                                <a class="button is-info" href="/home" style="text-decoration:none;">Check it out!</a>
+                                <a class="button is-info common-Button" href="/home" style="text-decoration:none;">Check it out!</a>
                         </div>
                         <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
                             <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
@@ -51,7 +223,7 @@
                         <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
                         <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
                         <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
-                        <a class="button is-info" href="/home" style="text-decoration:none;">Check it out!</a>
+                        <a class="button is-info common-Button" href="/home" style="text-decoration:none;">Check it out!</a>
                     </div>
                     <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
                         <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
@@ -81,7 +253,7 @@
                                     Why force yourself to remember what you spent. Put it in the app for easy reference later!
                                 </p>
                              <div class="control third-page">
-                                 <a class="button is-info is-hovered" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
+                                 <a class="button is-info common-Button" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
                             </div>
                     </div>
                 </div>
@@ -134,8 +306,91 @@
             </div>
         </div>
     </section>
-@endsection
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <p>
+                    <form action="/newslettersignup" method="POST">
+                        {{csrf_field()}}
+                        <div class="field has-addons" style="margin-left: 7rem;">
+                             <p class="control has-icons-left">
+                                <input class="input" type="email" name="email" placeholder="Email" required>
+                                     <span class="icon is-small is-left">
+                                         <i class="fa fa-envelope"></i>
+                                     </span>
+                            </p>
+                          <button class="button is-info" type="submit" style="color:white;">Subscribe</button>
+                        </div>
+                    </form>
+                </p>
+             </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="container has-text-centered">
+            <div class="column is-narrow">
+                <div class="box">
+                    <p class="title is-5">
+                        <a href="https://github.com/abaker4/Budget-App">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </p>
+                    <p class="subtitle">Budget-App&copy; 2017. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script
+        src="http://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<scripot src="js/intro.js"></scripot>
+<script src="/js/sweetalert-dev.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/intro.js"></script>
+
+@include('flash')
+<script>
+    //Activates Hamburger Menu on Navbar
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any nav burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(function ($el) {
+                $el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    var target = $el.dataset.target;
+                var $target = document.getElementById(target);
+
+                // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                $el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+
+            });
+        }
+
+    });
+</script>
+</body>
+</html>
 
 
 

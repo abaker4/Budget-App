@@ -1,10 +1,9 @@
 
-<section class="hero is-light">
-    <div class="hero-body">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-half is-offset-one-quarter">
-                    <p class="has-text-centered" style="margin-bottom: 1rem; color:#2767bf;">Sign Up for Email Alerts</p>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <p>
                     <form action="/newslettersignup" method="POST">
                         {{csrf_field()}}
                         <div class="field has-addons" style="margin-left: 7rem;">
@@ -12,57 +11,25 @@
                                 <input class="input" type="email" name="email" placeholder="Email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
-                                 </span>
+                                </span>
                             </p>
                             <button class="button is-info" type="submit" style="color:white;">Subscribe</button>
                         </div>
-                    </form>
-                </div>
-
-           </div>
-        </div>
+                     </form>
+                 </p>
+             </div>
+         </div>
     </div>
-</section>
-<footer class="footer is-hidden-mobile" style="color:#262F36;">
-    <div class="container">
-        <div class="columns">
-                <div class="column is-5">
-                    <h1 class="title is-4"style="color:#2767bf;">About Us</h1>
-                    <p>Budget App is pretty much amazing! Tracking expenses and making informed decisions based on real time data hasn't been easier. </p>
-                </div>
-                <div class="column is-1"></div>
-                <div class="column is-2">
-                    <h1 class="title is-4" style="color:#2767bf;">Product</h1>
-                    <ul>
-                        <li>Features</li>
-                        <li>Examples</li>
-                        <li>Tour</li>
-                        <li>Gallery</li>
-                    </ul>
-               </div>
-                <div class="column is-2">
-                    <h1 class="title is-4" style="color:#2767bf;">Company</h1>
-                    <ul>
-                        <li>Home</li>
-                        <li>Testimonials</li>
-                        <li>FAQ</li>
-                        <li>Statistics</li>
-                    </ul>
-                </div>
-            <div class="column is-2">
-                <h1 class="title is-4" style="color:#2767bf;">Extras</h1>
-                <ul>
-                    <li>Terms</li>
-                    <li>Privacy</li>
-                    <li>License</li>
-                    <li>GitHub</li>
-                </ul>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-                <div class="content has-text-centered">
-                    <p style="color:#262F36; padding-top: 4rem;"><em>Budget-App&copy; 2017. All Rights Reserved</em></p>
+    <div class="columns">
+        <div class="container has-text-centered">
+            <div class="column is-narrow">
+                <div class="box">
+                    <p class="title is-5">
+                        <a class="icon" href="https://github.com/jgthms/bulma">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </p>
+                    <p class="subtitle">Budget-App&copy; 2017. All Rights Reserved</p>
                 </div>
             </div>
         </div>
@@ -195,6 +162,11 @@ $(function(){
 
     //calender date picker on dashboard
         $( "#datepicker" ).datepicker();
+
+        //validation flash messaging
+
+        $('#errors').fadeOut(3000);
+
 
 });
 

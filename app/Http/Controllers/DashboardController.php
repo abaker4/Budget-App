@@ -33,6 +33,8 @@ class DashboardController extends Controller
     public function index()
     {
 
+        $tour = isset($_GET['tour']) ? 1 : 0;
+
         $step = OnBoardingController::checkOnboardStep();
         if ($step) {
             return OnBoardingController::onBoardTriager($step);
@@ -107,14 +109,6 @@ class DashboardController extends Controller
             ->select('save_percent')
             ->get();
 
-
-//        $last_sunday = date('Y-m-d',strtotime('last sunday'));
-//
-//
-//        $date = date_create(strtotime($new_ref_date));
-//        date_add($date, date_interval_create_from_date_string('CURDATE() + 1 days'));
-//        $ref_date = date_format($date, 'Y-m-d';
-
         $next_sunday = date('Y-m-d',strtotime('next sunday'));
         $datediff = strtotime($next_sunday) - strtotime(auth()->user()->reference_date);
         $daysBetween = floor($datediff / (60 * 60 * 24));
@@ -133,14 +127,14 @@ class DashboardController extends Controller
         $weekly_amount = number_format(($daysBetween * $daily_total) - $daily_value, 2);
 
 
-        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category', 'save_percent', 'reference_date'));
+        return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title', 'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category', 'save_percent', 'reference_date', 'tour'));
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function dailyTotal()
+    public function dailyTotal(Request $request)
     {
 
         $this->validate(request(),[
@@ -169,7 +163,11 @@ class DashboardController extends Controller
 
     public function newReferenceDate(Request $request)
     {
+        $this->validate(request(),[
 
+            'reference_date' => 'required',
+
+        ]);
 
         $data = $request->all();
         $user = User::where('id', '=', auth()->user()->id)
@@ -180,17 +178,12 @@ class DashboardController extends Controller
         $user->save();
 
 
-        flash()->success('Great!', 'You updated your reference date');
+        flash()->success('Great!', 'You updated your weekly budget start date');
 
         return redirect('home');
 
 
     }
-
-
-
-
-
 
 
 

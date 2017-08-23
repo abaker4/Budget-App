@@ -3,7 +3,7 @@
 
 <form method="POST" action="/daily_total">
     {{csrf_field()}}
-        @include('layouts.errors')
+@include('layouts.errors')
             <div class="hero">
                 <div class="hero-body">
                     <div class="has-text-centered is-hidden-desktop is-visible-mobile field-has-addons">
