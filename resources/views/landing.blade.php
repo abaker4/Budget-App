@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
           integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
@@ -18,22 +19,43 @@
     <link rel="stylesheet" href="/css/sweetalert.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
-
     <style>
+
         .field{
             height: 50px;
         }
         input:hover {
             opacity: .9;
         }
+
         #button{
             border-style: solid;
             border-radius: 10px;
             border-color: white;
+            margin-left: 8rem;
 
         }
-        a, a:hover{
+
+        .refInputField{
+            height:40px;
+        }
+
+        a, a:hover, a:focus, a:active {
             text-decoration: none;
+            !important
+        }
+
+        .labelField{
+
+            font-family: 'Work Sans', sans-serif;
+            font-size: 34px;
+            font-weight: 200;
+            line-height: 2;
+        }
+
+        #brand:hover{
+            background-color: #fff;
+        !important;
         }
 
         .common-Button {
@@ -41,7 +63,6 @@
             display: inline-block;
             height: 40px;
             line-height: 40px;
-            padding: 0 14px;
             box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
             background: #fff;
             border-radius: 4px;
@@ -70,14 +91,13 @@
             flex-shrink:0;margin:10px
         }
 
-
     </style>
 </head>
 <body>
 <nav class="navbar" style="margin-bottom: 1.5rem;">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-            <img src="/img/image2.png"alt="logo" width="30" height="30" data-step="1" data-position='left' data-intro="Welcome to the Budget App where managing money couldn't be easier. Feel free to hit next and take a tour of the dashboard or hit skip to exit.">
+        <a class="navbar-item" id="brand" href="/">
+            <img src="/img/icon.png"alt="logo" width="30" height="30">
         </a>
         <form action="/newslettersignup" method="POST">
             {{csrf_field()}}
@@ -94,8 +114,6 @@
         <span></span>
         <span></span>
     </div>
-    </div>
-
     <div class="nav-menu nav-right" id="toggleTarget">
         <a class="navbar-item has-text-centered common-Button" href="/">
             Home
@@ -109,7 +127,7 @@
             </a>
         @else
             <div class="dropdown" style="margin-bottom: 1rem;">
-                <a href="#" class="dropdown-toggle button is-primary common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
+                <a href="#" class="dropdown-toggle button is-primary" data-toggle="dropdown" role="button" aria-expanded="false">
                     <span>{{Auth::user()->name}}</span> <span class="caret"></span>
                 </a>
 
@@ -154,7 +172,7 @@
 
                         <ul class="dropdown-menu" role="menu" style="text-align: center;">
                             <li>
-                                <a class="common-Button" href="{{ route('logout') }}"
+                                <a href="{{ route('logout') }}"
 
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -179,14 +197,14 @@
         <div class="hero-body" style="background-image: url('img/landing.png');">
             <div class="container">
                 <div class="columns">
-                    <div class="column is-half-desktop is-full-mobile homepage">
+                    <div class="column is-half-desktop is-full-mobile">
                         <h1 class="title is-1">
                             Analytics on demand.
                         </h1>
 
-                        <h2 class="subtitle is-4">
+                        <h1 class="subtitle is-4">
                             Stop installing boring expense tracking apps that all do </br>the exact  same things. Install one that does everything.
-                        </h2>
+                        </h1>
 
                         <a class="button is-info is-hovered common-Button" href="/home" style="text-decoration:none;">Try it now</a>
                     </div>
@@ -195,7 +213,7 @@
         </div>
     </section>
 
-    {{--custom desktop view for second slide--}}
+    {{--desktop view for second slide--}}
     <section class="hero is-default is-bold is-hidden-mobile is-visible-desktop"  style="height:75.5vh;">
             <div class="hero-body">
                 <div class="container">
@@ -204,7 +222,7 @@
                                 <h1 class="title is-4" style="color: dimgray;">Rich Information</h1>
                                 <h1 class="title is-1">Make informed decisions with historical & real time data.</h1>
                                 <h1 class="title is-4">We combine immediate real time events with rich historical data to help answer the toughest questions about budgeting when and when not to spend.</h1>
-                                <a class="button is-info common-Button" href="/home" style="text-decoration:none;">Check it out!</a>
+                                <a class="button is-info common-Button" href="/home" style="text-decoration:none;">Check it out</a>
                         </div>
                         <div class="column right-side is-half-desktop is-hidden-touch" style="margin-left: 3rem;">
                             <img src="/img/landing_phone.png" alt="phone" width="300px" height="500px">
@@ -214,7 +232,7 @@
             </div>
     </section>
 
-    {{--custom mobile view for second slide--}}
+    {{--mobile view for second slide--}}
     <section class="hero is-default is-bold is-hidden-desktop is-visible mobile">
         <div class="hero-body">
             <div class="container">
@@ -246,12 +264,12 @@
                             Easy to use
                             </h1>
 
-                            <h2 class="title is-3" style="color: #fff;">
+                            <h1 class="title is-1" style="color: #fff;">
                                   Budget App charts your expenses with real time data.
-                            </h2>
-                                <p style="color: lightblue;">
+                            </h1>
+                                <h1 class="title is-4" style="color: lightblue;">
                                     Why force yourself to remember what you spent. Put it in the app for easy reference later!
-                                </p>
+                                </h1>
                              <div class="control third-page">
                                  <a class="button is-info common-Button" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
                             </div>
@@ -314,88 +332,30 @@
                     <form action="/newslettersignup" method="POST">
                         {{csrf_field()}}
                         <div class="field has-addons" style="margin-left: 7rem;">
-                             <p class="control has-icons-left">
-                                <input class="input" type="email" name="email" placeholder="Email" required>
-                                     <span class="icon is-small is-left">
-                                         <i class="fa fa-envelope"></i>
-                                     </span>
+                            <p class="control has-icons-left">
+                                <input class="input refInputField" type="email" name="email" placeholder="Email" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
                             </p>
-                          <button class="button is-info" type="submit" style="color:white;">Subscribe</button>
-                        </div>
+                            <button class="button is-info common-Button" type="submit" style="color:white;">Subscribe</button>
+                         </div>
                     </form>
-                </p>
+                 </p>
              </div>
-        </div>
+         </div>
     </div>
     <div class="columns">
         <div class="container has-text-centered">
             <div class="column is-narrow">
-                <div class="box">
-                    <p class="title is-5">
-                        <a href="https://github.com/abaker4/Budget-App">
+                    <p class="title is-5"></p>
+                    <p class="subtitle">CashFlo&copy; 2017| All Rights Reserved
+                        <a class="icon" href="https://github.com/abaker4/Budget-App">
                             <i class="fa fa-github"></i>
                         </a>
                     </p>
-                    <p class="subtitle">Budget-App&copy; 2017. All Rights Reserved</p>
-                </div>
             </div>
         </div>
     </div>
 </footer>
-<!-- jQuery first, then Tether, then Bootstrap JS. -->
-<script
-        src="http://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<scripot src="js/intro.js"></scripot>
-<script src="/js/sweetalert-dev.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/intro.js"></script>
-
-@include('flash')
-<script>
-    //Activates Hamburger Menu on Navbar
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // Get all "navbar-burger" elements
-        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        // Check if there are any nav burgers
-        if ($navbarBurgers.length > 0) {
-
-            // Add a click event on each of them
-            $navbarBurgers.forEach(function ($el) {
-                $el.addEventListener('click', () => {
-
-                    // Get the target from the "data-target" attribute
-                    var target = $el.dataset.target;
-                var $target = document.getElementById(target);
-
-                // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-                $el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
-
-            });
-
-            });
-        }
-
-    });
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
+@include('layouts.footer')

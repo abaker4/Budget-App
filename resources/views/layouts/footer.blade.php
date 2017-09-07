@@ -1,40 +1,4 @@
 
-<footer class="footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-                <p>
-                    <form action="/newslettersignup" method="POST">
-                        {{csrf_field()}}
-                        <div class="field has-addons" style="margin-left: 7rem;">
-                            <p class="control has-icons-left">
-                                <input class="input" type="email" name="email" placeholder="Email" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                            </p>
-                            <button class="button is-info" type="submit" style="color:white;">Subscribe</button>
-                        </div>
-                     </form>
-                 </p>
-             </div>
-         </div>
-    </div>
-    <div class="columns">
-        <div class="container has-text-centered">
-            <div class="column is-narrow">
-                <div class="box">
-                    <p class="title is-5">
-                        <a class="icon" href="https://github.com/jgthms/bulma">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </p>
-                    <p class="subtitle">Budget-App&copy; 2017. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script
@@ -48,11 +12,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<scripot src="js/intro.js"></scripot>
+<script src="js/intro.js"></script>
 <script src="/js/sweetalert-dev.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/intro.js"></script>
-
 @include('flash')
 <script>
     //Activates Hamburger Menu on Navbar
@@ -82,11 +45,12 @@
         }
 
     });
+</script>
+        <script>
+        $(function(){
 
-$(function(){
+         // provides the functionality of the keypad on  monthly expenses on the dashboard
 
-// provides the functionality of the keypad on  monthly expenses on the dashboard
-    
             $('#one_picker').on('click', function(){
                 var self = this;
                 var currentValue = $('#numInput').val() + $(self).data('value');
@@ -153,24 +117,23 @@ $(function(){
                 $('#numInput').val(currentValue);
             });
 
-             $('#delete').on('click', function(){
+            $('#delete').on('click', function(){
                 var currentValue = $('#numInput').val();
                 var shortenedString = currentValue.substr(0,(currentValue.length -1));
-                    $('#numInput').val(shortenedString);
+                $('#numInput').val(shortenedString);
                 return false;
             });
 
-    //calender date picker on dashboard
-        $( "#datepicker" ).datepicker();
+            //calender date picker on dashboard
+            $( "#datepicker" ).datepicker();
 
-        //validation flash messaging
+            //validation flash messaging
 
-        $('#errors').fadeOut(3000);
-
-
-});
+            $('#errors').fadeOut(3000);
 
 
-</script>
-</body>
+        });
+
+        </script>
+    </body>
 </html>

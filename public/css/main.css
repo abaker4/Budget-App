@@ -104,6 +104,7 @@ a, a:hover {
     flex-shrink:0;margin:10px
 }
 
+
 @keyframes fadein {
     from {
         opacity:0;
@@ -138,9 +139,11 @@ a, a:hover {
 
 }
 
+@media (min-width: 900px){
 
-@media screen and (max-width:768px) {
-    .homepage, .second-page, .third-page, .footer {
-        text-align: center;
+    #flyover{
+
+        margin-top: 10px;
     }
 }
+

@@ -22,6 +22,38 @@
     <style>
         .images-container{position:absolute;width:42%;bottom:0;right:0;height:80%;overflow:hidden}
         .images-house img{position:absolute;-webkit-box-shadow:2px 2px 9px 1px rgba(0,0,0,0.25);box-shadow:2px 2px 9px 1px rgba(0,0,0,0.25)}
+        .common-Button {
+            white-space: nowrap;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 14px;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+            background: #fff;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .025em;
+            text-decoration: none;
+            transition: all .15s ease;
+        }
+
+        .common-Button:hover{
+
+            transform:translateY(-1px);
+            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+        }
+
+        .common-Button:active{
+
+            background-color:#f6f9fc;
+            transform:translateY(1px);
+            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+        }
+        .common-ButtonGroup .common-Button{
+            -ms-flex-negative:0;
+            flex-shrink:0;margin:10px
     </style>
 </head>
 <body>
@@ -61,7 +93,7 @@
                                             </span>
                                     @endif
                                     <p class="control">
-                                        <button class="button is-success" type="submit" style="border-radius: 10px; text-decoration: none; margin-top: 1rem;">Next</button>
+                                        <button class="button is-success common-Button" type="submit" style="border-radius: 10px; text-decoration: none; margin-top: 1rem;">Next</button>
                                     </p>
                                 </div>
                             </div>

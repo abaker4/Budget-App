@@ -46,7 +46,6 @@ class DashboardController extends Controller
             ->get();
 
 
-
         $daily_expenses = DB::table('daily_expenses')
             ->join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
@@ -56,10 +55,10 @@ class DashboardController extends Controller
 
         $daily_title = DailyExpense::join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
+            ->where('daily_expenses.created_at', '>', DB::raw('CURDATE() - INTERVAL 1 WEEK'))
             ->select('daily_expenses.*', 'daily_category.title')
             ->orderby('daily_expenses.created_at', 'desc')
             ->get();
-
 
 //        $sql = "SELECT DATE_FORMAT(D.created_at, '%m-%d-%Y') as theDay,
 //                  SUM(D.amount) as sum,
@@ -75,7 +74,7 @@ class DashboardController extends Controller
             $category_expenses = DailyExpense::join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
                 ->where('user_id', '=', auth()->user()->id)
                 ->where('daily_expenses.daily_category_id', '=', $key)
-                ->where('daily_expenses.created_at', '>', DB::raw('CURDATE() - INTERVAL 6 DAY')) // get expenses for the last week
+                ->where('daily_expenses.created_at', '>', DB::raw('CURDATE() - INTERVAL 6 DAY'))// get expenses for the last week
                 ->select(DB::raw('DATE_FORMAT(daily_expenses.created_at, "%m-%d-%Y") as theDay'), DB::raw('SUM(daily_expenses.amount) as sum'), 'daily_category.id', 'daily_category.title')
                 ->groupBy('theDay')
                 ->get();
@@ -105,14 +104,13 @@ class DashboardController extends Controller
 
         $save_percent =
             DB::table('users')
-            ->where('id', '=', auth()->user()->id)
-            ->select('save_percent')
-            ->get();
+                ->where('id', '=', auth()->user()->id)
+                ->select('save_percent')
+                ->get();
 
-        $next_sunday = date('Y-m-d',strtotime('next sunday'));
+        $next_sunday = date('Y-m-d', strtotime('next sunday'));
         $datediff = strtotime($next_sunday) - strtotime(auth()->user()->reference_date);
         $daysBetween = floor($datediff / (60 * 60 * 24));
-
 
         $monthly_sum = $income - $expense;
 
@@ -137,7 +135,7 @@ class DashboardController extends Controller
     public function dailyTotal(Request $request)
     {
 
-        $this->validate(request(),[
+        $this->validate(request(), [
             'amount' => 'required',
 
             'daily_category_id' => 'required'
@@ -160,10 +158,9 @@ class DashboardController extends Controller
     }
 
 
-
     public function newReferenceDate(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate(request(), [
 
             'reference_date' => 'required',
 
@@ -174,7 +171,7 @@ class DashboardController extends Controller
             ->first();
 
 
-        $user->reference_date = date('Y-m-d',strtotime($data['reference_date']));
+        $user->reference_date = date('Y-m-d', strtotime($data['reference_date']));
         $user->save();
 
 
@@ -184,9 +181,6 @@ class DashboardController extends Controller
 
 
     }
-
-
-
 
 
 }

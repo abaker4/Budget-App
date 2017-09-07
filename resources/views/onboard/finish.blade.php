@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/onboard.css">
     <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
+
     <style>
         .images-container{
             position:absolute;
@@ -74,14 +75,14 @@
         <div class="container-elevo">
             <div class="columns">
                 <div class="column is-7">
-                    <h4 class="title is-4 is-white is-bold">
+                    <h4 class="title is-2 is-white is-bold">
                         Thanks for sharing!
                     </h4>
-                    <h1 class="title is-2 is-white is-bold">
+                    <h4 class="title is-1 is-white">
                         You are well on your way to budgeting like a pro
-                    </h1>
+                    </h4>
                     <h4 class="title is-4 is-white">
-                        We hope you'll enjoy it as much as we do because there's nothing better than kicking butt and taking names!
+
                     </h4>
                         <div class="field">
                             <div class="field has-addons">

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
           integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
@@ -20,81 +21,99 @@
     <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
 
 </head>
+    <style>
+        .field{
+            height: 50px;
+        }
+
+        input:hover {
+            opacity: .9;
+        }
+
+        #button{
+            border-style: solid;
+            border-radius: 10px;
+            border-color: white;
+            margin-left: 8rem;
+        }
+
+        .refInputField{
+            height:40px;
+        }
+
+        a, a:hover{
+            text-decoration: none;
+        }
+
+        .common-Button {
+            white-space: nowrap;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+            background: #fff;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .025em;
+            text-decoration: none;
+            transition: all .15s ease;
+        }
+
+        .common-Button:hover{
+
+            transform:translateY(-1px);
+            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+        }
+
+        .common-Button:active{
+
+            background-color:#f6f9fc;
+            transform:translateY(1px);
+            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+        }
+        .common-ButtonGroup .common-Button{
+            -ms-flex-negative:0;
+            flex-shrink:0;margin:10px
+        }
+
+         #flyover:hover {
+            background-color: #FFF;
+            !important;
+        }
+
+          #brand:hover{
+             background-color: #fff;
+             !important;
+              opacity: .8;
+              color:lightskyblue;
+         }
+
+        #inputField{
+            height: 40px;
+        }
+
+        @media (min-width: 900px){
+
+            #flyover{
+
+                margin-top: 10px;
+            }
+        }
+
+    </style>
+
 <body>
-<style>
-
-
-    #inputField{
-        height: 40px;
-    }
-    #refInputField{
-        height:40px;
-    }
-
-    .field{
-        height: 50px;
-    }
-    input:hover {
-        opacity: .9;
-    }
-
-
-    i:hover {
-        opacity: .9;
-        color: lightblue;
-
-    }
-    a, a:hover{
-        text-decoration: none;
-    }
-
-    .common-Button {
-        white-space: nowrap;
-        display: inline-block;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 14px;
-        box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
-        background: #fff;
-        border-radius: 4px;
-        font-size: 15px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: .025em;
-        text-decoration: none;
-        transition: all .15s ease;
-    }
-
-    .common-Button:hover{
-
-        transform:translateY(-1px);
-        box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
-    }
-
-    .common-Button:active{
-
-        background-color:#f6f9fc;
-        transform:translateY(1px);
-        box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
-    }
-    .common-ButtonGroup .common-Button{
-        -ms-flex-negative:0;
-        flex-shrink:0;margin:10px
-    }
-
-
-</style>
-
-
     {{--Nav Start--}}
 
     <nav class="navbar" style="margin-bottom: 1.5rem;">
         <div class="navbar-brand">
-            <a class="navbar-item " href="/" >
-                <img src="/img/image2.png"alt="logo" width="30" height="30" data-step="1" data-position='left' data-intro="Welcome to the Budget App where managing money couldn't be easier. Feel free to hit next and take a tour of the dashboard or hit skip to exit.">
+            <a class="navbar-item common-Button" id="brand" href="/" >
+                <img src="/img/icon.png"alt="logo" width="30" height="30" data-step="1" data-intro="Welcome to Cash Flo where managing money couldn't be easier. Feel free to hit next and take a tour of the dashboard or hit skip to exit." data-position='left'>
             </a>
-            <a class="navbar-item" href="/home?tour=1">
-                <i id="flyover" class="fa fa-paper-plane common-Button" aria-hidden="true" data-step="9" data-intro="If you ever need to revisit the flyover instructions, just click here."></i>
+            <a id="flyover" class="navbar-item" href="/home?tour=1">
+                <i class="fa fa-paper-plane fa-3x common-Button" aria-hidden="true" data-step="9" data-intro="If you ever need to revisit the flyover instructions, just click here."></i>
             </a>
         </div>
         <div class="navbar-burger burger" data-target="toggleTarget">
@@ -102,10 +121,8 @@
             <span></span>
             <span></span>
         </div>
-        </div>
-
         <div class="nav-menu nav-right" id="toggleTarget">
-            <a class="navbar-item has-text-centered" href="/">
+            <a class="navbar-item has-text-centered common-Button" href="/">
                 Home
             </a>
             @if (Auth::guest())
@@ -123,7 +140,7 @@
 
                     <ul class="dropdown-menu" role="menu" style="text-align: center;">
                         <li>
-                            <a class= common-Button href="{{ route('logout') }}"
+                            <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
                                 Logout
@@ -181,7 +198,7 @@
     </nav>
 
 {{--Nav End--}}
-
+<div class="container">
     <div class ="columns">
         <div class="column is-6">
             <section class="panel">
@@ -189,15 +206,15 @@
                     Weekly Total
                 </p>
                 <h1 class="title is-1 has-text-centered"  style="font-weight: bolder; margin-top: 7rem;">
-                  <span data-step="2" data-position="right" data-intro="We're happy you decided to join us! This is your weekly budgeted amount based off your static monthly expenses.
-                    Every Sunday your total renews rolling over your amount you had the previous week.">${{$weekly_amount}}</span>
+                  <span data-step="2" data-position="right" data-intro="This is your pro-rated weekly budgeted amount based off your static monthly expenses.
+                    Every Sunday your weekly total renews, rolling over any amount you had left over from the previous week.">${{$weekly_amount}}</span>
                 </h1>
             </section>
             <section>
                 <form method="POST" action="/daily_total">
                     {{csrf_field()}}
                     <div class="title is-4 has-text-centered field has-addons is-visible-desktop is-hidden-mobile"
-                         data-step="3" data-intro=" This is your Daily Expense. Any time you want to make a purchase during the week you can log it here with type and amount">
+                         data-step="3" data-position="right" data-intro=" This is your Daily Expense. Any time you want to make a purchase during the week you can log it here with type and amount">
                         <p class="control">
                                  <span  class="select">
                                    <select id="inputField" class="common-Button" name="daily_category_id">
@@ -221,12 +238,14 @@
                         </p>
                     </div>
                 </form>
-                <div class="has-text-centered" style="margin-left: 14rem; margin-bottom: 4rem;">
+                <div class="has-text-centered" style="margin-left: 9rem; margin-bottom: 4rem;">
                     @include('layouts.form')
                 </div>
             </section>
             <div style="clear:both;"></div>
         </div>
+
+
 
 
         <div class="column is-6"
@@ -239,7 +258,8 @@
             </section>
         </div>
     </div>
-
+</div>
+    <div class="container">
     <div class="columns">
         <div class="column is-6">
             <section class="panel">
@@ -273,7 +293,7 @@
                     Monthly Saving %
                 </p>
                 <table class="table is-bordered"
-                       data-step="6" data-intro="You also can manage how much you want to save each month, with increasing or decreasing amounts based off of your preference.">
+                       data-step="6" data-intro="You also can manage how much you want to save each month, with increasing or decreasing the percentage based off of your preference.">
                     <thead></thead>
                     <tbody>
                     @foreach($save_percent as $percent)
@@ -298,7 +318,7 @@
                     {{csrf_field()}}
                     <div class="field has-addons" style="margin-top:1rem; margin-left: 12rem;">
                         <p class="control">
-                            <input  id="refInputField" class="input is-info" value="" name="reference_date" type="text" id="datepicker" placeholder="Date:" data-step="7" data-intro="You made a big purchase at the beginning of the week? No problem! You can easily reset weekly budget start date here!" required>
+                            <input class="input is-info refInputField" value="" name="reference_date" type="text" id="datepicker" placeholder="Date:" data-step="7" data-intro="You made a big purchase at the beginning of the week? No problem! You can easily reset weekly budget start date here!" required>
                         </p>
                         <p class="control">
                             <button class="button is-info common-Button" type="submit">Submit</button>
@@ -319,7 +339,7 @@
                     Recent Spending History
                 <p>
                 <table class="table is-striped"
-                       data-step="8" data-intro="Recent Spending History tracks all of your purchases in a detailed view and helps your track spending patterns">
+                       data-step="8" data-intro="Recent Spending History tracks all of your purchases in a detailed view within the last week and also helps you track spending patterns">
                     <thead>
                     <tr>
                         <th>Category</th>
@@ -339,18 +359,19 @@
                 </table>
             </section>
         </div>
-
     </div>
+
+</div>
         <div class="columns">
             <div class="container has-text-centered">
                 <div class="column is-narrow">
                     <div class="box">
-                        <p class="title is-5">
-                            <a class="icon" href="https://github.com/jgthms/bulma">
+                        <p class="title is-5"></p>
+                        <p class="subtitle">CashFlo&copy; 2017 | All Rights Reserved
+                            <a class="icon" href="https://github.com/abaker4/Budget-App">
                                 <i class="fa fa-github"></i>
                             </a>
                         </p>
-                        <p class="subtitle">Budget-App&copy; 2017. All Rights Reserved</p>
                     </div>
                 </div>
             </div>
@@ -389,13 +410,9 @@
     <script src="/js/sweetalert-dev.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/intro.js"></script>
+
     @include('flash')
 
-
-    {{--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"--}}
-            {{--integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"--}}
-            {{--crossorigin="anonymous"></script>--}}
-    {{--<script>--}}
     <script>
         //Activates Hamburger Menu on Navbar
         document.addEventListener('DOMContentLoaded', function () {
@@ -424,7 +441,7 @@
             }
 
         });
-</script>
+    </script>
     <script>
         $(function(){
 
@@ -513,6 +530,8 @@
 
         });
 
+
+        //Chart Js
 
         var theData = {!! $expense_chart_data !!};
         var chartData = {
@@ -647,10 +666,6 @@
 
             return colors[currentColorKey];
         }
-
-
-
-
 
         </script>
     </body>

@@ -80,11 +80,11 @@
                         Boost Your Budgeting Performance
                     </h4>
                     <h1 class="title is-2 is-white is-bold">
-                        Hey <b style="color:#60CC4F;">{{$user->name}}!</b></br>we're happy you started your money saving journey
+                        Hello <b style="color:#60CC4F;">{{$user->name}}</b>,</br>We're glad you decided to start your money saving journey
                     </h1>
-                    <h4 class="title is-4 is-white">
+                    <h1 class="title is-4 is-white">
                         Take a minute and answer a few questions for us so we can better understand how to help you start budgeting.
-                    </h4>
+                    </h1>
                     <form>
                         <div class="field">
                             <div class="field has-addons">
