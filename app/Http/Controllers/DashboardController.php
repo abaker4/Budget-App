@@ -52,7 +52,6 @@ class DashboardController extends Controller
             ->select('daily_expenses.*')
             ->get();
 
-
         $daily_title = DailyExpense::join('daily_category', 'daily_category.id', 'daily_expenses.daily_category_id')
             ->where('user_id', '=', auth()->user()->id)
             ->where('daily_expenses.created_at', '>', DB::raw('CURDATE() - INTERVAL 1 WEEK'))
@@ -80,6 +79,8 @@ class DashboardController extends Controller
                 ->get();
             $expense_chart_data[$val] = $category_expenses;
         }
+
+
 
         $expense_chart_data = json_encode($expense_chart_data); // json encode so we can use in js
 

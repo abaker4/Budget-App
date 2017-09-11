@@ -7,7 +7,7 @@
             <div class="hero">
                 <div class="hero-body">
                     <div class="has-text-centered is-hidden-desktop is-visible-mobile field-has-addons">
-                        <input class="picker2" id="numInput" name="amount" type="text" style="margin-bottom: 3rem; margin-right: 12.5rem;">
+                        <input class="picker2" id="numInput" name="amount" type="text" style="margin-bottom: 3rem; margin-right: 12.5rem;" required>
                         <ul id="keyboard">
                             <li id="one_picker" data-value="1" class="letter">1</li>
                             <li id="two_picker" data-value="2" class="letter">2</li>

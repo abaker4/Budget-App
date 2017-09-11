@@ -229,7 +229,7 @@
                                 </span>
                         </p>
                         <p class="control is-expanded">
-                            <input id="inputField" class="input" {{ $errors->has('amount') ? ' has-error' : '' }} name="amount" type="text" placeholder="$ Amount">
+                            <input id="inputField" class="input" {{ $errors->has('amount') ? ' has-error' : '' }} name="amount" type="text" placeholder="$ Amount" required>
                         </p>
                         <p class="control">
                             <button class=" button is-info common-Button" type="submit">
