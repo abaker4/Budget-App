@@ -28,7 +28,7 @@ class Newsletter extends Mailable
      */
     public function build()
     {
-        return $this->from('info@thebudgetapp.com')
+        return $this->from('info@cashflo.austincbaker.com')
         ->markdown('emails.newsletter');
     }
 }

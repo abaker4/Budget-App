@@ -186,7 +186,7 @@ class DashboardController extends Controller
         // the reference_date received will overwrite the one before
         $data = $request->all();
         $user = User::where('id', '=', auth()->user()->id)
-            ->first();
+                    ->first();
 
         $user->reference_date = date('Y-m-d', strtotime($data['reference_date']));
         $user->save();

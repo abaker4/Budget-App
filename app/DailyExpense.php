@@ -32,14 +32,6 @@ class DailyExpense extends Model
 
     ];
 
-
-
-
-
-
-
-
-
     /**
      * Nothing is restricted from being mass assigned
      *

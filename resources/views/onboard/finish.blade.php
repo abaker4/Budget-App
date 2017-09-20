@@ -8,11 +8,8 @@
                     <h4 class="title is-2 is-white is-bold">
                         Thanks for sharing!
                     </h4>
-                    <h4 class="title is-1 is-white">
+                    <h4 class="title is-2 is-white">
                         You are well on your way to budgeting like a pro
-                    </h4>
-                    <h4 class="title is-4 is-white">
-
                     </h4>
                         <div class="field">
                             <div class="field has-addons">

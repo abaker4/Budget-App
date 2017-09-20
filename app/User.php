@@ -39,8 +39,6 @@ class User extends Authenticatable
 //    private $created_at;
 //    private $updated_at;
 
-
-
     /**
      * The attributes that are mass assignable.
      *
@@ -111,7 +109,5 @@ class User extends Authenticatable
         $this->save_percent = $percentage;
         $this->save();
     }
-
-
 
 }

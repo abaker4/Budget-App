@@ -13,24 +13,29 @@ class OnBoardingController extends Controller
 
     protected $guarded = [];
 
+    /**
+     * OnBoardingController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-
-
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function start()
     {
         $user = DB::table('users')
-            ->where('id', '=', auth()->user()->id)
-            ->first();
+                    ->where('id', '=', auth()->user()->id)
+                    ->first();
 
         return view('onboard.start', compact('user'));
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function income()
     {
         $income =
@@ -42,7 +47,9 @@ class OnBoardingController extends Controller
         return view('onboard.income', compact('income'));
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function housing()
     {
         $housing =
@@ -54,6 +61,9 @@ class OnBoardingController extends Controller
         return view('onboard.housing', compact('housing'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function utilities()
     {
         $utilities =
@@ -65,7 +75,9 @@ class OnBoardingController extends Controller
         return view('onboard.utilities', compact('utilities'));
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function insurances()
     {
         $insurances =
@@ -77,7 +89,9 @@ class OnBoardingController extends Controller
         return view('onboard.insurances', compact('insurances'));
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function memberships()
     {
         $memberships =
@@ -89,20 +103,24 @@ class OnBoardingController extends Controller
         return view('onboard.memberships', compact('memberships'));
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function savings()
     {
         $savings =
             DB::table('users')
-            ->where('id', '=', auth()->user()->id)
-            ->first();
+                ->where('id', '=', auth()->user()->id)
+                ->first();
 
 
         return view('onboard.savings', compact('savings'));
 
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function savingsPercentage()
     {
         $savings =
@@ -115,6 +133,9 @@ class OnBoardingController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function finish()
     {
 
@@ -122,7 +143,10 @@ class OnBoardingController extends Controller
     }
 
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -134,7 +158,6 @@ class OnBoardingController extends Controller
                 ->where('user_id', '=', auth()->user()->id)// make sure user owns this record
                 ->first();
 
-            // @todo add in a check to make sure this exists, if not redirect out with a message
         } else {
             $monthly_expense = new MonthlyExpense();
             $monthly_expense->user_id = auth()->user()->id;
@@ -150,12 +173,16 @@ class OnBoardingController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeSavingPercentage(Request $request)
     {
         $data = $request->all();
-        // if the monthly_expense_id exists in the form data run this query
+        // if the user_id exists in the form data run this query
         // if it finds a record update it with new values
-        // if no record or there is no monthly_expense_id create a new monthly expense object and save a new record
+        // if no record or there is no user_id create a new user object and save a new record
         if (!empty($data['id'])) {
             $user = User::where('id', '=', $data['id'])
                 ->first();
@@ -169,13 +196,17 @@ class OnBoardingController extends Controller
         return redirect('/home');
     }
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeSaving(Request $request)
     {
         $data = $request->all();
-        // if the monthly_expense_id exists in the form data run this query
+        // if the user_id exists in the form data run this query
         // if it finds a record update it with new values
-        // if no record or there is no monthly_expense_id create a new monthly expense object and save a new record
+        // if no record or there is no user_id create a new user object and save a new record
+        // redirect to last step in onboarding
         if (!empty($data['id'])) {
             $user = User::where('id', '=', $data['id'])
                 ->first();
@@ -198,7 +229,6 @@ class OnBoardingController extends Controller
      */
     public static function onBoardTriager($step)
     {
-
 
         switch($step) {
 
@@ -238,13 +268,14 @@ class OnBoardingController extends Controller
      */
     public static function checkOnboardStep() {
 
+        // Query getting monthly_category_id in ascending order based on authenticated user
         $array_of_expenses = DB::table('monthly_expenses')
             ->where('user_id', '=', auth()->user()->id)
             ->orderBy('monthly_category_id', 'asc')
             ->get();
 
         $step = false;
-
+        // if not set or completed step based on monthly_category_id go to that step
         for ($i = 1; $i <= 5; $i++) {
             if (!isset($array_of_expenses[$i-1]) ||
                 $array_of_expenses[$i-1]->monthly_category_id !== $i) {
@@ -252,7 +283,7 @@ class OnBoardingController extends Controller
                 break;
             }
         }
-
+        // if step isn't completed and doesn't have  a save_percent go to step 6
         if (!$step && !auth()->user()->save_percent) {
             $step = 6;
         }

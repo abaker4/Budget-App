@@ -33,9 +33,6 @@ class MonthlyExpense extends Model
 //    private $created_at;
 //    private $updated_at;
 
-
-
-
     /**
      * Nothing is restricted form being mass assigned in this model
      *
@@ -51,7 +48,6 @@ class MonthlyExpense extends Model
      */
     public function dailyExpense()
     {
-
         return $this->belongsTo(DailyExpense::class);
     }
 
@@ -65,7 +61,6 @@ class MonthlyExpense extends Model
      */
     public function user()
     {
-
         return $this->belongsTo(User::class);
     }
 

@@ -28,7 +28,6 @@ class Type extends Model
      */
     public function user()
     {
-
         $this->belongsToMany(User::class);
     }
 }
