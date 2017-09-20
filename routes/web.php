@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::post('/newslettersignup', 'HomeController@newsletterSignup');
+Route::post('/newslettersignup', 'HomeController@newsletterSignUp');
 
 
 

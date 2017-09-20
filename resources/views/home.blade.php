@@ -22,28 +22,6 @@
 
 </head>
     <style>
-        .field{
-            height: 50px;
-        }
-
-        input:hover {
-            opacity: .9;
-        }
-
-        #button{
-            border-style: solid;
-            border-radius: 10px;
-            border-color: white;
-            margin-left: 8rem;
-        }
-
-        .refInputField{
-            height:40px;
-        }
-
-        a, a:hover{
-            text-decoration: none;
-        }
 
         .common-Button {
             white-space: nowrap;
@@ -61,47 +39,6 @@
             transition: all .15s ease;
         }
 
-        .common-Button:hover{
-
-            transform:translateY(-1px);
-            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
-        }
-
-        .common-Button:active{
-
-            background-color:#f6f9fc;
-            transform:translateY(1px);
-            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
-        }
-        .common-ButtonGroup .common-Button{
-            -ms-flex-negative:0;
-            flex-shrink:0;margin:10px
-        }
-
-         #flyover:hover {
-            background-color: #FFF;
-            !important;
-        }
-
-          #brand:hover{
-             background-color: #fff;
-             !important;
-              opacity: .8;
-              color:lightskyblue;
-         }
-
-        #inputField{
-            height: 40px;
-        }
-
-        @media (min-width: 900px){
-
-            #flyover{
-
-                margin-top: 10px;
-            }
-        }
-
     </style>
 
 <body>
@@ -113,7 +50,7 @@
                 <img src="/img/icon.png"alt="logo" width="30" height="30" data-step="1" data-intro="Welcome to Cash Flo where managing money couldn't be easier. Feel free to hit next and take a tour of the dashboard or hit skip to exit." data-position='left'>
             </a>
             <a id="flyover" class="navbar-item" href="/home?tour=1">
-                <i class="fa fa-paper-plane fa-3x common-Button" aria-hidden="true" data-step="9" data-intro="If you ever need to revisit the flyover instructions, just click here."></i>
+                <i class="fa fa-paper-plane common-Button" aria-hidden="true" data-step="9" data-intro="If you ever need to revisit the flyover instructions, just click here."></i>
             </a>
         </div>
         <div class="navbar-burger burger" data-target="toggleTarget">
@@ -171,7 +108,7 @@
                             <span>Register</span>
                         </a>
                     </p>
-                    @else
+                        @else
                         <div class="dropdown" style="margin-bottom: 2rem;">
                             <a href="#" class="dropdown-toggle button common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
                                 <span>{{Auth::user()->name}}</span> <span class="caret"></span>
@@ -206,8 +143,9 @@
                     Weekly Total
                 </p>
                 <h1 class="title is-1 has-text-centered"  style="font-weight: bolder; margin-top: 7rem;">
-                  <span data-step="2" data-position="right" data-intro="This is your pro-rated weekly budgeted amount based off your static monthly expenses.
-                    Every Sunday your weekly total renews, rolling over any amount you had left over from the previous week.">${{$weekly_amount}}</span>
+                  <span data-step="2" data-position="right" data-intro="This is your pro-rated weekly budgeted amount
+                   based off your static monthly expenses. Every Sunday your weekly total renews, rolling over any amount
+                   you had left over from the previous week.">${{$weekly_amount}}</span>
                 </h1>
             </section>
             <section>
@@ -229,7 +167,7 @@
                                 </span>
                         </p>
                         <p class="control is-expanded">
-                            <input id="inputField" class="input" {{ $errors->has('amount') ? ' has-error' : '' }} name="amount" type="text" placeholder="$ Amount" required>
+                            <input id="inputField" class="input" name="amount" type="text" placeholder="$ Amount" required>
                         </p>
                         <p class="control">
                             <button class=" button is-info common-Button" type="submit">
@@ -249,7 +187,8 @@
 
 
         <div class="column is-6"
-             data-step="4" data-intro="The Detailed Chart View shows you where you're spending money each day along with a running daily total.">
+             data-step="4" data-intro="The Detailed Chart View shows you where you're spending money each day along
+             with a running daily total.">
             <section class="panel">
                 <p class="panel-heading has-text-centered">
                     Daily Expense
@@ -260,15 +199,16 @@
     </div>
 </div>
     <div class="container">
-    <div class="columns">
-        <div class="column is-6">
-            <section class="panel">
-                <p class="panel-heading has-text-centered">
-                    Monthly Expense Summary
-                </p>
+        <div class="columns">
+            <div class="column is-6">
+                <section class="panel">
+                    <p class="panel-heading has-text-centered">
+                      Monthly Expense Summary
+                    </p>
 
-                <table class="table is-bordered"
-                       data-step="5" data-intro="Your Monthly Expense Summary easily allows you to edit any static expenses you may have, so you can be accurate as possible with your budget.">
+                    <table class="table is-bordered"
+                       data-step="5" data-intro="Your Monthly Expense Summary easily allows you to edit any static
+                       expenses you may have, so you can be accurate as possible with your budget.">
                     <thead>
                         <tr>
                             <th>Category</th>
@@ -276,7 +216,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    @foreach($monthly_expenses as $monthly)
+                            @foreach($monthly_expenses as $monthly)
                         <tbody>
                         <tr class="has-text-centered">
                             <td>{{$monthly->title}}</td>
@@ -306,8 +246,7 @@
                                 </a>
                             </td>
                         </tr>
-
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
                 <p class="panel-heading has-text-centered">
@@ -318,15 +257,18 @@
                     {{csrf_field()}}
                     <div class="field has-addons" style="margin-top:1rem; margin-left: 12rem;">
                         <p class="control">
-                            <input class="input is-info refInputField" value="" name="reference_date" type="text" id="datepicker" placeholder="Date:" data-step="7" data-intro="You made a big purchase at the beginning of the week? No problem! You can easily reset weekly budget start date here!" required>
+                            <input class="input is-info refInputField" value="" name="reference_date" type="text"
+                                   id="datepicker" placeholder="Date:" data-step="7" data-intro="You made a big purchase
+                                   at the beginning of the week? No problem! You can easily reset weekly budget start
+                                   date here!" required>
                         </p>
                         <p class="control">
                             <button class="button is-info common-Button" type="submit">Submit</button>
                         </p>
                     </div>
                     @if ($errors->has('reference_date'))
-                        <span  class="help-block">
-                                <strong style="color:red;">{{ $errors->first('reference_date') }}</strong>
+                        <span class="help-block">
+                            <strong style="color:red;">{{ $errors->first('reference_date') }}</strong>
                         </span>
                     @endif
                 </form>
@@ -339,7 +281,8 @@
                     Recent Spending History
                 <p>
                 <table class="table is-striped"
-                       data-step="8" data-intro="Recent Spending History tracks all of your purchases in a detailed view within the last week and also helps you track spending patterns">
+                       data-step="8" data-intro="Recent Spending History tracks all of your purchases in a detailed
+                       view within the last week and also helps you track spending patterns">
                     <thead>
                     <tr>
                         <th>Category</th>
@@ -377,7 +320,7 @@
             </div>
         </div>
 
-
+{{--flyover tour--}}
     @if ($tour)
         <script src="js/intro.js"></script>
         <script language='javascript' type='text/javascript'>
@@ -393,6 +336,7 @@
             });
         </script>
     @endif
+
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script

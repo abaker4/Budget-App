@@ -8,8 +8,9 @@ input:hover {
     border-style: solid;
     border-radius: 10px;
     border-color: white;
-
+    margin-left: 8rem;
 }
+
 
 a, a:hover {
     text-decoration: none;
@@ -93,6 +94,8 @@ a, a:hover {
     box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
 }
 
+
+
 .common-Button:active{
 
     background-color:#f6f9fc;
@@ -102,6 +105,31 @@ a, a:hover {
 .common-ButtonGroup .common-Button{
     -ms-flex-negative:0;
     flex-shrink:0;margin:10px
+}
+
+.refInputField{
+    height:40px;
+}
+
+#flyover{
+
+    margin-top: 10px;
+}
+
+#flyover:hover {
+    background-color: #FFF;
+!important;
+}
+
+#brand:hover{
+    background-color: #fff;
+!important;
+    opacity: .8;
+    color:lightskyblue;
+}
+
+#inputField{
+    height: 40px;
 }
 
 
@@ -146,4 +174,8 @@ a, a:hover {
         margin-top: 10px;
     }
 }
+
+
+
+
 

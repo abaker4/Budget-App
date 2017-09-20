@@ -45,8 +45,7 @@
         }
 
     });
-</script>
-        <script>
+
         $(function(){
 
          // provides the functionality of the keypad on  monthly expenses on the dashboard

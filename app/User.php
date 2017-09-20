@@ -60,39 +60,52 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
+    /**
+     * @param \App\MonthlyExpense $monthlyExpense
+     */
     public function publish(MonthlyExpense $monthlyExpense)
     {
         $this->monthlyExpense()->save($monthlyExpense);
     }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function monthlyExpense()
     {
         return $this->hasMany(MonthlyExpense::class);
     }
 
 
-
+    /**
+     * @param \App\DailyExpense $dailyExpense
+     * @return false|\Illuminate\Database\Eloquent\Model
+     */
     public function record(DailyExpense $dailyExpense)
     {
         return $this->dailyExpense()->save($dailyExpense);
     }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function dailyExpense()
     {
         return $this->hasMany(DailyExpense::class);
     }
 
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function type()
     {
         return $this->hasMany(Type::class);
     }
 
-
+    /**
+     * @param $percentage
+     */
     public function updateSavingPercentage($percentage)
     {
         $this->save_percent = $percentage;

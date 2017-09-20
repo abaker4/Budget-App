@@ -28,13 +28,13 @@ class HomeController extends Controller
 
     /**
      * Checking to see if Email exists in DB, if not it will record and pass a flash message,
-     * if it does exist it will pass a different flass message and redirect '/'
+     * if it does exist it will pass a different flash message and redirect '/'
      *
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function newsletterSignup(Request $request)
+    public function newsletterSignUp(Request $request)
     {
         $data = $request->all();
 

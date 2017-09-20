@@ -1,9 +1,5 @@
-@extends('layouts.master')
-
-
-@section('content')
-
-    <section class="hero is-large">
+@include('layouts.onboardheader')
+ <section class="hero is-large">
         <div class="hero-body">
             <div class="container">
                 <div class="columns">
@@ -32,6 +28,3 @@
     </section>
 
 
-
-
-    @endsection

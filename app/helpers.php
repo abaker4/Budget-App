@@ -1,5 +1,6 @@
 <?php
 
+
 function  flash($title = null, $message = null)
 {
     $flash = app('App\Http\Flash');
