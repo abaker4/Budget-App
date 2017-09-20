@@ -19,6 +19,69 @@
     <link rel="stylesheet" href="/css/sweetalert.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
+    <style>
+
+        .common-Button {
+            white-space: nowrap;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 14px;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+            background: #fff;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .025em;
+            text-decoration: none;
+            transition: all .15s ease;
+        }
+
+        .common-Button:hover{
+
+            transform:translateY(-1px);
+            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+        }
+
+
+
+        .common-Button:active{
+
+            background-color:#f6f9fc;
+            transform:translateY(1px);
+            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+        }
+        .common-ButtonGroup .common-Button{
+            -ms-flex-negative:0;
+            flex-shrink:0;margin:10px
+        }
+
+        .refInputField{
+            height:40px;
+        }
+
+        #flyover{
+
+            margin-top: 10px;
+        }
+
+        #flyover:hover {
+            background-color: #FFF;
+        !important;
+        }
+
+        #brand:hover{
+            background-color: #fff;
+        !important;
+            opacity: .8;
+            color:lightskyblue;
+        }
+
+        #inputField{
+            height: 40px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar" style="margin-bottom: 1.5rem;">
