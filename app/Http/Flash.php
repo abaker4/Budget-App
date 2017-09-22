@@ -4,7 +4,10 @@ namespace App\Http;
 
 class Flash {
 
-
+    /**
+     * @param $title
+     * @param $message
+     */
     public function message($title, $message)
     {
         session()->flash('flash_message', [
@@ -18,6 +21,10 @@ class Flash {
 
     }
 
+    /**
+     * @param $title
+     * @param $message
+     */
     public function success($title, $message)
     {
         session()->flash('flash_message', [
@@ -31,6 +38,10 @@ class Flash {
 
     }
 
+    /**
+     * @param $title
+     * @param $message
+     */
     public function warning($title, $message)
     {
         session()->flash('flash_message', [

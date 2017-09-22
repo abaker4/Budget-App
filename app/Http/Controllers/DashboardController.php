@@ -132,7 +132,6 @@ class DashboardController extends Controller
         // returns the weekly amount pro rated to sunday set to two decimal places
         $weekly_amount = number_format(($daysBetween * $daily_total) - $daily_value, 2);
 
-
         return view('home', compact('monthly_expenses', 'daily_expenses', 'daily_title',
             'expense_chart_data', 'weekly_amount', 'daily_value', 'monthly_category', 'save_percent',
             'reference_date', 'tour'));

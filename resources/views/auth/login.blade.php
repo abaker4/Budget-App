@@ -95,6 +95,11 @@
             flex-shrink:0;margin:10px
         }
 
+        .spacing{
+
+            margin-bottom: 10px;
+        }
+
     </style>
 
     <body>
@@ -200,7 +205,7 @@
                         <h1 class="title has-text-centered labelField">
                            Login
                         </h1>
-                            <p class="control">
+                            <p class="control spacing">
                                 <input class="input field" name="email" type="text" placeholder="Email">
                             </p>
                             @if ($errors->has('email'))
@@ -208,8 +213,8 @@
                                     <strong style="color:#ffaaa5;">{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
-                        <br/>
-                            <p class="control">
+
+                            <p class="control spacing">
                                 <input class="input field" name="password" type="password" placeholder="Password">
                             </p>
                             @if ($errors->has('password'))
@@ -217,8 +222,8 @@
                                     <strong style="color:#ffaaa5;">{{ $errors->first('password') }}</strong>
                                 </span>
                             @endif
-                        <br/>
-                            <p class="control">
+
+                            <p class="control spacing">
                                 <button id="button" class="button is-info common-Button" type="submit" style="margin-bottom: 10px;">Login</button>
                             </p>
 

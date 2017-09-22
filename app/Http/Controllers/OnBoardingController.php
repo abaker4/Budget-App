@@ -113,9 +113,7 @@ class OnBoardingController extends Controller
                 ->where('id', '=', auth()->user()->id)
                 ->first();
 
-
         return view('onboard.savings', compact('savings'));
-
     }
 
     /**
@@ -128,9 +126,7 @@ class OnBoardingController extends Controller
                 ->where('id', '=', auth()->user()->id)
                 ->first();
 
-
         return view('onboard.savings_percentage', compact('savings'));
-
     }
 
     /**
@@ -138,7 +134,6 @@ class OnBoardingController extends Controller
      */
     public function finish()
     {
-
         return view('onboard.finish');
     }
 
@@ -149,7 +144,14 @@ class OnBoardingController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        // Validates the listed fields
+        $this->validate(request(), [
+            'amount' => 'required|numeric',
+            'monthly_category_id' => 'required',
+            'type_id' => 'required'
+        ]);
+
+            $data = $request->all();
         // if the monthly_expense_id exists in the form data run this query
         // if it finds a record update it with new values
         // if no record or there is no monthly_expense_id create a new monthly expense object and save a new record
@@ -163,10 +165,10 @@ class OnBoardingController extends Controller
             $monthly_expense->user_id = auth()->user()->id;
         }
 
-        $monthly_expense->type_id = $data['type_id'];
-        $monthly_expense->monthly_category_id = $data['monthly_category_id'];
-        $monthly_expense->amount = $data['amount'];
-        $monthly_expense->save();
+            $monthly_expense->type_id = $data['type_id'];
+            $monthly_expense->monthly_category_id = $data['monthly_category_id'];
+            $monthly_expense->amount = $data['amount'];
+            $monthly_expense->save();
 
 
         return redirect('/home');
@@ -179,7 +181,12 @@ class OnBoardingController extends Controller
      */
     public function storeSavingPercentage(Request $request)
     {
-        $data = $request->all();
+
+        $this->validate(request(), [
+           'save_percent' => 'required|numeric',
+            'type_id' => 'required'
+        ]);
+            $data = $request->all();
         // if the user_id exists in the form data run this query
         // if it finds a record update it with new values
         // if no record or there is no user_id create a new user object and save a new record
@@ -190,8 +197,8 @@ class OnBoardingController extends Controller
             $user = new User();
         }
 
-        $user->save_percent = $data['save_percent']/100;
-        $user->save();
+            $user->save_percent = $data['save_percent']/100;
+            $user->save();
 
         return redirect('/home');
     }
@@ -202,7 +209,13 @@ class OnBoardingController extends Controller
      */
     public function storeSaving(Request $request)
     {
-        $data = $request->all();
+
+        $this->validate(request(), [
+            'save_percent' => 'required|numeric',
+            'type_id' => 'required'
+        ]);
+
+            $data = $request->all();
         // if the user_id exists in the form data run this query
         // if it finds a record update it with new values
         // if no record or there is no user_id create a new user object and save a new record
@@ -215,8 +228,8 @@ class OnBoardingController extends Controller
             $user = new User();
         }
 
-        $user->save_percent = $data['save_percent']/100;
-        $user->save();
+            $user->save_percent = $data['save_percent']/100;
+            $user->save();
 
         return redirect('/onboard/finish');
     }
@@ -229,7 +242,7 @@ class OnBoardingController extends Controller
      */
     public static function onBoardTriager($step)
     {
-
+        // Navigates the new user to whichever step that isn't completed, if finished it redirects '/home'
         switch($step) {
 
             case 1:
@@ -275,7 +288,7 @@ class OnBoardingController extends Controller
             ->get();
 
         $step = false;
-        // if not set or completed step based on monthly_category_id go to that step
+        // if not set or have completed the step based on monthly_category_id go to that step
         for ($i = 1; $i <= 5; $i++) {
             if (!isset($array_of_expenses[$i-1]) ||
                 $array_of_expenses[$i-1]->monthly_category_id !== $i) {
@@ -288,8 +301,7 @@ class OnBoardingController extends Controller
             $step = 6;
         }
 
-
         return $step;
-
+        
     }
 }

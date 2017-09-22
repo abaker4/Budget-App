@@ -1,175 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-          integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="css/introjs.css">
-    <link rel="stylesheet" href="css/themes/introjs-modern.css">
-    <link rel="stylesheet" href="/css/sweetalert.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
-    <style>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:100" rel="stylesheet">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+              integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="css/introjs.css">
+        <link rel="stylesheet" href="css/themes/introjs-modern.css">
+        <link rel="stylesheet" href="/css/sweetalert.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="https://use.fontawesome.com/e5fa0f90ea.js"></script>
+        <style>
 
-        .common-Button {
-            white-space: nowrap;
-            display: inline-block;
-            height: 40px;
-            line-height: 40px;
-            padding: 0 14px;
-            box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
-            background: #fff;
-            border-radius: 4px;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: .025em;
-            text-decoration: none;
-            transition: all .15s ease;
-        }
+            .icon{
+                color:black;
+            }
+            .common-Button {
+                white-space: nowrap;
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 14px;
+                box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+                background: #fff;
+                border-radius: 4px;
+                font-size: 15px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: .025em;
+                text-decoration: none;
+                transition: all .15s ease;
+            }
 
-        .common-Button:hover{
+            .common-Button:hover{
 
-            transform:translateY(-1px);
-            box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
-        }
+                transform:translateY(-1px);
+                box-shadow:0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+            }
 
+            .common-Button:active{
 
+                background-color:#f6f9fc;
+                transform:translateY(1px);
+                box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+            }
+            .common-ButtonGroup .common-Button{
+                -ms-flex-negative:0;
+                flex-shrink:0;margin:10px
+            }
 
-        .common-Button:active{
+            .refInputField{
+                height:40px;
+            }
 
-            background-color:#f6f9fc;
-            transform:translateY(1px);
-            box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
-        }
-        .common-ButtonGroup .common-Button{
-            -ms-flex-negative:0;
-            flex-shrink:0;margin:10px
-        }
+            #flyover{
 
-        .refInputField{
-            height:40px;
-        }
+                margin-top: 10px;
+            }
 
-        #flyover{
+            #flyover:hover {
+                background-color: #FFF;
+            !important;
+            }
 
-            margin-top: 10px;
-        }
+            #brand:hover{
+                background-color: #fff;
+            !important;
+                opacity: .8;
+                color:lightskyblue;
+            }
 
-        #flyover:hover {
-            background-color: #FFF;
-        !important;
-        }
-
-        #brand:hover{
-            background-color: #fff;
-        !important;
-            opacity: .8;
-            color:lightskyblue;
-        }
-
-        #inputField{
-            height: 40px;
-        }
-    </style>
-</head>
-<body>
-<nav class="navbar" style="margin-bottom: 1.5rem;">
-    <div class="navbar-brand">
-        <a class="navbar-item" id="brand" href="/">
-            <img src="/img/icon.png"alt="logo" width="30" height="30">
-        </a>
-        <form action="/newslettersignup" method="POST">
-            {{csrf_field()}}
-            <div class="field has-addons">
-                <p class="control has-icons-left">
-                    <input class="input" type="email" name="email" placeholder="Subscribe" required>
-                </p>
-                <button class="button is-bold is-info" type="submit" style="color:white;"><i class="fa fa-envelope fa"></i></button>
-            </div>
-        </form>
-    </div>
-    <div class="navbar-burger burger" data-target="toggleTarget">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="nav-menu nav-right" id="toggleTarget">
-        <a class="navbar-item has-text-centered common-Button" href="/">
-            Home
-        </a>
-        @if (Auth::guest())
-            <a class="navbar-item has-text-centered common-Button" href="/login">
-                Log In
-            </a>
-            <a class="navbar-item has-text-centered common-Button" href="/register">
-                Register
-            </a>
-        @else
-            <div class="dropdown" style="margin-bottom: 1rem;">
-                <a href="#" class="dropdown-toggle button is-primary" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <span>{{Auth::user()->name}}</span> <span class="caret"></span>
+            #inputField{
+                height: 40px;
+            }
+        </style>
+    </head>
+    <body>
+    {{--Nav Start--}}
+        <nav class="navbar" style="margin-bottom: 1.5rem;">
+            <div class="navbar-brand">
+                <a class="navbar-item" id="brand" href="/">
+                    <img src="/img/icon.png"alt="logo" width="30" height="30">
                 </a>
-
-                <ul class="dropdown-menu" role="menu" style="text-align: center;">
-                    <li>
-                        <a class="common-Button" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form"  action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
+                <form action="/newslettersignup" method="POST">
+                    {{csrf_field()}}
+                    <div class="field has-addons">
+                        <p class="control has-icons-left">
+                            <input class="input" type="email" name="email" placeholder="Subscribe" required>
+                        </p>
+                        <button class="button is-bold is-info" type="submit" style="color:white;"><i class="fa fa-envelope fa"></i></button>
+                    </div>
+                </form>
             </div>
-        @endif
-    </div>
-
-    <div class="navbar-end">
-        <div class="navbar-item is-hidden-mobile">
-            <div class="field is-grouped">
-                <p class="control">
-                    @if (Auth::guest())
-                        <a class="button common-Button" href="{{ route('login') }}" style="background-color:#0275d8; color:white;">
-
-                            <span>Login</span>
-                        </a>
-                </p>
-                <p class="control">
-                    <a class="button common-Button" href="{{ route('register') }}">
-
-                        <span>Register</span>
+            <div class="navbar-burger burger" data-target="toggleTarget">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-menu nav-right" id="toggleTarget">
+                <a class="navbar-item has-text-centered common-Button" href="/">
+                    Home
+                </a>
+                @if (Auth::guest())
+                    <a class="navbar-item has-text-centered common-Button" href="/login">
+                        Log In
                     </a>
-                </p>
+                    <a class="navbar-item has-text-centered common-Button" href="/register">
+                        Register
+                    </a>
                 @else
-                    <div class="dropdown" style="margin-bottom: 2rem;">
-                        <a href="#" class="dropdown-toggle button is-transparent common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <div class="dropdown" style="margin-bottom: 1rem;">
+                        <a href="#" class="dropdown-toggle button is-primary" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span>{{Auth::user()->name}}</span> <span class="caret"></span>
                         </a>
-
                         <ul class="dropdown-menu" role="menu" style="text-align: center;">
                             <li>
-                                <a href="{{ route('logout') }}"
-
+                                <a class="common-Button" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                       document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form"  action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
@@ -177,12 +137,47 @@
                     </div>
                 @endif
             </div>
-        </div>
-    </div>
-</nav>
+            <div class="navbar-end">
+                <div class="navbar-item is-hidden-mobile">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            @if (Auth::guest())
+                                <a class="button common-Button" href="{{ route('login') }}" style="background-color:#0275d8; color:white;">
+                                    <span>Login</span>
+                                </a>
+                        </p>
+                        <p class="control">
+                            <a class="button common-Button" href="{{ route('register') }}">
+                                <span>Register</span>
+                            </a>
+                        </p>
+                            @else
+                            <div class="dropdown" style="margin-bottom: 2rem;">
+                                <a href="#" class="dropdown-toggle button is-transparent common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span>{{Auth::user()->name}}</span> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" style="text-align: center;">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
 
+                                           onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                            @endif
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {{--Nav End--}}
 
-{{--first slide--}}
+    {{--first slide--}}
     <section class="hero is-primary is-fullheight">
         <div class="hero-body" style="background-image: url('img/landing.png');">
             <div class="container">
@@ -191,11 +186,9 @@
                         <h1 class="title is-1">
                             Analytics on demand.
                         </h1>
-
                         <h1 class="subtitle is-4">
                             Stop installing boring expense tracking apps that all do </br>the exact  same things. Install one that does everything.
                         </h1>
-
                         <a class="button is-info is-hovered common-Button" href="/home" style="text-decoration:none;">Try it now</a>
                     </div>
                 </div>
@@ -241,7 +234,7 @@
         </div>
     </section>
 
-{{--third slide--}}
+    {{--third slide--}}
     <section class="hero is-fullheight" style="background-color:#262F36;">
         <div class="hero-body">
             <div class="container">
@@ -250,25 +243,24 @@
                         <img src="/img/chart.png" alt="chart">
                     </div>
                     <div class="column is-half third-page" style="margin-left:2rem;">
-                            <h1 class="title is-4" style="color: lightblue;">
-                            Easy to use
-                            </h1>
-
-                            <h1 class="title is-1" style="color: #fff;">
-                                  Budget App charts your expenses with real time data.
-                            </h1>
-                                <h1 class="title is-4" style="color: lightblue;">
-                                    Why force yourself to remember what you spent. Put it in the app for easy reference later!
-                                </h1>
-                             <div class="control third-page">
-                                 <a class="button is-info common-Button" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
-                            </div>
+                        <h1 class="title is-4" style="color: lightblue;">
+                        Easy to use
+                        </h1>
+                        <h1 class="title is-1" style="color: #fff;">
+                              Budget App charts your expenses with real time data.
+                        </h1>
+                        <h1 class="title is-4" style="color: lightblue;">
+                            Why force yourself to remember what you spent. Put it in the app for easy reference later!
+                        </h1>
+                         <div class="control third-page">
+                             <a class="button is-info common-Button" href="/home" style="margin-top: 1rem; text-decoration:none;">Start now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-{{--fourth slide--}}
+    {{--fourth slide--}}
     <section class="hero is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -282,7 +274,6 @@
                         </h2>
                     </div>
                 </div>
-
                 <div class="columns" style="margin-bottom: 3rem;">
                     <div class="column is-4">
                         <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
@@ -314,38 +305,41 @@
             </div>
         </div>
     </section>
-<footer class="footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-                <p>
-                    <form action="/newslettersignup" method="POST">
-                        {{csrf_field()}}
-                        <div class="field has-addons" style="margin-left: 7rem;">
-                            <p class="control has-icons-left">
-                                <input class="input refInputField" type="email" name="email" placeholder="Email" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                            </p>
-                            <button class="button is-info common-Button" type="submit" style="color:white;">Subscribe</button>
-                         </div>
-                    </form>
-                 </p>
+    {{--Footer--}}
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <p>
+                        <form action="/newslettersignup" method="POST">
+
+                            {{csrf_field()}}
+
+                            <div class="field has-addons" style="margin-left: 7rem;">
+                                <p class="control has-icons-left">
+                                    <input class="input refInputField" type="email" name="email" placeholder="Email" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </p>
+                                <button class="button is-info common-Button" type="submit" style="color:white;">Subscribe</button>
+                             </div>
+                        </form>
+                     </p>
+                 </div>
              </div>
-         </div>
-    </div>
-    <div class="columns">
-        <div class="container has-text-centered">
-            <div class="column is-narrow">
+        </div>
+        <div class="columns">
+            <div class="container has-text-centered">
+                <div class="column is-narrow">
                     <p class="title is-5"></p>
                     <p class="subtitle">CashFlo&copy; 2017| All Rights Reserved
                         <a class="icon" href="https://github.com/abaker4/Budget-App">
                             <i class="fa fa-github"></i>
                         </a>
                     </p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 @include('layouts.footer')
