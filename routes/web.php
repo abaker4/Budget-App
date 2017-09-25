@@ -1,37 +1,25 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//Public Routes
 Route::get('/', 'HomeController@index');
 
 Route::post('/newslettersignup', 'HomeController@newsletterSignUp');
 
-
-
 Auth::routes();
 
-
+//Dashboard routes
 Route::get('/home', 'DashboardController@index');
 
 Route::post('/daily_total', 'DashboardController@dailyTotal');
 
 Route::post('/reference_date', 'DashboardController@newReferenceDate');
 
+//Onboarding Routes
 Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
 
     Route::get('/start', 'OnBoardingController@start');
 
     Route::get('/finish', 'OnBoardingController@finish');
-
 
     Route::get('/income', 'OnBoardingController@income');
 
@@ -52,8 +40,6 @@ Route::group(['prefix' => 'onboard', 'middleware' => 'auth'], function () {
     Route::post('/store_saving','OnBoardingController@storeSaving');
 
     Route::post('/store_saving_percentage','OnBoardingController@storeSavingPercentage');
-
-
 
 });
 

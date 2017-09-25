@@ -20,7 +20,6 @@ class Category extends Model
     /**
      * Daily Expense Categories
      */
-
     const RESTAURANTS = 1;
     const ALCOHOL = 2;
     const COFFEE_SHOPS = 3;

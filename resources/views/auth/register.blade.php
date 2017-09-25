@@ -29,8 +29,6 @@
                     opacity: .9;
                 }
 
-
-
                 #button{
                     border-style: solid;
                     border-radius: 10px;

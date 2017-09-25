@@ -29,8 +29,6 @@
             opacity: .9;
         }
 
-
-
         #button{
             border-style: solid;
             border-radius: 10px;
@@ -226,20 +224,11 @@
                             <p class="control spacing">
                                 <button id="button" class="button is-info common-Button" type="submit" style="margin-bottom: 10px;">Login</button>
                             </p>
-
-                        {{--<div class="field">--}}
-                            {{--<p class="control">--}}
-                                {{--<label class="checkbox">--}}
-                                    {{--<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>--}}
-                                    {{--Remember Me--}}
-                                {{--</label>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                        <p class="has-text-centered">
-                            <a href="{{ route('password.request') }}">
-                                Forgot Your Password?
-                            </a>
-                        </p>
+                            <p class="has-text-centered">
+                                <a href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
+                            </p>
                     </form>
                 </div>
             </div>

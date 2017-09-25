@@ -9,7 +9,7 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
+     * Sets default string length to 191 characters for char in result of utf8mb4 database changes.
      * @return void
      */
     public function boot()
@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
      * @return void
      */
     public function register()

@@ -28,8 +28,8 @@ class DashboardController extends Controller
 
 
     /**
-     * Display a listing of the resource.
      *
+     * Display details listing of the dashboard per User.
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -78,7 +78,6 @@ class DashboardController extends Controller
                 ->get();
             $expense_chart_data[$val] = $category_expenses;
         }
-
 
         // the result set is converted to json to be used in ChartJs
         $expense_chart_data = json_encode($expense_chart_data);
@@ -138,28 +137,24 @@ class DashboardController extends Controller
     }
 
     /**
+     * creates a new Daily Expense entry
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function dailyTotal()
     {
         // Validates the listed fields
         $this->validate(request(), [
+
             'amount' => 'required|numeric',
-
             'daily_category_id' => 'required'
-
         ]);
 
         // creates a new DailyExpense object with listed form data
         auth()->user()->record(
-
             new DailyExpense(request([
 
                 'daily_category_id',
-
                 'amount'
-
             ]))
         );
 
@@ -167,8 +162,8 @@ class DashboardController extends Controller
 
     }
 
-
     /**
+     * creates/updates Reference Date
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

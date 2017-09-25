@@ -47,11 +47,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="images-container images-house is-hidden-mobile animated slideInRight">
                 <img src="/img/savings.png" alt="savings" />
             </div>
-
             <div class="hero-foot">
                 <figure class="image cloudz is-hidden-mobile">
                     <img src="/img/cloudz.png" alt="Cloudz">

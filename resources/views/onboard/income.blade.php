@@ -48,19 +48,17 @@
                         </div>
                     </div>
                 </div>
-
-            <div class="images-container is-hidden-mobile animated fadeInRight">
-                <img src="/img/income.svg" alt="income" />
-            </div>
-
-            <div class="hero-foot">
-                <figure class="image cloudz is-hidden-mobile">
-                    <img src="/img/cloudz.png" alt="Cloudz">
-                </figure>
-                <figure class="image is-hidden-tablet cloudz">
-                    <img src="/img/cloudz.png" alt="Cloudz">
-                </figure>
-            </div>
+                <div class="images-container is-hidden-mobile animated fadeInRight">
+                    <img src="/img/income.svg" alt="income" />
+                </div>
+                <div class="hero-foot">
+                    <figure class="image cloudz is-hidden-mobile">
+                        <img src="/img/cloudz.png" alt="Cloudz">
+                    </figure>
+                    <figure class="image is-hidden-tablet cloudz">
+                        <img src="/img/cloudz.png" alt="Cloudz">
+                    </figure>
+                </div>
         </section>
     </body>
 </html>

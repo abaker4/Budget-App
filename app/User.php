@@ -13,35 +13,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-//    // User Properties
-//    /**
-//     * User's full name e.g "Austin Baker"
-//     * @var string
-//     */
-//    private $name;
-//    private $email;
-//
-//    /**
-//     * Savings percentage of a user's monthly income e.g. .10
-//     * @var float
-//     */
-////    public $save_percent;
-//
-//    /**
-//     * The reference date for budget calculations - can be reset by user
-//     * @var string
-//     */
-//    public $reference_date;
-//
-//    private $id;
-//    private $remember_token;
-//    private $password;
-//    private $created_at;
-//    private $updated_at;
-
     /**
      * The attributes that are mass assignable.
-     *
      * @var array
      */
     protected $fillable = [
@@ -49,16 +22,18 @@ class User extends Authenticatable
         'name', 'email', 'password','save_percent', 'reference_date'  
     ];
 
+
     /**
      * The attributes that should be hidden for arrays.
-     *
      * @var array
      */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+
     /**
+     * Method creates a new entry for Monthly Expenses in the Database
      * @param \App\MonthlyExpense $monthlyExpense
      */
     public function publish(MonthlyExpense $monthlyExpense)
@@ -66,7 +41,9 @@ class User extends Authenticatable
         $this->monthlyExpense()->save($monthlyExpense);
     }
 
+
     /**
+     * A User has many Monthly Expenses
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function monthlyExpense()
@@ -76,6 +53,7 @@ class User extends Authenticatable
 
 
     /**
+     * Method creates a new entry for Daily Expenses in the Database
      * @param \App\DailyExpense $dailyExpense
      * @return false|\Illuminate\Database\Eloquent\Model
      */
@@ -84,7 +62,9 @@ class User extends Authenticatable
         return $this->dailyExpense()->save($dailyExpense);
     }
 
+
     /**
+     * A User has many Daily Expenses
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function dailyExpense()
@@ -94,14 +74,7 @@ class User extends Authenticatable
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function type()
-    {
-        return $this->hasMany(Type::class);
-    }
-
-    /**
+     * creates/updates saving percentage entry
      * @param $percentage
      */
     public function updateSavingPercentage($percentage)

@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class MonthlyCategory extends Model
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * protects against mass assignment
+     * @var array
      */
-    public function user()
-    {
+    protected $guarded =[];
 
-        return $this->hasMany(User::class);
-    }
 }

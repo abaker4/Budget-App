@@ -22,6 +22,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Users table and grabs the first entry in a collection that passes the given truth test
+     * and is also an authenticated user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function start()
@@ -34,6 +36,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Monthly Expenses table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user, and its Monthly Category is Income
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function income()
@@ -48,6 +52,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Monthly Expenses table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user, and its Monthly Category is Housing
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function housing()
@@ -62,6 +68,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Monthly Expenses table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user, and its Monthly Category is Utilities
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function utilities()
@@ -76,6 +84,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Monthly Expenses table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user, and its Monthly Category is Insurances
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function insurances()
@@ -90,6 +100,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Monthly Expenses table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user, and its Monthly Category is Memberships
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function memberships()
@@ -104,6 +116,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Users table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function savings()
@@ -117,6 +131,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Query Users table and grabs the first entry in a collection that passes the given truth test,
+     * is an authenticated user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function savingsPercentage()
@@ -130,6 +146,7 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Returns the Finish View
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function finish()
@@ -139,6 +156,7 @@ class OnBoardingController extends Controller
 
 
     /**
+     * creates/updates entry for each step in the onboarding process
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -176,6 +194,7 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * creates/updates savings in onboarding process
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -204,6 +223,7 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * creates/updates savings in onboarding process
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -234,15 +254,14 @@ class OnBoardingController extends Controller
         return redirect('/onboard/finish');
     }
 
-
-
     /**
+     *  Navigates the new user to whichever step that isn't completed, if finished it redirects '/home'
      * @param $step
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public static function onBoardTriager($step)
     {
-        // Navigates the new user to whichever step that isn't completed, if finished it redirects '/home'
+
         switch($step) {
 
             case 1:
@@ -277,6 +296,8 @@ class OnBoardingController extends Controller
     }
 
     /**
+     * Loops through each of the steps to make sure the user has completed them
+     * and also has a saving percentage before returning home
      * @return bool|int
      */
     public static function checkOnboardStep() {

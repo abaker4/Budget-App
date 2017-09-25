@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * Flashes a message for visual feedback to the user
  * @param null $title
  * @param null $message
  * @return \Illuminate\Foundation\Application|mixed
