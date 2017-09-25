@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-          integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <link rel="stylesheet" href="css/introjs.css">
     <link rel="stylesheet" href="css/themes/introjs-modern.css">
     <link rel="stylesheet" href="/css/sweetalert.css">
@@ -112,8 +109,6 @@
             <span></span>
             <span></span>
         </div>
-
-
         <div class="nav-menu nav-right" id="toggleTarget">
             <a class="navbar-item has-text-centered common-Button" href="/">
                 Home
@@ -130,7 +125,6 @@
                     <a href="#" class="dropdown-toggle button is-primary common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span>{{Auth::user()->name}}</span> <span class="caret"></span>
                     </a>
-
                     <ul class="dropdown-menu" role="menu" style="text-align: center;">
                         <li>
                             <a class= href="{{ route('logout') }} common-Button
@@ -138,7 +132,6 @@
                                document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
-
                             <form id="logout-form"  action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
@@ -147,20 +140,17 @@
                 </div>
             @endif
         </div>
-
         <div class="navbar-end">
             <div class="navbar-item is-hidden-mobile">
                 <div class="field is-grouped">
                     <p class="control">
                         @if (Auth::guest())
                             <a class="button common-Button" href="{{ route('login') }}" style="background-color:#0275d8; color:white;">
-
                                 <span>Login</span>
                             </a>
                     </p>
                     <p class="control">
                         <a class="button is-transparent common-Button" href="{{ route('register') }}">
-
                             <span>Register</span>
                         </a>
                     </p>
@@ -169,7 +159,6 @@
                             <a href="#" class="dropdown-toggle button is-transparent common-Button" data-toggle="dropdown" role="button" aria-expanded="false">
                                 <span>{{Auth::user()->name}}</span> <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu" role="menu" style="text-align: center;">
                                 <li>
                                     <a class="common-Button" href="{{ route('logout') }}"
@@ -177,9 +166,10 @@
                                                      document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+
                                         {{ csrf_field() }}
+
                                     </form>
                                 </li>
                             </ul>
@@ -189,8 +179,6 @@
             </div>
         </div>
     </nav>
-
-
     <section class="hero is-fullheight is-info is-bold">
     <div class="hero-body">
         <div class="container">
@@ -200,9 +188,9 @@
 
                         {{ csrf_field() }}
 
-                        <h1 class="title has-text-centered labelField">
-                           Login
-                        </h1>
+                            <h1 class="title has-text-centered labelField">
+                               Login
+                            </h1>
                             <p class="control spacing">
                                 <input class="input field" name="email" type="text" placeholder="Email">
                             </p>
@@ -211,7 +199,6 @@
                                     <strong style="color:#ffaaa5;">{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
-
                             <p class="control spacing">
                                 <input class="input field" name="password" type="password" placeholder="Password">
                             </p>
@@ -220,7 +207,6 @@
                                     <strong style="color:#ffaaa5;">{{ $errors->first('password') }}</strong>
                                 </span>
                             @endif
-
                             <p class="control spacing">
                                 <button id="button" class="button is-info common-Button" type="submit" style="margin-bottom: 10px;">Login</button>
                             </p>

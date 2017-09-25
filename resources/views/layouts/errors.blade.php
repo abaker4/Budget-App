@@ -1,6 +1,5 @@
 @if(count($errors))
     <div id="errors" class="form-group">
-
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -8,7 +7,6 @@
                 @endforeach
 
             </ul>
-
         </div>
     </div>
 @endif

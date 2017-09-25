@@ -16,12 +16,10 @@ class HomeController extends Controller
 
     /**
      * Show the application landing page.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-
         return view('landing');
     }
 
@@ -29,8 +27,6 @@ class HomeController extends Controller
     /**
      * Checking to see if Email exists in DB, if not it will record and pass a flash message,
      * if it does exist it will pass a different flash message and redirect '/'
-     *
-     *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

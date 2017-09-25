@@ -11,13 +11,13 @@
                             <h4 class="title is-2 is-white">
                                 You are well on your way to budgeting like a pro
                             </h4>
-                                <div class="field">
-                                    <div class="field has-addons">
-                                        <p class="control">
-                                            <a class="button is-success common-Button" href="/home?tour=1" style="text-decoration:none;">Finish</a>
-                                        </p>
-                                    </div>
+                            <div class="field">
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-success common-Button" href="/home?tour=1" style="text-decoration:none;">Finish</a>
+                                    </p>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
