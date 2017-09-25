@@ -290,7 +290,7 @@
                         </p>
                         <form method="POST" action="/reference_date">
                             {{csrf_field()}}
-                            <div class="field has-addons" style="margin-top:1rem; margin-left: 12rem;">
+                            <div class="field has-addons" style="margin-top:1rem; margin-left: 8rem;">
                                 <p class="control">
                                     <input class="input is-info refInputField" value="" name="reference_date" type="text"
                                            id="datepicker" placeholder="Date:" data-step="7" data-intro="You made a big purchase
